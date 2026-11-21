@@ -1,0 +1,3357 @@
+{
+  "$description": "Design tokens recovered from Arc for macOS 1.174.0 (The Browser Company). Colors come from the compiled asset catalogs (Assets.car) and are given in sRGB; 8-digit hex means #RRGGBBAA. \"authoredIn\" marks colors defined in another color space (converted to sRGB here). Names and numbers only: no copyrighted assets are included.",
+  "source": {
+    "app": "Arc",
+    "platform": "macOS",
+    "version": "1.174.0",
+    "build": "91305",
+    "extraction": "scripts/extract-app.sh (assetutil, ipsw swift-dump, strings)"
+  },
+  "color": {
+    "BaseAssets": {
+      "BackgroundPrimary": {
+        "light": "#FFFFFF",
+        "dark": "#000000"
+      },
+      "BasePrimary": {
+        "light": "#000000",
+        "dark": "#FFFFFF"
+      },
+      "BasePrimaryDark": {
+        "light": "#FFFFFF",
+        "dark": "#FFFFFF"
+      },
+      "BasePrimaryLight": {
+        "light": "#000000",
+        "dark": "#000000"
+      },
+      "BaseQuaternary": {
+        "light": "#00000026",
+        "dark": "#FFFFFF26"
+      },
+      "BaseSecondary": {
+        "light": "#000000B2",
+        "dark": "#FFFFFFB2"
+      },
+      "BaseSecondaryDark": {
+        "light": "#FFFFFFB2",
+        "dark": "#FFFFFFB2"
+      },
+      "BaseTertiary": {
+        "light": "#0000004C",
+        "dark": "#FFFFFF"
+      },
+      "BrandBlue": {
+        "light": "#2F39FF",
+        "dark": "#2F39FF",
+        "authoredIn": "display-p3"
+      },
+      "BrandExtendedBlueGray": {
+        "light": "#666789",
+        "dark": "#666789"
+      },
+      "BrandExtendedBrown": {
+        "light": "#934E1B",
+        "dark": "#934E1B",
+        "authoredIn": "display-p3"
+      },
+      "BrandExtendedBrownPink": {
+        "light": "#CF7F65",
+        "dark": "#CF7F65",
+        "authoredIn": "display-p3"
+      },
+      "BrandExtendedCream": {
+        "light": "#F2EAE4",
+        "dark": "#F2EAE4"
+      },
+      "BrandExtendedLightPink": {
+        "light": "#F29BBB",
+        "dark": "#F29BBB"
+      },
+      "BrandExtendedNavy": {
+        "light": "#12374A",
+        "dark": "#12374A",
+        "authoredIn": "display-p3"
+      },
+      "BrandExtendedOrange": {
+        "light": "#FF7C4A",
+        "dark": "#FF7C4A",
+        "authoredIn": "display-p3"
+      },
+      "BrandExtendedPurple": {
+        "light": "#AF6FA0",
+        "dark": "#AF6FA0",
+        "authoredIn": "display-p3"
+      },
+      "BrandExtendedTeal": {
+        "light": "#4DBCDD",
+        "dark": "#4DBCDD",
+        "authoredIn": "display-p3"
+      },
+      "BrandExtendedVibrantRed": {
+        "light": "#FF0500",
+        "dark": "#FF0500",
+        "authoredIn": "display-p3"
+      },
+      "BrandGray": {
+        "light": "#7E7E7E",
+        "dark": "#7E7E7E",
+        "authoredIn": "display-p3"
+      },
+      "BrandGreen": {
+        "light": "#007C00",
+        "dark": "#007C00",
+        "authoredIn": "display-p3"
+      },
+      "BrandLightBlue": {
+        "light": "#00CBF8",
+        "dark": "#00CBF8",
+        "authoredIn": "display-p3"
+      },
+      "BrandLightGreen": {
+        "light": "#00EC8D",
+        "dark": "#00EC8D",
+        "authoredIn": "display-p3"
+      },
+      "BrandMagenta": {
+        "light": "#D200A4",
+        "dark": "#D200A4",
+        "authoredIn": "display-p3"
+      },
+      "BrandRed": {
+        "light": "#E93800",
+        "dark": "#E93800",
+        "authoredIn": "display-p3"
+      },
+      "BrandYellow": {
+        "light": "#FFD335",
+        "dark": "#FFD335"
+      },
+      "Chill.EaselBlack": {
+        "light": "#000000",
+        "dark": "#FFFFFF"
+      },
+      "Chill.EaselDarkBlue": {
+        "light": "#3139FB",
+        "dark": "#3139FB"
+      },
+      "Chill.EaselDarkGreen": {
+        "light": "#1D5914",
+        "dark": "#1D5914"
+      },
+      "Chill.EaselGrey": {
+        "light": "#BBBBBB",
+        "dark": "#BBBBBB"
+      },
+      "Chill.EaselLightBlue": {
+        "light": "#30A4C0",
+        "dark": "#30A4C0",
+        "authoredIn": "display-p3"
+      },
+      "Chill.EaselLightGreen": {
+        "light": "#CED872",
+        "dark": "#CED872",
+        "authoredIn": "display-p3"
+      },
+      "Chill.EaselPink": {
+        "light": "#F2C2AC",
+        "dark": "#F2C2AC"
+      },
+      "Chill.EaselPurple": {
+        "light": "#A6729D",
+        "dark": "#A6729D"
+      },
+      "Chill.EaselRed": {
+        "light": "#D74807",
+        "dark": "#D74807"
+      },
+      "Chill.EaselWhite": {
+        "light": "#FFFFFF",
+        "dark": "#000000"
+      },
+      "Chill.EaselYellow": {
+        "light": "#C2A12A",
+        "dark": "#C2A12A"
+      },
+      "ColorPickerBrand1": {
+        "light": "#F2EAE4",
+        "dark": "#F2EAE4"
+      },
+      "ColorPickerBrand2": {
+        "light": "#F29BBB",
+        "dark": "#F29BBB"
+      },
+      "ColorPickerBrand3": {
+        "light": "#A6729D",
+        "dark": "#A6729D"
+      },
+      "ColorPickerBrand4": {
+        "light": "#F25E6B",
+        "dark": "#F25E6B"
+      },
+      "ColorPickerBrand5": {
+        "light": "#FF8558",
+        "dark": "#FF8558",
+        "authoredIn": "extended linear srgb"
+      },
+      "ColorPickerBrand6": {
+        "light": "#F8D558",
+        "dark": "#F8D558",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerBrand7": {
+        "light": "#34E895",
+        "dark": "#34E895",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerBrand8": {
+        "light": "#6CBAD9",
+        "dark": "#6CBAD9",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerBrand9": {
+        "light": "#666789",
+        "dark": "#666789",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerDrab1": {
+        "light": "#4E3A5A",
+        "dark": "#4E3A5A",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerDrab2": {
+        "light": "#693558",
+        "dark": "#693558",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerDrab3": {
+        "light": "#8F4042",
+        "dark": "#8F4042",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerDrab4": {
+        "light": "#B16D40",
+        "dark": "#B16D40",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerDrab5": {
+        "light": "#D7B35D",
+        "dark": "#D7B35D",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerDrab6": {
+        "light": "#CDCCA4",
+        "dark": "#CDCCA4",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerDrab7": {
+        "light": "#7AA982",
+        "dark": "#7AA982",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerDrab8": {
+        "light": "#226149",
+        "dark": "#226149",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerDrab9": {
+        "light": "#26456B",
+        "dark": "#26456B",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerGreyscale1": {
+        "light": "#FFFFFF",
+        "dark": "#FFFFFF",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerGreyscale2": {
+        "light": "#E6E6E6",
+        "dark": "#E6E6E6",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerGreyscale3": {
+        "light": "#CCCCCC",
+        "dark": "#CCCCCC",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerGreyscale4": {
+        "light": "#B2B2B2",
+        "dark": "#B2B2B2",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerGreyscale5": {
+        "light": "#808080",
+        "dark": "#808080",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerGreyscale6": {
+        "light": "#666666",
+        "dark": "#666666",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerGreyscale7": {
+        "light": "#333333",
+        "dark": "#333333",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerGreyscale8": {
+        "light": "#1A1A1A",
+        "dark": "#1A1A1A",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerGreyscale9": {
+        "light": "#000000",
+        "dark": "#000000",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerPastel1": {
+        "light": "#FEFBFA",
+        "dark": "#FEFBFA",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerPastel2": {
+        "light": "#FFE9F3",
+        "dark": "#FFE9F3",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerPastel3": {
+        "light": "#F1D1EC",
+        "dark": "#F1D1EC",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerPastel4": {
+        "light": "#FFCBD1",
+        "dark": "#FFCBD1",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerPastel5": {
+        "light": "#FFE0D3",
+        "dark": "#FFE0D3",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerPastel6": {
+        "light": "#FFF9E5",
+        "dark": "#FFF9E5",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerPastel7": {
+        "light": "#DEFDEB",
+        "dark": "#DEFDEB",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerPastel8": {
+        "light": "#DCF3FC",
+        "dark": "#DCF3FC",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerPastel9": {
+        "light": "#C5C6E5",
+        "dark": "#C5C6E5",
+        "authoredIn": "display-p3"
+      },
+      "CommandBarPlaceholderIncognitoBackground": {
+        "light": "#FFFFFF26",
+        "dark": "#FFFFFF26",
+        "authoredIn": "display-p3"
+      },
+      "CommandBarSuggestionHintPillBackground": {
+        "light": "#FFFFFF",
+        "dark": "#FFFFFF1A",
+        "authoredIn": "display-p3"
+      },
+      "CommandBarSuggestionHintPillImageBackground": {
+        "light": "#00000008",
+        "dark": "#FFFFFF33",
+        "authoredIn": "display-p3"
+      },
+      "DownloadProgressBarBackground": {
+        "light": "#CED7E7",
+        "dark": "#717782"
+      },
+      "FindInPageError": {
+        "light": "#DB1929",
+        "dark": "#DB1929",
+        "authoredIn": "display-p3"
+      },
+      "FindInPageSeparator": {
+        "light": "#0000001A",
+        "dark": "#0000001A",
+        "authoredIn": "display-p3"
+      },
+      "FloatingControlIconForeground": {
+        "light": "#00000080",
+        "dark": "#FFFFFF80"
+      },
+      "FloatingScrimBorder": {
+        "light": "#0000001A",
+        "dark": "#FFFFFF33"
+      },
+      "FocusRing": {
+        "light": "#228CFF",
+        "dark": "#228CFF",
+        "authoredIn": "display-p3"
+      },
+      "ForegroundPrimary": {
+        "light": "#0E0F10E6",
+        "dark": "#FFFFFFCC",
+        "authoredIn": "display-p3"
+      },
+      "ForegroundSecondary": {
+        "light": "#00000080",
+        "dark": "#FFFFFF80"
+      },
+      "ForegroundTertiary": {
+        "light": "#0000004C",
+        "dark": "#FFFFFF4C"
+      },
+      "FullOpacityBackgroundPrimary": {
+        "light": "#FFFFFF",
+        "dark": "#000000"
+      },
+      "FullOpacityForegroundPrimary": {
+        "light": "#000000",
+        "dark": "#FFFFFF"
+      },
+      "LoadingPageBorder": {
+        "light": "#0C50FF",
+        "dark": "#2AB6F6"
+      },
+      "MoveButtonBackground": {
+        "light": "#FFFFFF",
+        "dark": "#000000"
+      },
+      "NewTabPageButtonBackground": {
+        "light": "#0000000A",
+        "dark": "#FFFFFF0A"
+      },
+      "NewTabPageButtonHoveredBackground": {
+        "light": "#0000000F",
+        "dark": "#FFFFFF13"
+      },
+      "PopoverBackground": {
+        "light": "#FAFBFF",
+        "dark": "#131C32",
+        "authoredIn": "display-p3"
+      },
+      "PopoverShadow": {
+        "light": "#131C344C",
+        "dark": "#131C34CC",
+        "authoredIn": "display-p3"
+      },
+      "PrivateCreativeToolPrimary": {
+        "light": "#007C00",
+        "dark": "#00EC8D",
+        "authoredIn": "display-p3"
+      },
+      "PrivateCreativeToolSecondary": {
+        "light": "#0052001A",
+        "dark": "#16F2B01A",
+        "authoredIn": "display-p3"
+      },
+      "PrivateCreativeToolTertiary": {
+        "light": "#0032001A",
+        "dark": "#97F9D31A",
+        "authoredIn": "display-p3"
+      },
+      "ReadAndWriteCreativeToolPrimary": {
+        "light": "#C0009F",
+        "dark": "#F29BBB"
+      },
+      "ReadAndWriteCreativeToolSecondary": {
+        "light": "#7F00691A",
+        "dark": "#F9CDDD1A"
+      },
+      "ReadAndWriteCreativeToolTertiary": {
+        "light": "#4D00401A",
+        "dark": "#FAD7E41A"
+      },
+      "ReadOnlyCreativeToolPrimary": {
+        "light": "#3139FB",
+        "dark": "#00C7F3"
+      },
+      "ReadOnlyCreativeToolSecondary": {
+        "light": "#2026A61A",
+        "dark": "#57DAF71A"
+      },
+      "ReadOnlyCreativeToolTertiary": {
+        "light": "#1417641A",
+        "dark": "#99E9FA1A"
+      },
+      "Shadow": {
+        "light": "#00000033",
+        "dark": "#00000000"
+      },
+      "SidebarForeground": {
+        "light": "#0000004C",
+        "dark": "#FFFFFF73"
+      },
+      "SidebarForegroundDarker": {
+        "light": "#00000073",
+        "dark": "#FFFFFF73"
+      },
+      "SidebarItemBackground": {
+        "light": "#0E0F100D",
+        "dark": "#FAFBFF1A",
+        "authoredIn": "display-p3"
+      },
+      "SidebarItemHoveredBackground": {
+        "light": "#0E0F101A",
+        "dark": "#FAFBFF26",
+        "authoredIn": "display-p3"
+      },
+      "SidebarSeparator": {
+        "light": "#00000026",
+        "dark": "#FFFFFF26"
+      },
+      "StandaloneButtonBackground": {
+        "light": "#00000014",
+        "dark": "#FFFFFF26"
+      },
+      "TabCellBackgroundContentVisible": {
+        "light": "#FFFFFFB2",
+        "dark": "#FAFBFF26",
+        "authoredIn": "display-p3"
+      },
+      "TabCellBackgroundCurrent": {
+        "light": "#FFFFFFD9",
+        "dark": "#FAFBFF33",
+        "authoredIn": "display-p3"
+      },
+      "TabCellBackgroundMutiselected": {
+        "light": "#0000001A",
+        "dark": "#FAFBFF1A",
+        "authoredIn": "display-p3"
+      },
+      "TabCellBackgroundPressed": {
+        "light": "#0E0F1011",
+        "dark": "#FAFBFF11",
+        "authoredIn": "display-p3"
+      },
+      "TabCellBackgroundPrevious": {
+        "light": "#FFFFFF52",
+        "dark": "#FAFBFF14",
+        "authoredIn": "display-p3"
+      },
+      "TabCellBackgroundPreviousHovered": {
+        "light": "#FFFFFF80",
+        "dark": "#FAFBFF1F",
+        "authoredIn": "display-p3"
+      },
+      "TabCellChildBackground": {
+        "light": "#00000012",
+        "dark": "#FFFFFF12"
+      },
+      "TabCellShadowBackgroundSelected": {
+        "light": "#FFFFFFE6",
+        "dark": "#00000000"
+      },
+      "TabCellShadowSelected": {
+        "light": "#00000033",
+        "dark": "#00000000"
+      },
+      "TabCellSlash": {
+        "light": "#0000004C",
+        "dark": "#FFFFFF4C",
+        "authoredIn": "display-p3"
+      },
+      "Vibrant.EaselBlack": {
+        "light": "#000000",
+        "dark": "#FFFFFF"
+      },
+      "Vibrant.EaselDarkBlue": {
+        "light": "#3139FB",
+        "dark": "#3139FB"
+      },
+      "Vibrant.EaselDarkGreen": {
+        "light": "#107A00",
+        "dark": "#107A00"
+      },
+      "Vibrant.EaselGrey": {
+        "light": "#BBBBBB",
+        "dark": "#BBBBBB"
+      },
+      "Vibrant.EaselLightBlue": {
+        "light": "#00CBF8",
+        "dark": "#00CBF8",
+        "authoredIn": "display-p3"
+      },
+      "Vibrant.EaselLightGreen": {
+        "light": "#00EC8D",
+        "dark": "#00EC8D",
+        "authoredIn": "display-p3"
+      },
+      "Vibrant.EaselPink": {
+        "light": "#FF994E",
+        "dark": "#FF994E"
+      },
+      "Vibrant.EaselPurple": {
+        "light": "#C0009F",
+        "dark": "#C0009F"
+      },
+      "Vibrant.EaselRed": {
+        "light": "#F53714",
+        "dark": "#F53714"
+      },
+      "Vibrant.EaselWhite": {
+        "light": "#FFFFFF",
+        "dark": "#000000"
+      },
+      "Vibrant.EaselYellow": {
+        "light": "#FFD335",
+        "dark": "#FFD335"
+      },
+      "VibrantSecondaryText": {
+        "light": "#0C50FF66",
+        "dark": "#2AB6F680"
+      },
+      "VibrantText": {
+        "light": "#0C50FF",
+        "dark": "#2AB6F6"
+      }
+    },
+    "ARCUI": {
+      "ButtonDisabledBorder": {
+        "light": "#333333",
+        "dark": "#CCCCCC"
+      },
+      "ButtonDisabledFace": {
+        "light": "#B2B2B2",
+        "dark": "#819197",
+        "authoredIn": "display-p3"
+      },
+      "ContrastingButtonDropShadow": {
+        "light": "#D34955BF",
+        "dark": "#D34955BF"
+      },
+      "ContrastingButtonFace": {
+        "light": "#F36672",
+        "dark": "#F36672"
+      },
+      "DestructiveButtonBorder": {
+        "light": "#FFFFFF00",
+        "dark": "#FFFFFF00"
+      },
+      "DestructiveButtonDisabledFace": {
+        "light": "#FFC7BD",
+        "dark": "#673229"
+      },
+      "DestructiveButtonDisabledForeground": {
+        "light": "#F537144C",
+        "dark": "#FFFFFF2C"
+      },
+      "DestructiveButtonDisabledIconBackground": {
+        "light": "#FFCDC4",
+        "dark": "#703F36"
+      },
+      "DestructiveButtonDisabledIconBorder": {
+        "light": "#FFFFFF33",
+        "dark": "#FFFFFF1A"
+      },
+      "DestructiveButtonDisabledShadow": {
+        "light": "#DC2A094C",
+        "dark": "#B4250A4C"
+      },
+      "DestructiveButtonFace": {
+        "light": "#F53714",
+        "dark": "#F53714"
+      },
+      "DestructiveButtonForeground": {
+        "light": "#FFFFFF",
+        "dark": "#FFFFFF"
+      },
+      "DestructiveButtonHovered": {
+        "light": "#DD3112",
+        "dark": "#DD3112"
+      },
+      "DestructiveButtonIconBackground": {
+        "light": "#FFFFFF1A",
+        "dark": "#FFFFFF1A"
+      },
+      "DestructiveButtonIconBorder": {
+        "light": "#FFFFFF33",
+        "dark": "#FFFFFF33"
+      },
+      "DestructiveButtonIconForeground": {
+        "light": "#FFFFFFE6",
+        "dark": "#FFFFFFE6"
+      },
+      "DestructiveButtonPressed": {
+        "light": "#D02F11",
+        "dark": "#D02F11"
+      },
+      "DestructiveButtonShadow": {
+        "light": "#B4250A4C",
+        "dark": "#B4250A4C"
+      },
+      "DimmedWindowControls": {
+        "light": "#000000",
+        "dark": "#F3F3EA"
+      },
+      "Gradient1": {
+        "light": "#F19E9C33",
+        "dark": "#F19E9C33"
+      },
+      "Gradient2": {
+        "light": "#1B46F5",
+        "dark": "#1B46F5"
+      },
+      "GradientBlue": {
+        "light": "#0048FF",
+        "dark": "#0048FF",
+        "authoredIn": "display-p3"
+      },
+      "GradientPeach": {
+        "light": "#FF9396",
+        "dark": "#FF9396",
+        "authoredIn": "display-p3"
+      },
+      "Gray1": {
+        "light": "#FCFCFC",
+        "dark": "#161616"
+      },
+      "Gray10": {
+        "light": "#858585",
+        "dark": "#7E7E7E"
+      },
+      "Gray11": {
+        "light": "#6F6F6F",
+        "dark": "#A0A0A0"
+      },
+      "Gray12": {
+        "light": "#171717",
+        "dark": "#EDEDED"
+      },
+      "Gray2": {
+        "light": "#F8F8F8",
+        "dark": "#1C1C1C"
+      },
+      "Gray3": {
+        "light": "#F3F3F3",
+        "dark": "#232323"
+      },
+      "Gray4": {
+        "light": "#EDEDED",
+        "dark": "#282828"
+      },
+      "Gray5": {
+        "light": "#E8E8E8",
+        "dark": "#2E2E2E"
+      },
+      "Gray6": {
+        "light": "#E2E2E2",
+        "dark": "#343434"
+      },
+      "Gray7": {
+        "light": "#DBDBDB",
+        "dark": "#3E3E3E"
+      },
+      "Gray8": {
+        "light": "#C7C7C7",
+        "dark": "#505050"
+      },
+      "Gray9": {
+        "light": "#8F8F8F",
+        "dark": "#707070"
+      },
+      "GrayA1": {
+        "light": "#00000003",
+        "dark": "#000000"
+      },
+      "GrayA10": {
+        "light": "#0000007A",
+        "dark": "#FFFFFF72"
+      },
+      "GrayA11": {
+        "light": "#00000090",
+        "dark": "#FFFFFF97"
+      },
+      "GrayA12": {
+        "light": "#000000E8",
+        "dark": "#FFFFFFEB"
+      },
+      "GrayA2": {
+        "light": "#00000007",
+        "dark": "#FFFFFF07"
+      },
+      "GrayA3": {
+        "light": "#0000000C",
+        "dark": "#FFFFFF0E"
+      },
+      "GrayA4": {
+        "light": "#00000012",
+        "dark": "#FFFFFF14"
+      },
+      "GrayA5": {
+        "light": "#00000017",
+        "dark": "#FFFFFF1A"
+      },
+      "GrayA6": {
+        "light": "#0000001D",
+        "dark": "#FFFFFF21"
+      },
+      "GrayA7": {
+        "light": "#00000024",
+        "dark": "#FFFFFF2C"
+      },
+      "GrayA8": {
+        "light": "#00000038",
+        "dark": "#FFFFFF3F"
+      },
+      "GrayA9": {
+        "light": "#00000070",
+        "dark": "#FFFFFF62"
+      },
+      "Indigo1": {
+        "light": "#FFFFFF",
+        "dark": "#141421"
+      },
+      "Indigo10": {
+        "light": "#393ECC",
+        "dark": "#5458E8"
+      },
+      "Indigo11": {
+        "light": "#3438B2",
+        "dark": "#8589FF"
+      },
+      "Indigo12": {
+        "light": "#101245",
+        "dark": "#EDEEFC"
+      },
+      "Indigo2": {
+        "light": "#F7F8FF",
+        "dark": "#16162E"
+      },
+      "Indigo3": {
+        "light": "#F0F0FF",
+        "dark": "#191A40"
+      },
+      "Indigo4": {
+        "light": "#E8E9FF",
+        "dark": "#1C1D4F"
+      },
+      "Indigo5": {
+        "light": "#D9DAFC",
+        "dark": "#1F215C"
+      },
+      "Indigo6": {
+        "light": "#C8CAFA",
+        "dark": "#22246E"
+      },
+      "Indigo7": {
+        "light": "#AEB0F5",
+        "dark": "#272A8A"
+      },
+      "Indigo8": {
+        "light": "#8E91F0",
+        "dark": "#2E32B2"
+      },
+      "Indigo9": {
+        "light": "#3138F9",
+        "dark": "#3239FA"
+      },
+      "InputFieldBackgroundColor": {
+        "light": "#FFFFFF",
+        "dark": "#FFFFFF26"
+      },
+      "InputFieldBorderColor": {
+        "light": "#DBDBDB",
+        "dark": "#FFFFFF4C"
+      },
+      "NeutralButtonBorder": {
+        "light": "#DBDBDB",
+        "dark": "#6362AE"
+      },
+      "NeutralButtonFace": {
+        "light": "#FFFFFF",
+        "dark": "#302F63"
+      },
+      "NeutralButtonForeground": {
+        "light": "#171717",
+        "dark": "#FFFFFFE6"
+      },
+      "NeutralButtonHovered": {
+        "light": "#F2F2F2",
+        "dark": "#454473"
+      },
+      "NeutralButtonIconBackground": {
+        "light": "#0000001A",
+        "dark": "#C7C0D733"
+      },
+      "NeutralButtonIconForeground": {
+        "light": "#727272",
+        "dark": "#D7D7FFC4"
+      },
+      "NeutralButtonPressed": {
+        "light": "#E5E5E5",
+        "dark": "#2B2A59"
+      },
+      "NeutralButtonShadow": {
+        "light": "#E2E2E2",
+        "dark": "#FFFFFF00"
+      },
+      "PopoverArrowIcon": {
+        "light": "#1E2E694C",
+        "dark": "#EEEEF64C"
+      },
+      "PopoverBackground": {
+        "light": "#FAFBFF",
+        "dark": "#151C30"
+      },
+      "PopoverBorder": {
+        "light": "#FFFFFF00",
+        "dark": "#D3CEED33"
+      },
+      "PopoverIconBackground": {
+        "light": "#10134D1A",
+        "dark": "#C3C2FD33"
+      },
+      "PopoverIconColor": {
+        "light": "#FAFBFF",
+        "dark": "#F4F6FDF2"
+      },
+      "PopoverInputText": {
+        "light": "#0E0F10CC",
+        "dark": "#FAFBFFE6",
+        "authoredIn": "display-p3"
+      },
+      "PopoverLogoBackground": {
+        "light": "#FFFFFFE6",
+        "dark": "#FFFFFF99"
+      },
+      "PopoverLogoShadow": {
+        "light": "#00000026",
+        "dark": "#FFFFFF00"
+      },
+      "PopoverMessage": {
+        "light": "#060E2BBF",
+        "dark": "#EEEEF6BF"
+      },
+      "PopoverTitle": {
+        "light": "#181B1F",
+        "dark": "#FFFFFF"
+      },
+      "PrimaryButtonBorder": {
+        "light": "#FFFFFF00",
+        "dark": "#FFFFFF33"
+      },
+      "PrimaryButtonFace": {
+        "light": "#3139FB",
+        "dark": "#3139FB"
+      },
+      "PrimaryButtonForeground": {
+        "light": "#FFFFFF",
+        "dark": "#FFFFFF"
+      },
+      "PrimaryButtonHovered": {
+        "light": "#2C33E2",
+        "dark": "#2C33E2"
+      },
+      "PrimaryButtonIconBackground": {
+        "light": "#FFFFFF1A",
+        "dark": "#FFFFFF1A"
+      },
+      "PrimaryButtonIconBorder": {
+        "light": "#FFFFFF33",
+        "dark": "#FFFFFF33"
+      },
+      "PrimaryButtonIconForeground": {
+        "light": "#FFFFFFE6",
+        "dark": "#FFFFFFE6"
+      },
+      "PrimaryButtonPressed": {
+        "light": "#2A30D5",
+        "dark": "#2A30D5"
+      },
+      "PrimaryButtonShadow": {
+        "light": "#3438B2",
+        "dark": "#5A61FC80"
+      },
+      "SecondaryTextForeground": {
+        "light": "#515151",
+        "dark": "#515151"
+      }
+    },
+    "AdBlocking": {
+      "CheckboxColor": {
+        "light": "#3139FB",
+        "dark": "#B0B3FF"
+      },
+      "ComponentBackgroundColor": {
+        "light": "#FFFFFF",
+        "dark": "#302F63"
+      },
+      "ComponentBorderColor": {
+        "light": "#E5E5E5",
+        "dark": "#6362AE"
+      },
+      "ProfileIndicatorBackgroundColor": {
+        "light": "#181B1F12",
+        "dark": "#FFFFFF1F"
+      }
+    },
+    "AppTray": {
+      "GCalSubtitleBackgroundSecondary": {
+        "light": "#00000012",
+        "dark": "#FFFFFF12"
+      },
+      "GCalSubtitleBackgroundSelected": {
+        "light": "#F6F9FEE6",
+        "dark": "#F6F9FEE6"
+      },
+      "GCalSubtitleTextColorSecondary": {
+        "light": "#212121",
+        "dark": "#DEE3EBB2"
+      },
+      "GCalSubtitleTextColorSelected": {
+        "light": "#212121",
+        "dark": "#212121"
+      },
+      "GithubBadgeBlack": {
+        "light": "#000000",
+        "dark": "#000000"
+      },
+      "GMailBadgeRed": {
+        "light": "#EA4335",
+        "dark": "#EA4335"
+      },
+      "IconViewBackground": {
+        "light": "#FFFFFF",
+        "dark": "#FFFFFF33"
+      },
+      "TwitterBadgeGray": {
+        "light": "#444444",
+        "dark": "#FFFFFF"
+      },
+      "WhatsAppBadgeRed": {
+        "light": "#EA4335",
+        "dark": "#EA4335"
+      }
+    },
+    "ArcMenu": {
+      "MenuBackground": {
+        "light": "#FAFBFF",
+        "dark": "#393841"
+      },
+      "MenuDisabledText": {
+        "light": "#ABABAB",
+        "dark": "#797881"
+      },
+      "MenuHoverBackground": {
+        "light": "#B7D1FF",
+        "dark": "#3970C5"
+      },
+      "MenuSeparator": {
+        "light": "#C4C4C4",
+        "dark": "#C4C4C4"
+      },
+      "MenuSubtitle": {
+        "light": "#ABABAB",
+        "dark": "#797881"
+      },
+      "MenuSubtitleHover": {
+        "light": "#797881",
+        "dark": "#FFFFFF"
+      },
+      "MenuText": {
+        "light": "#494949",
+        "dark": "#EBEBEC"
+      },
+      "MenuTextHover": {
+        "light": "#151515",
+        "dark": "#FFFFFF"
+      }
+    },
+    "ArcRichTextEditor": {
+      "BodyText": {
+        "light": "#000000",
+        "dark": "#FFFFFF"
+      },
+      "Cursor": {
+        "light": "#2702C2",
+        "dark": "#9380E0"
+      },
+      "FormatMenuBackground": {
+        "light": "#FFFFFF",
+        "dark": "#120F2E"
+      },
+      "FormatMenuBorder": {
+        "light": "#CDCCDF",
+        "dark": "#34334D"
+      },
+      "FormatMenuIcon": {
+        "light": "#6E678D",
+        "dark": "#6E678D"
+      },
+      "FormatMenuText": {
+        "light": "#6E678D",
+        "dark": "#8795C1"
+      },
+      "HeaderText": {
+        "light": "#6E678D",
+        "dark": "#CDCDFF"
+      },
+      "HoveredMenuItemBackground": {
+        "light": "#EBEBEC",
+        "dark": "#FFFFFF26"
+      },
+      "Link": {
+        "light": "#220C7F",
+        "dark": "#E6E6FF"
+      },
+      "ListMarker": {
+        "light": "#6E678D",
+        "dark": "#CDCDFF"
+      },
+      "PlaceholderBodyText": {
+        "light": "#00000066",
+        "dark": "#FFFFFF66"
+      },
+      "SelectedMenuItem": {
+        "light": "#2702C2",
+        "dark": "#B6C9FA"
+      },
+      "SelectedMenuItemBackground": {
+        "light": "#2702C21A",
+        "dark": "#062E79"
+      },
+      "SelectionTextBackground": {
+        "light": "#CDCDFF",
+        "dark": "#5235CE"
+      }
+    },
+    "AskArc": {
+      "AccentColor": {
+        "light": "#2F39FF",
+        "dark": "#4487FF",
+        "authoredIn": "display-p3"
+      },
+      "BackgroundColor": {
+        "light": "#FFFFFF",
+        "dark": "#000000"
+      },
+      "BackgroundGradientBottomColor": {
+        "light": "#97A6CC33",
+        "dark": "#97A6CC33"
+      },
+      "BackgroundGradientTopColor": {
+        "light": "#EED1D133",
+        "dark": "#EED1D133"
+      },
+      "CloseButtonBackground": {
+        "light": "#7676801F",
+        "dark": "#7676801F"
+      },
+      "ContainerBackground": {
+        "light": "#0000000F",
+        "dark": "#0000000F",
+        "authoredIn": "display-p3"
+      },
+      "DarkAccentColor": {
+        "light": "#2802B1",
+        "dark": "#4487FF",
+        "authoredIn": "display-p3"
+      },
+      "FollowUpBottomQuestionBackground": {
+        "light": "#FFFFFF",
+        "dark": "#000000"
+      },
+      "FollowUpButtonBackground": {
+        "light": "#E1E1FB",
+        "dark": "#000000"
+      },
+      "FooterSectionBackgroundColor": {
+        "light": "#97A6CC33",
+        "dark": "#000000"
+      },
+      "ForegroundColor": {
+        "light": "#000000",
+        "dark": "#FFFFFF"
+      },
+      "LoadingBackgroundColor": {
+        "light": "#3700D2",
+        "dark": "#3700D2",
+        "authoredIn": "display-p3"
+      },
+      "OneBoxBackground": {
+        "light": "#E1E1FB",
+        "dark": "#272727"
+      },
+      "PageBackgroundColor": {
+        "light": "#F1F0F5",
+        "dark": "#1F2128"
+      },
+      "PrimaryText": {
+        "light": "#000000",
+        "dark": "#FFFFFF",
+        "authoredIn": "display-p3"
+      },
+      "QuoteBackgroundColor": {
+        "light": "#F8F8FA",
+        "dark": "#0A0A14"
+      },
+      "SearchEngineLinkBackground": {
+        "light": "#F7F7F7",
+        "dark": "#0A0A0F"
+      },
+      "SearchEngineLinkStroke": {
+        "light": "#EDEDED",
+        "dark": "#30303B"
+      },
+      "SecondaryColor": {
+        "light": "#F0F0F0",
+        "dark": "#FFFFFFF0"
+      },
+      "SecondarySurfaceColor": {
+        "light": "#F0F0F0",
+        "dark": "#FFFFFF14"
+      },
+      "SecondaryText": {
+        "light": "#000000B2",
+        "dark": "#FFFFFFB2",
+        "authoredIn": "display-p3"
+      },
+      "ShareCardColor": {
+        "light": "#FFFFFF",
+        "dark": "#000000"
+      },
+      "ShareCardSubtitleColor": {
+        "light": "#3D3D4299",
+        "dark": "#FFFFFF99"
+      },
+      "ShareCardTitleColor": {
+        "light": "#000000",
+        "dark": "#FFFFFF"
+      },
+      "ShareIconColor": {
+        "light": "#3D3D4299",
+        "dark": "#EBEBF599"
+      },
+      "ShareTextColor": {
+        "light": "#00000080",
+        "dark": "#FFFFFF80"
+      },
+      "ShareTitleColor": {
+        "light": "#290A9E",
+        "dark": "#FFFFFF"
+      },
+      "SourcesTogglePressedColor": {
+        "light": "#5E5FEA1A",
+        "dark": "#272727"
+      },
+      "ToastColor": {
+        "light": "#0F17E8",
+        "dark": "#0F17E8"
+      }
+    },
+    "AuthFeature": {
+      "Accent": {
+        "light": "#3139FB",
+        "dark": "#3139FB"
+      },
+      "ArcMaxDarkModeBackground": {
+        "light": "#9091AD",
+        "dark": "#9091AD"
+      },
+      "AuthPrimaryText": {
+        "light": "#000000BB",
+        "dark": "#FFFFFFCC"
+      },
+      "AuthSecondaryText": {
+        "light": "#00000080",
+        "dark": "#FFFFFF9C"
+      },
+      "BackButton": {
+        "light": "#C4C4C4",
+        "dark": "#FFFFFF"
+      },
+      "ButtonBackground": {
+        "light": "#3139FB",
+        "dark": "#3139FB"
+      },
+      "ButtonText": {
+        "light": "#FFFFFF",
+        "dark": "#FFFFFF"
+      },
+      "CardBackground": {
+        "light": "#E6E7FF",
+        "dark": "#8C8DAB"
+      },
+      "CardInnerBorder": {
+        "light": "#FFFFFF00",
+        "dark": "#FFFFFF33"
+      },
+      "CardOuterBorder": {
+        "light": "#00000000",
+        "dark": "#0000009C"
+      },
+      "Error": {
+        "light": "#F25E6B",
+        "dark": "#F25E6B"
+      },
+      "FooterText": {
+        "light": "#FFFADD",
+        "dark": "#FFFADD"
+      },
+      "Legacy/Accent": {
+        "light": "#3039FA",
+        "dark": "#3039FA"
+      },
+      "Legacy/Error": {
+        "light": "#FF3A30",
+        "dark": "#FF3A30",
+        "authoredIn": "display-p3"
+      },
+      "Legacy/FooterText": {
+        "light": "#000000A8",
+        "dark": "#000000A8"
+      },
+      "Logo": {
+        "light": "#3139FB",
+        "dark": "#6CBAD9"
+      },
+      "MessagingText": {
+        "light": "#767676",
+        "dark": "#FFFFFF"
+      },
+      "RecoveryCardBackdrop": {
+        "light": "#F4F4F4",
+        "dark": "#F4F4F4"
+      },
+      "RecoveryCardLeftContentBackground 1": {
+        "light": "#202020",
+        "dark": "#202020"
+      },
+      "SplitViewLeftBackground": {
+        "light": "#FFFFFF",
+        "dark": "#1E1E1E"
+      },
+      "TextFieldBackground": {
+        "light": "#FFFFFF00",
+        "dark": "#FFFFFF0D"
+      },
+      "TextFieldBorder": {
+        "light": "#00000033",
+        "dark": "#0000004C"
+      },
+      "TextFieldFocusedBorder": {
+        "light": "#3139FB",
+        "dark": "#3139FB"
+      },
+      "TextFieldPlaceholder": {
+        "light": "#00000080",
+        "dark": "#FFFFFF80"
+      },
+      "TextFieldText": {
+        "light": "#000000",
+        "dark": "#FFFFFF"
+      },
+      "Title": {
+        "light": "#000000",
+        "dark": "#FFFFFF"
+      },
+      "WindowBackground": {
+        "light": "#3139FB",
+        "dark": "#3139FB"
+      }
+    },
+    "BaseHomeComponents": {
+      "Background": {
+        "light": "#00001712",
+        "dark": "#FFFFFF1A"
+      },
+      "Background2": {
+        "light": "#0000171F",
+        "dark": "#FFFFFF26"
+      },
+      "CoolShadow": {
+        "light": "#000014",
+        "dark": "#000014"
+      },
+      "Foreground2": {
+        "light": "#00001799",
+        "dark": "#FFFFFF99"
+      }
+    },
+    "BoostsEditor": {
+      "BoostsBlue": {
+        "light": "#300EFF",
+        "dark": "#300EFF"
+      },
+      "BoostsGreen": {
+        "light": "#07BC31",
+        "dark": "#07BC31",
+        "authoredIn": "display-p3"
+      },
+      "BoostsLabel": {
+        "light": "#FFFFFF",
+        "dark": "#000000CC"
+      },
+      "BoostsMagenta": {
+        "light": "#DD0EFF",
+        "dark": "#DD0EFF"
+      },
+      "BoostsOrange": {
+        "light": "#FF560E",
+        "dark": "#FF560E"
+      },
+      "BoostsPink": {
+        "light": "#FF0E82",
+        "dark": "#FF0E82"
+      },
+      "BoostsPurple": {
+        "light": "#860EFF",
+        "dark": "#860EFF"
+      },
+      "BoostsRed": {
+        "light": "#FF0E0E",
+        "dark": "#FF0E0E"
+      },
+      "BoostsYellow": {
+        "light": "#FF9D0D",
+        "dark": "#FF9D0D",
+        "authoredIn": "display-p3"
+      },
+      "DarkModeBackground": {
+        "light": "#3B3B3C",
+        "dark": "#3B3B3C"
+      },
+      "DarkModeForeground": {
+        "light": "#FBFBFF",
+        "dark": "#FBFBFF"
+      },
+      "DisabledToolButtonForeground": {
+        "light": "#F3F1FD4C",
+        "dark": "#F3F1FD4C"
+      },
+      "GrayButtonForeground": {
+        "light": "#3A3A3B",
+        "dark": "#3A3A3B"
+      },
+      "InterstitialFooter": {
+        "light": "#CEDBFC",
+        "dark": "#CEDBFC"
+      },
+      "InterstitialForeground": {
+        "light": "#2E2740",
+        "dark": "#2E2740"
+      },
+      "PuckBackground": {
+        "light": "#FAFBFF",
+        "dark": "#FAFBFF"
+      },
+      "SegmentedControlBackground": {
+        "light": "#00000012",
+        "dark": "#FFFFFF1A"
+      },
+      "SegmentedControlSelectionBackdrop": {
+        "light": "#FFFFFF",
+        "dark": "#FFFFFF4C"
+      },
+      "SliderBackground": {
+        "light": "#3B37460D",
+        "dark": "#3B37460D"
+      },
+      "SliderTint": {
+        "light": "#017AFF",
+        "dark": "#017AFF"
+      },
+      "WarningBackground": {
+        "light": "#FF5A5F",
+        "dark": "#FF5A5F"
+      },
+      "ZapPreviewBackground": {
+        "light": "#D9D9D9",
+        "dark": "#D9D9D9"
+      }
+    },
+    "Capture": {
+      "Background": {
+        "light": "#FFFFFF",
+        "dark": "#120F2E"
+      },
+      "BlurredBackground": {
+        "light": "#FFFFFF54",
+        "dark": "#00000040"
+      },
+      "ButtonText": {
+        "light": "#0000004C",
+        "dark": "#FFFFFF"
+      },
+      "HoveredAndKeyboardSelectedBackground": {
+        "light": "#282EC9",
+        "dark": "#282EC9",
+        "authoredIn": "display-p3"
+      },
+      "HoveredCellBackground": {
+        "light": "#1114551A",
+        "dark": "#3A3868"
+      },
+      "ImageViewBackground": {
+        "light": "#FFFFFF",
+        "dark": "#151C30"
+      },
+      "OverlayBubbleBlue": {
+        "light": "#0048FF80",
+        "dark": "#0048FF80",
+        "authoredIn": "display-p3"
+      },
+      "OverlayBubblePink": {
+        "light": "#FF939680",
+        "dark": "#FF939680",
+        "authoredIn": "display-p3"
+      },
+      "OverlayBubbleText": {
+        "light": "#3A019A",
+        "dark": "#3A019A",
+        "authoredIn": "display-p3"
+      },
+      "SeeMoreEaselTextColor": {
+        "light": "#00000073",
+        "dark": "#FFFFFF73"
+      },
+      "TextColor": {
+        "light": "#000000",
+        "dark": "#FFFFFFE6"
+      },
+      "TextColorForSelectedCells": {
+        "light": "#FFFFFFF2",
+        "dark": "#FFFFFF"
+      },
+      "TextFieldBackground": {
+        "light": "#00000012",
+        "dark": "#FFFFFF12"
+      },
+      "ToggleCellTextColor": {
+        "light": "#2F39FF",
+        "dark": "#D6D7FE",
+        "authoredIn": "display-p3"
+      }
+    },
+    "CommandBar": {
+      "CommandBarAccessoryBackgroundColor": {
+        "light": "#0000000D",
+        "dark": "#FFFFFF0D"
+      },
+      "CommandBarAccessoryForegroundColor": {
+        "light": "#00000080",
+        "dark": "#FFFFFFA8"
+      },
+      "CommandBarBannerBackground": {
+        "light": "#FDFDFE",
+        "dark": "#161616"
+      },
+      "CommandBarBannerSecondaryButtonBackground": {
+        "light": "#FFFFFF",
+        "dark": "#232323"
+      },
+      "CommandBarBannerSecondaryButtonBorder": {
+        "light": "#DBDBDB",
+        "dark": "#6F6F6F"
+      },
+      "CommandBarBannerSecondaryButtonText": {
+        "light": "#171717",
+        "dark": "#FFFFFF"
+      },
+      "CommandBarHairlineDividerColor": {
+        "light": "#0000001A",
+        "dark": "#FFFFFF1A"
+      },
+      "CommandBarRowHoverBackgroundColor": {
+        "light": "#0000000D",
+        "dark": "#FFFFFF0D"
+      },
+      "CommandBarSuggestionHintPillText": {
+        "light": "#228CFF",
+        "dark": "#FAFBFF54",
+        "authoredIn": "display-p3"
+      },
+      "CommandBarTextPrimaryColor": {
+        "light": "#000000CC",
+        "dark": "#FFFFFFCC"
+      },
+      "CommandBarTextSecondaryColor": {
+        "light": "#00000054",
+        "dark": "#FFFFFF54"
+      },
+      "SecondaryWindowInputBackground": {
+        "light": "#FAFBFF",
+        "dark": "#0E0F10",
+        "authoredIn": "display-p3"
+      },
+      "SecondaryWindowInputBorder": {
+        "light": "#0E0F101A",
+        "dark": "#FAFBFF33",
+        "authoredIn": "display-p3"
+      },
+      "TypeTravelCapsuleBackground": {
+        "light": "#EBEBEB",
+        "dark": "#111B31"
+      }
+    },
+    "CustomInfoPicker": {
+      "CustomizationBackground": {
+        "light": "#85888E40",
+        "dark": "#FFFFFF40",
+        "authoredIn": "display-p3"
+      }
+    },
+    "DeleteAccountFeature": {
+      "ErrorMessageForegroundColor": {
+        "light": "#C93333",
+        "dark": "#FF5A5F"
+      }
+    },
+    "EaselUI": {
+      "AvatarIcon": {
+        "light": "#5F58804C",
+        "dark": "#85878F",
+        "authoredIn": "display-p3"
+      },
+      "CaptureButtonHovered": {
+        "light": "#F0F1F3",
+        "dark": "#373C4B"
+      },
+      "CaptureButtonNormal": {
+        "light": "#FFFFFF",
+        "dark": "#252832"
+      },
+      "CaptureButtonPressed": {
+        "light": "#E3E6E7",
+        "dark": "#495064"
+      },
+      "CaptureLinkIconBackground": {
+        "light": "#09090912",
+        "dark": "#F6F6F61C"
+      },
+      "CommentBackground": {
+        "light": "#F0EFF4",
+        "dark": "#F0EFF4"
+      },
+      "EaselLightText": {
+        "light": "#2702C240",
+        "dark": "#2702C240"
+      },
+      "EaselSelectionColor": {
+        "light": "#6CBAD9",
+        "dark": "#6CBAD9"
+      },
+      "EaselUnreadCommentText": {
+        "light": "#2702C2",
+        "dark": "#2702C2"
+      },
+      "ErrorBorder": {
+        "light": "#E32509",
+        "dark": "#DD847E",
+        "authoredIn": "display-p3"
+      },
+      "FloatingElementBackground": {
+        "light": "#FFFFFF",
+        "dark": "#000000"
+      },
+      "HighlightedTextColor": {
+        "light": "#FFFFFF",
+        "dark": "#FFFFFF"
+      },
+      "ImageViewFillerBackground": {
+        "light": "#0000001A",
+        "dark": "#676A6B",
+        "authoredIn": "display-p3"
+      },
+      "LoadingStateForeground": {
+        "light": "#5F5880",
+        "dark": "#FFFFFF"
+      },
+      "ModalBackground": {
+        "light": "#FFFFFF",
+        "dark": "#120F2E"
+      },
+      "ModalOutline": {
+        "light": "#120F2E08",
+        "dark": "#FCFFFF1A"
+      },
+      "TextColor": {
+        "light": "#000000",
+        "dark": "#FFFFFF"
+      },
+      "ToolbarIcon": {
+        "light": "#5F5880",
+        "dark": "#85878F",
+        "authoredIn": "display-p3"
+      }
+    },
+    "HomeButton": {
+      "Background": {
+        "light": "#00001712",
+        "dark": "#FFFFFF1A"
+      },
+      "Background2": {
+        "light": "#0000171F",
+        "dark": "#FFFFFF26"
+      },
+      "Background3": {
+        "light": "#00001733",
+        "dark": "#FFFFFF33"
+      },
+      "CoolShadow": {
+        "light": "#000014",
+        "dark": "#000014"
+      },
+      "EaselTitleText": {
+        "light": "#101118CC",
+        "dark": "#FFFFFFCC"
+      },
+      "Foreground": {
+        "light": "#000017",
+        "dark": "#FFFFFF"
+      },
+      "Foreground2": {
+        "light": "#00001799",
+        "dark": "#FFFFFF99"
+      },
+      "Foreground3": {
+        "light": "#00001773",
+        "dark": "#FFFFFF73"
+      },
+      "LibraryItemOutline": {
+        "light": "#00000008",
+        "dark": "#FFFFFF14"
+      },
+      "NoteContentText": {
+        "light": "#0000004C",
+        "dark": "#FFFFFF4C"
+      },
+      "NoteTitleText": {
+        "light": "#1C177ACC",
+        "dark": "#FFFFFF"
+      },
+      "PreviewToolbarBackground": {
+        "light": "#F8F8F8A8",
+        "dark": "#000000A8"
+      },
+      "PreviewToolbarButtonBackground": {
+        "light": "#596069B2",
+        "dark": "#FFFFFF80"
+      },
+      "WelcomeGradientBlue": {
+        "light": "#0048FF",
+        "dark": "#0048FF",
+        "authoredIn": "display-p3"
+      },
+      "WelcomeGradientPink": {
+        "light": "#FF9396",
+        "dark": "#FF9396",
+        "authoredIn": "display-p3"
+      },
+      "WelcomeScreenButtonText": {
+        "light": "#FFFFFF",
+        "dark": "#FFFFFF"
+      },
+      "WelcomeScreenCardBackground": {
+        "light": "#FFFFFF",
+        "dark": "#131418"
+      },
+      "WelcomeScreenText": {
+        "light": "#704067",
+        "dark": "#E1CEDE"
+      }
+    },
+    "ImportFeature": {
+      "AuthFlowDropTargetBackground": {
+        "light": "#E0E1FF",
+        "dark": "#191B4C"
+      },
+      "AuthFlowDropTargetBackgroundCompleted": {
+        "light": "#C5E5C0",
+        "dark": "#C5E5C0"
+      },
+      "AuthFlowDropTargetBorder": {
+        "light": "#2C33E1",
+        "dark": "#3239FB"
+      },
+      "AuthFlowDropTargetError": {
+        "light": "#C93333",
+        "dark": "#C93333"
+      },
+      "AuthFlowDropTargetForeground": {
+        "light": "#2C33E2",
+        "dark": "#FFFFFF",
+        "authoredIn": "display-p3"
+      },
+      "AuthFlowDropTargetForegroundCompleted": {
+        "light": "#3EA82E",
+        "dark": "#3EA82E"
+      },
+      "AuthFlowDropTargetKeyForeground": {
+        "light": "#2C33E2",
+        "dark": "#8488FF"
+      },
+      "AuthFlowFolderBackgroundFill": {
+        "light": "#C0C1F4",
+        "dark": "#C0C1F4"
+      },
+      "AuthFlowFolderForegroundFill": {
+        "light": "#F0F0EF",
+        "dark": "#F0F0EF"
+      },
+      "AuthFlowFolderStrokeColor": {
+        "light": "#3138FC",
+        "dark": "#3138FC"
+      },
+      "AuthFlowKeychainHelpText": {
+        "light": "#848484",
+        "dark": "#848484",
+        "authoredIn": "extended srgb"
+      },
+      "AuthFlowKeychainMessagingText": {
+        "light": "#000000D8",
+        "dark": "#FFFFFF",
+        "authoredIn": "display-p3"
+      },
+      "BrowserSelectionShadowIndicator": {
+        "light": "#FFFFFF",
+        "dark": "#00000000"
+      }
+    },
+    "LittleBrowser": {
+      "DownloadItemBackground": {
+        "light": "#FFFFFF",
+        "dark": "#0D0D0D",
+        "authoredIn": "display-p3"
+      },
+      "DownloadItemBackgroundHovered": {
+        "light": "#F5F5F5",
+        "dark": "#1F1F1F",
+        "authoredIn": "display-p3"
+      },
+      "LittleBrowserCommandBarPlaceholderBackground": {
+        "light": "#0E0F100F",
+        "dark": "#FAFBFF1A",
+        "authoredIn": "display-p3"
+      },
+      "LittleBrowserCommandBarPlaceholderBackgroundHovered": {
+        "light": "#0E0F101A",
+        "dark": "#FAFBFF26",
+        "authoredIn": "display-p3"
+      }
+    },
+    "MediaControlsFeature": {
+      "PlaybackControlForeground": {
+        "light": "#00000080",
+        "dark": "#FFFFFFA8"
+      }
+    },
+    "PictureInPicture": {
+      "DocumentPiPHairlineColor": {
+        "light": "#FFFFFF33",
+        "dark": "#FFFFFF33"
+      },
+      "DocumentPiPTopBarBackgroundColor": {
+        "light": "#212123",
+        "dark": "#212123"
+      }
+    },
+    "PreferencesFeature": {
+      "EmailChangePendingVerificationBackground": {
+        "light": "#FFFFFF",
+        "dark": "#36363A"
+      },
+      "EmailChangePendingVerificationOutline": {
+        "light": "#0000004C",
+        "dark": "#FFFFFF"
+      },
+      "EmailChangePendingVerificationTextForeground": {
+        "light": "#3D3D3D",
+        "dark": "#FFFFFF"
+      },
+      "EnableSyncDialogDescriptionTextColor": {
+        "light": "#060E2BBF",
+        "dark": "#EEEEF6BF"
+      },
+      "EnableSyncDialogTitleTextColor": {
+        "light": "#181B1F",
+        "dark": "#FFFFFF"
+      },
+      "ErrorMessageBackgroundColor": {
+        "light": "#C933331A",
+        "dark": "#C9333354"
+      },
+      "ErrorMessageBorderColor": {
+        "light": "#FFFFFF00",
+        "dark": "#FFCECE33"
+      },
+      "ErrorMessageForegroundColor": {
+        "light": "#C93333",
+        "dark": "#FF5A5F"
+      },
+      "FirebaseSidebarSyncBorderColor": {
+        "light": "#6F6F6F",
+        "dark": "#6F6F6F"
+      },
+      "FirebaseSyncDialogIconBackgroundColor": {
+        "light": "#10134D",
+        "dark": "#10134D"
+      },
+      "FirebaseSyncSecondaryTextColor": {
+        "light": "#8A8A8A",
+        "dark": "#9F9EA0"
+      },
+      "InfoMessageBackgroundColor": {
+        "light": "#3EA82E1A",
+        "dark": "#00000066"
+      },
+      "MakeDefaultViewBackgroundColor": {
+        "light": "#FFFFFF",
+        "dark": "#656068"
+      },
+      "MaxBannerColor": {
+        "light": "#484FFF",
+        "dark": "#484FFF"
+      },
+      "MemberCardActionButtonColor": {
+        "light": "#6F6F6F",
+        "dark": "#6F6F6F"
+      },
+      "PanelFontColor": {
+        "light": "#3D3D3D",
+        "dark": "#FFFFFF"
+      },
+      "PreferencesButtonBackgroundColor": {
+        "light": "#00000026",
+        "dark": "#E0DFE012"
+      },
+      "PreferencesButtonForegroundColor": {
+        "light": "#5F5F5F",
+        "dark": "#E0DFE0"
+      },
+      "PreferencesIconButtonBackgroundColor": {
+        "light": "#DBDFE5",
+        "dark": "#515671"
+      },
+      "PreferencesLinkBackgroundColor": {
+        "light": "#C2D9FF",
+        "dark": "#C2D9FF40"
+      },
+      "PreferencesLinkColor": {
+        "light": "#458AFF",
+        "dark": "#458AFF"
+      },
+      "PreferencesLoadableButtonBackgroundColor": {
+        "light": "#FFFFFF",
+        "dark": "#FFFFFF26"
+      },
+      "PreferencesSectionHighlightBackgroundColor": {
+        "light": "#F5E8C7",
+        "dark": "#FFFFFF14"
+      },
+      "PreferencesSectionHighlightTextColor": {
+        "light": "#7D5E0F",
+        "dark": "#FFFFFF"
+      },
+      "PreferencesSectionPrimaryForegroundColor": {
+        "light": "#000000A8",
+        "dark": "#F3F3F3"
+      }
+    },
+    "ProfilesUI": {
+      "ProfilePicker": {
+        "light": "#3139FB1A",
+        "dark": "#3139FBE5"
+      },
+      "ProfilePickerText": {
+        "light": "#060E2B",
+        "dark": "#E3E2EE"
+      }
+    },
+    "ReferralCodeFeature": {
+      "ReferralDaysLeftTextColor": {
+        "light": "#196442",
+        "dark": "#23B573"
+      },
+      "ReferralDialogBackgroundColor": {
+        "light": "#FFFFFF",
+        "dark": "#151C30"
+      },
+      "ReferralDialogHeaderColor": {
+        "light": "#3139FB",
+        "dark": "#FFFFFF"
+      },
+      "ReferralDialogParagraphColor": {
+        "light": "#171717",
+        "dark": "#FCFCFC"
+      },
+      "ReferralToastBackgroundColor": {
+        "light": "#F1FCF7",
+        "dark": "#234435"
+      },
+      "ReferralToastTextColor": {
+        "light": "#16A563",
+        "dark": "#75E2B0"
+      },
+      "TicketBackgroundColor": {
+        "light": "#75E2B01A",
+        "dark": "#75E2B01A"
+      },
+      "TicketBottomStubBackgroundColor": {
+        "light": "#75E2B0",
+        "dark": "#75E2B0"
+      },
+      "TicketIconColor": {
+        "light": "#24B573",
+        "dark": "#23B573"
+      },
+      "TicketStrokeColor": {
+        "light": "#46C88D",
+        "dark": "#46C78D"
+      },
+      "TicketTextColor": {
+        "light": "#196442",
+        "dark": "#196442"
+      }
+    },
+    "SidebarSyncCloudKit": {
+      "FAQTextColor": {
+        "light": "#FFFFFF",
+        "dark": "#E1E1E1"
+      },
+      "RecoveryCardBackgroundColor": {
+        "light": "#202020",
+        "dark": "#202020"
+      },
+      "RecoveryPhraseTextColor": {
+        "light": "#D3D3D3",
+        "dark": "#D3D3D3"
+      }
+    },
+    "SoftwareUpdaterClient": {
+      "UpdaterButtonBackgroundColor": {
+        "light": "#FFFFFF",
+        "dark": "#000000"
+      }
+    },
+    "SpaceStyleEditor": {
+      "ColorPickerDrab1": {
+        "light": "#4E3A5A",
+        "dark": "#4E3A5A",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerDrab2": {
+        "light": "#693558",
+        "dark": "#693558",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerDrab3": {
+        "light": "#8F4042",
+        "dark": "#8F4042",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerDrab4": {
+        "light": "#B16D40",
+        "dark": "#B16D40",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerDrab5": {
+        "light": "#D7B35D",
+        "dark": "#D7B35D",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerDrab6": {
+        "light": "#CDCCA4",
+        "dark": "#CDCCA4",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerDrab7": {
+        "light": "#7AA982",
+        "dark": "#7AA982",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerDrab8": {
+        "light": "#226149",
+        "dark": "#226149",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerDrab9": {
+        "light": "#26456B",
+        "dark": "#26456B",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerGreyscale1": {
+        "light": "#FFFFFF",
+        "dark": "#FFFFFF",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerGreyscale2": {
+        "light": "#E6E6E6",
+        "dark": "#E6E6E6",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerGreyscale3": {
+        "light": "#CCCCCC",
+        "dark": "#CCCCCC",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerGreyscale4": {
+        "light": "#B2B2B2",
+        "dark": "#B2B2B2",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerGreyscale5": {
+        "light": "#808080",
+        "dark": "#808080",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerGreyscale6": {
+        "light": "#666666",
+        "dark": "#666666",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerGreyscale7": {
+        "light": "#333333",
+        "dark": "#333333",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerGreyscale8": {
+        "light": "#1A1A1A",
+        "dark": "#1A1A1A",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerGreyscale9": {
+        "light": "#000000",
+        "dark": "#000000",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerPastel1": {
+        "light": "#FEFBFA",
+        "dark": "#FEFBFA",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerPastel2": {
+        "light": "#FFE9F3",
+        "dark": "#FFE9F3",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerPastel3": {
+        "light": "#F1D1EC",
+        "dark": "#F1D1EC",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerPastel4": {
+        "light": "#FFCBD1",
+        "dark": "#FFCBD1",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerPastel5": {
+        "light": "#FFE0D3",
+        "dark": "#FFE0D3",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerPastel6": {
+        "light": "#FFF9E5",
+        "dark": "#FFF9E5",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerPastel7": {
+        "light": "#DEFDEB",
+        "dark": "#DEFDEB",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerPastel8": {
+        "light": "#DCF3FC",
+        "dark": "#DCF3FC",
+        "authoredIn": "display-p3"
+      },
+      "ColorPickerPastel9": {
+        "light": "#C5C6E5",
+        "dark": "#C5C6E5",
+        "authoredIn": "display-p3"
+      }
+    },
+    "TextEditor": {
+      "GutterMenuItemSelected": {
+        "light": "#D9D9E0",
+        "dark": "#FFFFFF4C"
+      },
+      "TitlePlaceholderText": {
+        "light": "#220C7F66",
+        "dark": "#E6E6FF66"
+      },
+      "TitleText": {
+        "light": "#220C7F",
+        "dark": "#E6E6FF"
+      }
+    },
+    "Translation": {
+      "Background": {
+        "light": "#FFFFFF",
+        "dark": "#1A1A1A",
+        "authoredIn": "display-p3"
+      }
+    },
+    "URLInputter": {
+      "Background": {
+        "light": "#FFFFFF",
+        "dark": "#120F2E"
+      },
+      "FontColor": {
+        "light": "#000000",
+        "dark": "#FFFFFF"
+      },
+      "PlaceholderBackground": {
+        "light": "#3D3E4054",
+        "dark": "#3D3E4054"
+      },
+      "TextFieldBackground": {
+        "light": "#EBEBEC",
+        "dark": "#3139FB26"
+      }
+    },
+    "App": {
+      "AddSpacePlusBackgroundColor": {
+        "light": "#FFFFFF",
+        "dark": "#000000"
+      },
+      "AddSpacePlusIconActivatedTintColor": {
+        "light": "#FFFFFF",
+        "dark": "#000000"
+      },
+      "AddSpacePlusIconDeactivatedColor": {
+        "light": "#00000073",
+        "dark": "#FFFFFF73"
+      },
+      "AddSpacePlusIconTintColor": {
+        "light": "#2C00CA",
+        "dark": "#FFFFFF",
+        "authoredIn": "display-p3"
+      },
+      "AddSpacePlusProgressColor": {
+        "light": "#2C00CA",
+        "dark": "#FFFFFF",
+        "authoredIn": "display-p3"
+      },
+      "CommandBarIconActiveBackground": {
+        "light": "#FFFFFF",
+        "dark": "#1A1A1A",
+        "authoredIn": "display-p3"
+      },
+      "CommandBarPlaceholderIconLockInsecure": {
+        "light": "#FF0500",
+        "dark": "#FF5067",
+        "authoredIn": "display-p3"
+      },
+      "CommandBarPlaceholderIconLockSecure": {
+        "light": "#000000",
+        "dark": "#FFFFFF",
+        "authoredIn": "display-p3"
+      },
+      "CommandBarPlaceholderPlaceholderText": {
+        "light": "#0000004C",
+        "dark": "#FFFFFF4C"
+      },
+      "CommandBarPlaceholderText": {
+        "light": "#00000099",
+        "dark": "#FFFFFF99"
+      },
+      "DragHint": {
+        "light": "#00000033",
+        "dark": "#FFFFFF33"
+      },
+      "DragHintHighlighted": {
+        "light": "#00000080",
+        "dark": "#FFFFFF80"
+      },
+      "EaselBackground": {
+        "light": "#FFFFFFD9",
+        "dark": "#00000080"
+      },
+      "NewTabButtonPulsingTextColor": {
+        "light": "#0000004C",
+        "dark": "#0000004C"
+      },
+      "NotesBackground": {
+        "light": "#FFFFFFD9",
+        "dark": "#00000080"
+      },
+      "PreviewBackgroundColor": {
+        "light": "#FFFFFF",
+        "dark": "#212222"
+      },
+      "SidebarBorderColor": {
+        "light": "#FFFFFF4C",
+        "dark": "#FFFFFF4C"
+      },
+      "TabListOverlapBorder": {
+        "light": "#0000000D",
+        "dark": "#FFFFFF0D"
+      }
+    }
+  },
+  "colorAliases": {
+    "arcBlue": {
+      "value": "#3139FB",
+      "note": "PrimaryButtonFace, Accent, Easel dark blue, ReadOnlyCreativeToolPrimary; BrandBlue is the same blue authored in Display P3 (#2F39FF after sRGB conversion)"
+    },
+    "arcBlueHover": "#2C33E2",
+    "arcBluePressed": "#2A30D5",
+    "popoverLight": "#FAFBFF",
+    "inkDark": "#0E0F10",
+    "navyDark": "#120F2E",
+    "popoverDark": "#151C30",
+    "gradientPeach": "#FF9396",
+    "gradientBlue": "#0048FF",
+    "destructive": "#F53714",
+    "destructiveHover": "#DD3112",
+    "destructivePressed": "#D02F11",
+    "notesInk": "#2702C2",
+    "notesTitle": "#220C7F",
+    "focusRing": "#228CFF",
+    "loadingBorderLight": "#0C50FF",
+    "loadingBorderDark": "#2AB6F6"
+  },
+  "spaceTheme": {
+    "model": "BaseModels.WindowTheme",
+    "primaryColorPalette": [
+      "tintedLight",
+      "midTone",
+      "shaded",
+      "shadedDark"
+    ],
+    "semanticColorPalette": [
+      "foregroundPrimary",
+      "foregroundSecondary",
+      "foregroundTertiary",
+      "maxContrastColor",
+      "minContrastColor",
+      "backgroundExtra",
+      "background",
+      "focus",
+      "hover",
+      "cutoutColor",
+      "title",
+      "subtitle"
+    ],
+    "backgroundStyles": [
+      "basicColor",
+      "blendedSingleColor",
+      "blendedGradient"
+    ],
+    "gradientWheel": [
+      "complimentary",
+      "analogous"
+    ],
+    "overlay": [
+      "grain",
+      "sand",
+      "denim",
+      "tweed"
+    ],
+    "translucencyStyle": [
+      "light",
+      "dark",
+      "auto"
+    ],
+    "appearance": [
+      "light",
+      "dark"
+    ],
+    "modifiers": [
+      "noiseFactor",
+      "intensityFactor",
+      "overlay"
+    ],
+    "storableColor": {
+      "colorSpace": "extendedSRGB",
+      "components": [
+        "red",
+        "green",
+        "blue",
+        "alpha"
+      ]
+    },
+    "pickerPresetGroups": {
+      "brand": [
+        "ColorPickerBrand1",
+        "ColorPickerBrand2",
+        "ColorPickerBrand3",
+        "ColorPickerBrand4",
+        "ColorPickerBrand5",
+        "ColorPickerBrand6",
+        "ColorPickerBrand7",
+        "ColorPickerBrand8",
+        "ColorPickerBrand9"
+      ],
+      "pastel": [
+        "ColorPickerPastel1",
+        "ColorPickerPastel2",
+        "ColorPickerPastel3",
+        "ColorPickerPastel4",
+        "ColorPickerPastel5",
+        "ColorPickerPastel6",
+        "ColorPickerPastel7",
+        "ColorPickerPastel8",
+        "ColorPickerPastel9"
+      ],
+      "drab": [
+        "ColorPickerDrab1",
+        "ColorPickerDrab2",
+        "ColorPickerDrab3",
+        "ColorPickerDrab4",
+        "ColorPickerDrab5",
+        "ColorPickerDrab6",
+        "ColorPickerDrab7",
+        "ColorPickerDrab8",
+        "ColorPickerDrab9"
+      ],
+      "greyscale": [
+        "ColorPickerGreyscale1",
+        "ColorPickerGreyscale2",
+        "ColorPickerGreyscale3",
+        "ColorPickerGreyscale4",
+        "ColorPickerGreyscale5",
+        "ColorPickerGreyscale6",
+        "ColorPickerGreyscale7",
+        "ColorPickerGreyscale8",
+        "ColorPickerGreyscale9"
+      ]
+    }
+  },
+  "font": {
+    "bundled": {
+      "ABC Favorit": [
+        {
+          "file": "ABCFavorit-Bold.otf",
+          "style": "Bold",
+          "postscript": "ABCFavorit-Bold",
+          "weightClass": 700
+        },
+        {
+          "file": "ABCFavorit-Regular.otf",
+          "style": "Regular",
+          "postscript": "ABCFavorit-Regular",
+          "weightClass": 400
+        },
+        {
+          "file": "ABCFavorit-RegularItalic.otf",
+          "style": "Regular Italic",
+          "postscript": "ABCFavorit-RegularItalic",
+          "weightClass": 400
+        }
+      ],
+      "ABC Favorit Lining": [
+        {
+          "file": "ABCFavoritLining-Bold.otf",
+          "style": "Bold",
+          "postscript": "ABCFavoritLining-Bold",
+          "weightClass": 700
+        },
+        {
+          "file": "ABCFavoritLining-Medium.otf",
+          "style": "Medium",
+          "postscript": "ABCFavoritLining-Medium",
+          "weightClass": 500
+        }
+      ],
+      "ABC Favorit Mono": [
+        {
+          "file": "ABCFavoritMono-Bold.otf",
+          "style": "Bold",
+          "postscript": "ABCFavoritMono-Bold",
+          "weightClass": 700
+        },
+        {
+          "file": "ABCFavoritMono-BoldItalic.otf",
+          "style": "Bold Italic",
+          "postscript": "ABCFavoritMono-BoldItalic",
+          "weightClass": 700
+        },
+        {
+          "file": "ABCFavoritMono-Medium.otf",
+          "style": "Medium",
+          "postscript": "ABCFavoritMono-Medium",
+          "weightClass": 500
+        },
+        {
+          "file": "ABCFavoritMono-MediumItalic.otf",
+          "style": "Medium Italic",
+          "postscript": "ABCFavoritMono-MediumItalic",
+          "weightClass": 500
+        },
+        {
+          "file": "ABCFavoritMono-Regular.otf",
+          "style": "Regular",
+          "postscript": "ABCFavoritMono-Regular",
+          "weightClass": 400
+        },
+        {
+          "file": "ABCFavoritMono-RegularItalic.otf",
+          "style": "Regular Italic",
+          "postscript": "ABCFavoritMono-RegularItalic",
+          "weightClass": 400
+        }
+      ],
+      "ABC Oracle": [
+        {
+          "file": "ABCOracle-Book.otf",
+          "style": "Book",
+          "postscript": "ABCOracle-Book",
+          "weightClass": 350
+        }
+      ],
+      "EB Garamond": [
+        {
+          "file": "EBGaramond-Italic-VariableFont_wght.ttf",
+          "style": "Italic",
+          "postscript": "EBGaramond-Italic",
+          "weightClass": 400,
+          "variable": true
+        },
+        {
+          "file": "EBGaramond-VariableFont_wght.ttf",
+          "style": "Regular",
+          "postscript": "EBGaramond-Regular",
+          "weightClass": 400,
+          "variable": true
+        }
+      ],
+      "GT Ultra Ultra VF": [
+        {
+          "file": "GT-Ultra-Ultra-VF.ttf",
+          "style": "Ultra",
+          "postscript": "GTUltraUltraVF",
+          "weightClass": 1000,
+          "variable": true
+        }
+      ],
+      "GT Ultra VF": [
+        {
+          "file": "GT-Ultra-VF.ttf",
+          "style": "Thin",
+          "postscript": "GTUltraVF",
+          "weightClass": 250,
+          "variable": true
+        }
+      ],
+      "Inconsolata": [
+        {
+          "file": "Inconsolata-Bold.ttf",
+          "style": "Bold",
+          "postscript": "Inconsolata-Bold",
+          "weightClass": 700
+        },
+        {
+          "file": "Inconsolata-Light.ttf",
+          "style": "Light",
+          "postscript": "Inconsolata-Light",
+          "weightClass": 300
+        },
+        {
+          "file": "Inconsolata-Medium.ttf",
+          "style": "Medium",
+          "postscript": "Inconsolata-Medium",
+          "weightClass": 500
+        },
+        {
+          "file": "Inconsolata-Regular.ttf",
+          "style": "Regular",
+          "postscript": "Inconsolata-Regular",
+          "weightClass": 400
+        }
+      ],
+      "Inter": [
+        {
+          "file": "Inter-Bold.ttf",
+          "style": "Bold",
+          "postscript": "Inter-Bold",
+          "weightClass": 700
+        },
+        {
+          "file": "Inter-Medium.ttf",
+          "style": "Medium",
+          "postscript": "Inter-Medium",
+          "weightClass": 500
+        },
+        {
+          "file": "Inter-Regular.ttf",
+          "style": "Regular",
+          "postscript": "Inter-Regular",
+          "weightClass": 400
+        },
+        {
+          "file": "Inter-SemiBold.ttf",
+          "style": "SemiBold",
+          "postscript": "Inter-SemiBold",
+          "weightClass": 600
+        }
+      ],
+      "Marlin Soft": [
+        {
+          "file": "MarlinBold.otf",
+          "style": "Extra Black",
+          "postscript": "MarlinSoft-ExtraBlack",
+          "weightClass": 950
+        },
+        {
+          "file": "MarlinSoft-Medium.otf",
+          "style": "Medium",
+          "postscript": "MarlinSoft-Medium",
+          "weightClass": 500
+        }
+      ],
+      "Marlin Soft SQ": [
+        {
+          "file": "MarlinSoftSQ-Black.otf",
+          "style": "Black",
+          "postscript": "MarlinSoftSQ-Black",
+          "weightClass": 900
+        },
+        {
+          "file": "MarlinSoftSQ-Bold.otf",
+          "style": "Bold",
+          "postscript": "MarlinSoftSQ-Bold",
+          "weightClass": 700
+        },
+        {
+          "file": "MarlinSoftSQ-BoldItalic.otf",
+          "style": "Bold Italic",
+          "postscript": "MarlinSoftSQ-BoldItalic",
+          "weightClass": 700
+        },
+        {
+          "file": "MarlinSoftSQ-ExtraBold.otf",
+          "style": "Extra Bold",
+          "postscript": "MarlinSoftSQ-ExtraBold",
+          "weightClass": 800
+        },
+        {
+          "file": "MarlinSoftSQ-ExtraBoldItalic.otf",
+          "style": "Extra Bold Italic",
+          "postscript": "MarlinSoftSQ-ExtraBoldItalic",
+          "weightClass": 800
+        },
+        {
+          "file": "MarlinSoftSQ-Medium.otf",
+          "style": "Medium",
+          "postscript": "MarlinSoftSQ-Medium",
+          "weightClass": 500
+        },
+        {
+          "file": "MarlinSoftSQ-Regular.otf",
+          "style": "Regular",
+          "postscript": "MarlinSoftSQ-Regular",
+          "weightClass": 400
+        }
+      ],
+      "National 2 Test": [
+        {
+          "file": "National2Test-Bold.otf",
+          "style": "Bold",
+          "postscript": "National2-BoldTest",
+          "weightClass": 700
+        },
+        {
+          "file": "National2Test-Light.otf",
+          "style": "Light",
+          "postscript": "National2-LightTest",
+          "weightClass": 350
+        },
+        {
+          "file": "National2Test-Regular.otf",
+          "style": "Regular",
+          "postscript": "National2-RegularTest",
+          "weightClass": 400
+        }
+      ],
+      "Nunito": [
+        {
+          "file": "Nunito-Black.ttf",
+          "style": "Black",
+          "postscript": "Nunito-Black",
+          "weightClass": 900
+        },
+        {
+          "file": "Nunito-BlackItalic.ttf",
+          "style": "Black Italic",
+          "postscript": "Nunito-BlackItalic",
+          "weightClass": 900
+        },
+        {
+          "file": "Nunito-Bold.ttf",
+          "style": "Bold",
+          "postscript": "Nunito-Bold",
+          "weightClass": 700
+        },
+        {
+          "file": "Nunito-BoldItalic.ttf",
+          "style": "Bold Italic",
+          "postscript": "Nunito-BoldItalic",
+          "weightClass": 700
+        },
+        {
+          "file": "Nunito-ExtraBold.ttf",
+          "style": "ExtraBold",
+          "postscript": "Nunito-ExtraBold",
+          "weightClass": 800
+        },
+        {
+          "file": "Nunito-ExtraBoldItalic.ttf",
+          "style": "ExtraBold Italic",
+          "postscript": "Nunito-ExtraBoldItalic",
+          "weightClass": 800
+        },
+        {
+          "file": "Nunito-ExtraLight.ttf",
+          "style": "ExtraLight",
+          "postscript": "Nunito-ExtraLight",
+          "weightClass": 200
+        },
+        {
+          "file": "Nunito-ExtraLightItalic.ttf",
+          "style": "ExtraLight Italic",
+          "postscript": "Nunito-ExtraLightItalic",
+          "weightClass": 200
+        },
+        {
+          "file": "Nunito-Italic.ttf",
+          "style": "Italic",
+          "postscript": "Nunito-Italic",
+          "weightClass": 400
+        },
+        {
+          "file": "Nunito-Light.ttf",
+          "style": "Light",
+          "postscript": "Nunito-Light",
+          "weightClass": 300
+        },
+        {
+          "file": "Nunito-LightItalic.ttf",
+          "style": "Light Italic",
+          "postscript": "Nunito-LightItalic",
+          "weightClass": 300
+        },
+        {
+          "file": "Nunito-Regular.ttf",
+          "style": "Regular",
+          "postscript": "Nunito-Regular",
+          "weightClass": 400
+        },
+        {
+          "file": "Nunito-SemiBold.ttf",
+          "style": "SemiBold",
+          "postscript": "Nunito-SemiBold",
+          "weightClass": 600
+        },
+        {
+          "file": "Nunito-SemiBoldItalic.ttf",
+          "style": "SemiBold Italic",
+          "postscript": "Nunito-SemiBoldItalic",
+          "weightClass": 600
+        }
+      ],
+      "Pitch": [
+        {
+          "file": "PitchApp-Bold.ttf",
+          "style": "Bold",
+          "postscript": "Pitch-Bold",
+          "weightClass": 400
+        },
+        {
+          "file": "PitchApp-BoldItalic.ttf",
+          "style": "Bold Italic",
+          "postscript": "Pitch-BoldItalic",
+          "weightClass": 800
+        },
+        {
+          "file": "PitchApp-Light.ttf",
+          "style": "Light",
+          "postscript": "Pitch-Light",
+          "weightClass": 400
+        },
+        {
+          "file": "PitchApp-LightItalic.ttf",
+          "style": "Light Italic",
+          "postscript": "Pitch-LightItalic",
+          "weightClass": 300
+        },
+        {
+          "file": "PitchApp-Medium.ttf",
+          "style": "Medium",
+          "postscript": "Pitch-Medium",
+          "weightClass": 500
+        },
+        {
+          "file": "PitchApp-MediumItalic.ttf",
+          "style": "Medium Italic",
+          "postscript": "Pitch-MediumItalic",
+          "weightClass": 500
+        },
+        {
+          "file": "PitchApp-Regular.ttf",
+          "style": "Regular",
+          "postscript": "Pitch-Regular",
+          "weightClass": 400
+        },
+        {
+          "file": "PitchApp-RegularItalic.ttf",
+          "style": "Regular Italic",
+          "postscript": "Pitch-RegularItalic",
+          "weightClass": 400
+        },
+        {
+          "file": "PitchApp-Semibold.ttf",
+          "style": "Semibold",
+          "postscript": "Pitch-Semibold",
+          "weightClass": 600
+        },
+        {
+          "file": "PitchApp-SemiboldItalic.ttf",
+          "style": "Semibold Italic",
+          "postscript": "Pitch-SemiboldItalic",
+          "weightClass": 600
+        }
+      ],
+      "Pitch Sans": [
+        {
+          "file": "PitchSansApp-Bold.ttf",
+          "style": "Bold",
+          "postscript": "PitchSans-Bold",
+          "weightClass": 700
+        },
+        {
+          "file": "PitchSansApp-BoldItalic.ttf",
+          "style": "Bold Italic",
+          "postscript": "PitchSans-BoldItalic",
+          "weightClass": 700
+        },
+        {
+          "file": "PitchSansApp-Light.ttf",
+          "style": "Light",
+          "postscript": "PitchSans-Light",
+          "weightClass": 300
+        },
+        {
+          "file": "PitchSansApp-LightItalic.ttf",
+          "style": "Light Italic",
+          "postscript": "PitchSans-LightItalic",
+          "weightClass": 300
+        },
+        {
+          "file": "PitchSansApp-Medium.ttf",
+          "style": "Medium",
+          "postscript": "PitchSans-Medium",
+          "weightClass": 500
+        },
+        {
+          "file": "PitchSansApp-MediumItalic.ttf",
+          "style": "Medium Italic",
+          "postscript": "PitchSans-MediumItalic",
+          "weightClass": 500
+        },
+        {
+          "file": "PitchSansApp-Regular.ttf",
+          "style": "Regular",
+          "postscript": "PitchSans-Regular",
+          "weightClass": 400
+        },
+        {
+          "file": "PitchSansApp-RegularItalic.ttf",
+          "style": "Regular Italic",
+          "postscript": "PitchSans-RegularItalic",
+          "weightClass": 400
+        },
+        {
+          "file": "PitchSansApp-Semibold.ttf",
+          "style": "Semibold",
+          "postscript": "PitchSans-Semibold",
+          "weightClass": 600
+        },
+        {
+          "file": "PitchSansApp-SemiboldItalic.ttf",
+          "style": "Semibold Italic",
+          "postscript": "PitchSans-SemiboldItalic",
+          "weightClass": 600
+        }
+      ],
+      "Söhne Test": [
+        {
+          "file": "SoehneTest-Buch.otf",
+          "style": "Buch",
+          "postscript": "Sohne-BuchTest",
+          "weightClass": 400
+        },
+        {
+          "file": "SoehneTest-Halbfett.otf",
+          "style": "Halbfett",
+          "postscript": "Sohne-HalbfettTest",
+          "weightClass": 600
+        },
+        {
+          "file": "SoehneTest-Leicht.otf",
+          "style": "Leicht",
+          "postscript": "Sohne-LeichtTest",
+          "weightClass": 300
+        }
+      ],
+      "Söhne Breit": [
+        {
+          "file": "SohneBreit-Buch.ttf",
+          "style": "Buch",
+          "postscript": "SohneBreit-Buch",
+          "weightClass": 400
+        },
+        {
+          "file": "SohneBreit-BuchKursiv.ttf",
+          "style": "Buch Kursiv",
+          "postscript": "SohneBreit-BuchKursiv",
+          "weightClass": 400
+        },
+        {
+          "file": "SohneBreit-Dreiviertelfett.ttf",
+          "style": "Dreiviertelfett",
+          "postscript": "SohneBreit-Dreiviertelfett",
+          "weightClass": 700
+        },
+        {
+          "file": "SohneBreit-DreiviertelfettKursiv.ttf",
+          "style": "Dreiviertelfett Kursiv",
+          "postscript": "SohneBreit-DreiviertelfettKurs",
+          "weightClass": 700
+        },
+        {
+          "file": "SohneBreit-Extrafett.ttf",
+          "style": "Extrafett",
+          "postscript": "SohneBreit-Extrafett",
+          "weightClass": 900
+        },
+        {
+          "file": "SohneBreit-ExtrafettKursiv.ttf",
+          "style": "Extrafett Kursiv",
+          "postscript": "SohneBreit-ExtrafettKursiv",
+          "weightClass": 900
+        }
+      ],
+      "Space Mono": [
+        {
+          "file": "SpaceMono-Bold.ttf",
+          "style": "Bold",
+          "postscript": "SpaceMono-Bold",
+          "weightClass": 700
+        },
+        {
+          "file": "SpaceMono-BoldItalic.ttf",
+          "style": "Bold Italic",
+          "postscript": "SpaceMono-BoldItalic",
+          "weightClass": 700
+        },
+        {
+          "file": "SpaceMono-Italic.ttf",
+          "style": "Italic",
+          "postscript": "SpaceMono-Italic",
+          "weightClass": 400
+        },
+        {
+          "file": "SpaceMono-Regular.ttf",
+          "style": "Regular",
+          "postscript": "SpaceMono-Regular",
+          "weightClass": 400
+        }
+      ]
+    },
+    "featureFlagAppFont": {
+      "enum": "FontsManager.FontsOptions",
+      "options": [
+        "system",
+        "national",
+        "sohne",
+        "chalkboard",
+        "inconsolata"
+      ],
+      "fontSetRoles": [
+        "label",
+        "subLabel",
+        "listHeader",
+        "sectionHeader",
+        "boldSectionHeader",
+        "sectionEntry",
+        "sectionHeaderButton",
+        "title",
+        "smallCaps",
+        "searchHeader",
+        "chatStatusText",
+        "chatTimestamp"
+      ]
+    },
+    "easel": {
+      "documentWidthPoints": 1000,
+      "families": {
+        "mono": {
+          "stack": "\"Space Mono\", ui-monospace, Menlo, monospace",
+          "lineHeight": 1.48,
+          "styles": {
+            "ultra": [
+              80,
+              "bold"
+            ],
+            "h0": [
+              60,
+              "bold"
+            ],
+            "h1": [
+              44,
+              "bold"
+            ],
+            "h2": [
+              24,
+              "bold"
+            ],
+            "body": [
+              15,
+              "normal"
+            ]
+          }
+        },
+        "fancy": {
+          "stack": "\"EB Garamond\", Garamond, Georgia, serif",
+          "lineHeight": 1.32,
+          "styles": {
+            "ultra": [
+              80,
+              "normal"
+            ],
+            "h0": [
+              60,
+              "normal"
+            ],
+            "h1": [
+              48,
+              "normal"
+            ],
+            "h2": [
+              28,
+              "normal"
+            ],
+            "body": [
+              16,
+              "normal"
+            ]
+          }
+        },
+        "hip": {
+          "stack": "\"Inter\", system-ui",
+          "lineHeight": 1.28,
+          "styles": {
+            "ultra": [
+              80,
+              "900"
+            ],
+            "h0": [
+              60,
+              "900"
+            ],
+            "h1": [
+              44,
+              "900"
+            ],
+            "h2": [
+              21,
+              "bold"
+            ],
+            "body": [
+              18,
+              "normal"
+            ]
+          }
+        },
+        "clean": {
+          "stack": "system-ui (SF Pro)",
+          "lineHeight": 1.2,
+          "styles": {
+            "ultra": [
+              80,
+              "800"
+            ],
+            "h0": [
+              60,
+              "800"
+            ],
+            "h1": [
+              44,
+              "800"
+            ],
+            "h2": [
+              24,
+              "bold"
+            ],
+            "body": [
+              15,
+              "normal"
+            ]
+          }
+        }
+      },
+      "note": "Sizes are Easel points; style tuples are [size, weight]. From the Easel export viewer, which states it mirrors EaselTextView.swift."
+    },
+    "iconFonts": {
+      "icomoon": {
+        "glyphs": 286,
+        "use": "Feather icon set (Icons.FeatherIcon)"
+      },
+      "ionicons": {
+        "glyphs": 1181,
+        "use": "Ionicons, used for sidebar custom icons (BaseModels.SidebarIconType)"
+      }
+    }
+  },
+  "motion": {
+    "springAnimationStyles": {
+      "enum": "ARCUI.SpringAnimationStyle",
+      "cases": [
+        "firm",
+        "firmSlow",
+        "firmExtraSlow",
+        "firmFast",
+        "springy",
+        "springyFast",
+        "springyExtraFast"
+      ],
+      "properties": [
+        "dampingRatio",
+        "frequencyResponse"
+      ],
+      "note": "Numeric values are compiled into code and are not present in the type metadata."
+    },
+    "motionSpringFunction": [
+      "stiffness",
+      "damping",
+      "response",
+      "dampingRatio",
+      "w0",
+      "wD"
+    ],
+    "lottie": {
+      "ARCUI/logo-wave": {
+        "bundle": "ARCUI",
+        "width": 225,
+        "height": 225,
+        "fps": 60,
+        "frames": 180,
+        "durationSeconds": 3.0
+      },
+      "HomeButton/archive": {
+        "bundle": "HomeButton",
+        "width": 128,
+        "height": 128,
+        "fps": 60,
+        "frames": 120,
+        "durationSeconds": 2.0,
+        "markers": {
+          "hover-start": 1,
+          "hover-end": 11,
+          "selection-end": 35
+        }
+      },
+      "HomeButton/boosts": {
+        "bundle": "HomeButton",
+        "width": 128,
+        "height": 128,
+        "fps": 60,
+        "frames": 60,
+        "durationSeconds": 1.0,
+        "markers": {
+          "hover-start": 1,
+          "hover-end": 11,
+          "selection-end": 45
+        }
+      },
+      "HomeButton/downloads": {
+        "bundle": "HomeButton",
+        "width": 128,
+        "height": 128,
+        "fps": 60,
+        "frames": 60,
+        "durationSeconds": 1.0,
+        "markers": {
+          "hover-start": 1,
+          "hover-end": 11,
+          "selection-end": 35
+        }
+      },
+      "HomeButton/easels": {
+        "bundle": "HomeButton",
+        "width": 128,
+        "height": 128,
+        "fps": 60,
+        "frames": 60,
+        "durationSeconds": 1.0,
+        "markers": {
+          "hover-start": 1,
+          "hover-end": 11,
+          "selection-end": 35
+        }
+      },
+      "HomeButton/screenshots": {
+        "bundle": "HomeButton",
+        "width": 128,
+        "height": 128,
+        "fps": 60,
+        "frames": 60,
+        "durationSeconds": 1.0,
+        "markers": {
+          "hover-start": 1,
+          "hover-end": 11,
+          "selection-end": 35
+        }
+      },
+      "HomeButton/spaces": {
+        "bundle": "HomeButton",
+        "width": 128,
+        "height": 128,
+        "fps": 60,
+        "frames": 60,
+        "durationSeconds": 1.0,
+        "markers": {
+          "hover-start": 1,
+          "hover-end": 11,
+          "selection-end": 35
+        }
+      },
+      "PreferencesFeature/smiley": {
+        "bundle": "PreferencesFeature",
+        "width": 100,
+        "height": 100,
+        "fps": 30,
+        "frames": 150,
+        "durationSeconds": 5.0
+      },
+      "SidebarBanner/update-heart-animation": {
+        "bundle": "SidebarBanner",
+        "width": 350,
+        "height": 350,
+        "fps": 60,
+        "frames": 120,
+        "durationSeconds": 2.0
+      },
+      "SpaceStyleEditor/automatic": {
+        "bundle": "SpaceStyleEditor",
+        "width": 500,
+        "height": 500,
+        "fps": 60,
+        "frames": 90,
+        "durationSeconds": 1.5
+      },
+      "SpaceStyleEditor/moon": {
+        "bundle": "SpaceStyleEditor",
+        "width": 500,
+        "height": 500,
+        "fps": 60,
+        "frames": 90,
+        "durationSeconds": 1.5
+      },
+      "SpaceStyleEditor/sun": {
+        "bundle": "SpaceStyleEditor",
+        "width": 500,
+        "height": 500,
+        "fps": 60,
+        "frames": 60,
+        "durationSeconds": 1.0
+      }
+    },
+    "lottieEasingFrequency": [
+      {
+        "cubicBezier": [
+          0.167,
+          0.167,
+          0.833,
+          0.833
+        ],
+        "count": 80,
+        "note": "After Effects default (linear-ish)"
+      },
+      {
+        "cubicBezier": [
+          0.333,
+          0,
+          0.667,
+          1
+        ],
+        "count": 38,
+        "note": "After Effects \"easy ease\""
+      },
+      {
+        "cubicBezier": [
+          0.441,
+          0,
+          0.415,
+          1.835
+        ],
+        "count": 5,
+        "note": "overshoot (pop)"
+      },
+      {
+        "cubicBezier": [
+          0.237,
+          0,
+          0.52,
+          1
+        ],
+        "count": 5
+      },
+      {
+        "cubicBezier": [
+          0.333,
+          0,
+          0.359,
+          1
+        ],
+        "count": 5
+      }
+    ]
+  },
+  "size": {
+    "arcButtonStyle": {
+      "sizes": [
+        46,
+        32,
+        28,
+        24,
+        16
+      ],
+      "variants": [
+        "_46",
+        "_32",
+        "_32thin",
+        "_28",
+        "_24",
+        "_16"
+      ]
+    },
+    "lottieCanvas": {
+      "homeButtonIcons": 128,
+      "spaceStyleToggle": 500,
+      "logoWave": 225,
+      "smiley": 100,
+      "updateHeart": 350
+    },
+    "easelExportRadiiRem": [
+      6,
+      8,
+      10
+    ]
+  },
+  "sound": {
+    "capture": {
+      "file": "capture.wav",
+      "durationSeconds": 0.634,
+      "format": "WAV 48 kHz 24-bit stereo",
+      "enum": "SoundEffects.SoundEffect.capture"
+    },
+    "event": {
+      "file": "event.m4a",
+      "durationSeconds": 3.522,
+      "format": "AAC 44.1 kHz stereo"
+    },
+    "introMusic": {
+      "file": "intro-music.mp3",
+      "durationSeconds": 21.336,
+      "format": "MP3 320 kbps",
+      "bundle": "AuthFeature"
+    }
+  }
+}

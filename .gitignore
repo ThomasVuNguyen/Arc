@@ -1,0 +1,14 @@
+# ------------------------------------------------------------------
+# NOTHING in vault/ is ever committed.
+#   vault/app        - copy of Arc.app (proprietary binary)
+#   vault/extracted  - Arc's assets, strings, WebUI (copyrighted)
+#   vault/user-data  - personal profile: history, cookies, tabs, auth
+# ------------------------------------------------------------------
+vault/
+*.car
+*.pak
+*.icns
+GoogleService-Info.plist
+Storable*.json
+.DS_Store
+__pycache__/
