@@ -61,7 +61,7 @@ canvas.fill,svg.fill{position:absolute;inset:0;width:100%;height:100%;display:bl
 .swatch code{font:12px var(--mono);opacity:.75;margin-top:8px}
 .bands .art{display:flex;flex-direction:column}
 .band{display:flex;justify-content:space-between;align-items:flex-end;padding:10px 14px;font:11px var(--mono);letter-spacing:.03em;min-height:46px}
-.scale .art{padding:46px 18px 18px;display:grid;gap:6px}
+.scale .art{padding:46px 18px 18px;display:grid;grid-template-columns:minmax(0,1fr);gap:6px;align-content:center}
 .scale .row{display:grid;grid-template-columns:repeat(12,1fr);gap:3px}
 .scale .row i{aspect-ratio:1;border-radius:3px}
 .scale small{font:10px var(--mono);letter-spacing:.06em;text-transform:uppercase;opacity:.6;margin-top:6px}
@@ -155,6 +155,29 @@ footer b{font:400 22px var(--serif);color:var(--ink);font-weight:400}
 .toast{position:fixed;left:50%;bottom:24px;z-index:60;transform:translate(-50%,16px);opacity:0;background:var(--ink);color:var(--paper);font:13px var(--mono);
   padding:10px 16px;border-radius:999px;transition:.3s var(--ease);pointer-events:none}
 .toast.on{opacity:1;transform:translate(-50%,0)}
+/* capture mode (README export) */
+html.capture,html.capture body{background:transparent;overflow:hidden}
+.capture .wrap{max-width:none;padding:0}
+.capture .wrap>h1,.capture .intro,.capture .tabs,.capture footer{display:none}
+.capture main{width:100vw;height:100vh}
+.capture main>.tile{margin:0;width:100vw;height:100vh;border-radius:22px;cursor:default}
+.capture .tile:hover{transform:none;box-shadow:none}
+.capture main>.tile>.art{height:100%;aspect-ratio:auto!important;min-height:0}
+.capture main>.tile .ratio{height:100%;aspect-ratio:auto!important}
+.capture .bands .art{display:flex;flex-direction:column}.capture .bands .art>div:first-child{flex:none}.capture .bands .band{flex:1;min-height:0;align-items:center}
+.capture .chipwall .art{align-content:flex-start}
+.capture .tag{font-size:12px}
+.capture .spin{animation-duration:8s!important}
+.capture .cap-header{height:100vh;background:var(--paper);border-radius:22px;padding:40px 48px;display:flex;flex-direction:column;justify-content:center}
+.capture .cap-header h2{margin:0 0 10px;font-size:64px}
+.capture .cap-header .sub{margin:0;font-size:17px}
+.capture .cap-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding:12px;background:var(--paper);border-radius:22px;height:100vh;align-content:center}
+.capture .cap-grid .tile{margin:0;cursor:default;border-radius:14px}
+.capture .cap-grid .tile:hover{transform:none;box-shadow:none}
+.capture-hero .wrap{height:100vh;background:var(--paper);border-radius:22px;padding:64px 72px;display:flex;flex-direction:column;justify-content:center}
+.capture-hero .wrap>h1,.capture-hero .intro{display:block}
+.capture-hero .tabs{display:none}
+.capture-hero main{display:none}
 @media (max-width:720px){.wrap{padding:40px 16px 64px}.tabs{position:static}h2{font-size:38px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -516,6 +539,43 @@ function playSound(btn){
 document.addEventListener('mouseover', e => { const v = e.target.closest('.wall .vid')?.querySelector('video'); if (v) v.play().catch(()=>{}) });
 document.addEventListener('mouseout', e => { const v = e.target.closest('.wall .vid')?.querySelector('video'); if (v && !v.closest('.tile').contains(e.relatedTarget)) v.pause() });
 
+/* ---------- capture mode: #/capture/<name> renders one piece full-bleed (used to export README images) ---------- */
+const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+function pieces(){
+  const m = motionTiles(), c = colorTiles(), sp = spaceTiles(), gl = glyphTiles(), ic = iconTiles(), ty = typeTiles();
+  const P = { rings: m[0], halftone: m[1], particles: m[2], lottiegrid: m[3], tidytabs: m[4], logo: m[5], cmdbar: m[6], spacearc: m[7], heart: m[8], sun: m[9], moon: m[10],
+    gradient: c[0], arcblue: c[1], paper: c[2], ink: c[3], navy: c[4], brand: c[5], extended: c[6], scales: c[7], vibrant: c[8], chill: c[9], allcolors: c[10],
+    picker: sp[0], glyphs1: gl[0], glyphs2: gl[1], glyphs3: gl[2] };
+  PRESETS.forEach(([n], i) => P['space-' + slug(n)] = sp[i + 1]);
+  D.appIcons.forEach((a, i) => P['icon-' + slug(a.h)] = ic[i]);
+  D.type.forEach((f, i) => P['type-' + slug(f.family)] = ty[i]);
+  return P;
+}
+function renderCapture(name){
+  document.documentElement.classList.add('capture');
+  const main = $('#main'); main.innerHTML = ''; loops.clear();
+  if (name === 'hero'){ document.documentElement.classList.add('capture-hero'); return }
+  if (name.startsWith('header-')){
+    const r = ROUTES.find(x => x.id === name.slice(7)) || { title: ['Arc', name.slice(7)], sub: '' };
+    const README_SUB = {   // static images can't be clicked, so the README gets its own lines
+      motion: 'Arc’s own Lottie animations, alongside original motion studies built from its colors, type and ideas.',
+      icons: 'The original and every alternate app icon you could pick in Settings.',
+      color: 'An electric blue for action, a peach-to-blue gradient for moments, quiet paper and ink for everything else.',
+      spaces: 'The chrome is see-through, so a Space’s color becomes the whole window.',
+      glyphs: 'Template glyphs take on the color around them. Easels get two palettes of their own.' };
+    main.append(h(`<div class="cap-header"><h2>${r.title[0]} <em>${r.title[1]}</em></h2><p class="sub">${esc(README_SUB[r.id] ?? r.sub)}</p></div>`)); return;
+  }
+  if (name === 'iconwall'){ const g = h('<div class="cap-grid"></div>'); iconTiles().slice(0, D.appIcons.length).forEach(t => g.append(t)); main.append(g); startLotties(main); return }
+  const piece = pieces()[name];
+  if (!piece){ main.textContent = 'unknown piece: ' + name + ' (' + Object.keys(pieces()).join(', ') + ')'; return }
+  main.append(piece); startLotties(main);
+}
+// Advance every CSS animation/transition by dt ms (Playwright's clock drives JS time; this drives CSS time).
+window.__advanceCss = dt => document.getAnimations().forEach(a => { a.pause(); a.currentTime = (a.currentTime || 0) + dt });
+window.__pieces = () => Object.keys(pieces());
+
+const _render = render;
+render = function(){ const cap = location.hash.match(/^#\/capture\/(.+)$/); if (cap) return renderCapture(decodeURIComponent(cap[1])); _render() };
 addEventListener('hashchange', render);
 render();
 addEventListener('load', () => startLotties(document));
