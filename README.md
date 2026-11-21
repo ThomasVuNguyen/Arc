@@ -4,6 +4,93 @@ Save everything we can from the Arc browser before it sunsets (Arc's own farewel
 
 This repo is a field guide to how Arc for macOS (1.174.0, build 91305, Chromium 158.0.8127.37) is built and how it works, reverse-engineered from the shipping app. It also has scripts to archive the app and back up your own Arc data before it's gone.
 
+![Arc brand brief](docs/brand/hero.svg)
+
+## Brand brief
+
+Arc's look comes down to one idea: **the browser takes on the color of where you are.** Each Space has its own color, the chrome is mostly see-through so that color fills the whole window, and the content sits on top as a clean white card. The rest of the system is warm, a little playful, and very consistent.
+
+| | |
+|---|---|
+| **Signature** | The peach-to-electric-blue gradient `#FF9396 → #0048FF`, used for the welcome screens, Capture and the brand marks |
+| **Accent** | Arc Blue `#3139FB`: primary buttons, focus, checkboxes, selection. It appears in 21 color slots |
+| **Surfaces** | Cool off-white `#FAFBFF` popovers and near-black ink `#0E0F10`. Dark mode uses deep navies (`#120F2E`, `#151C30`), not grays |
+| **Chrome** | Sidebar items have no solid fill, only white or ink at 5–85% opacity, so the Space color shows through |
+| **Texture** | Space backgrounds get a film-grain overlay (grain, sand, denim or tweed) drawn by Metal shaders |
+| **Type** | The system font (SF Pro) for the browser UI. Easels pair Space Mono, EB Garamond, Inter and SF. 83 fonts in total, including Dinamo, Grilli and Klim display faces |
+| **Motion** | Seven named springs (`firm` … `springyExtraFast`) and 12 Lottie animations that recolor to match the Space |
+| **Voice** | Friendly and slightly cheeky ("Tidy Tabs", "Little Arc", "Boosts", "Easels") |
+
+### The window is the Space
+
+![Window anatomy](docs/brand/window-anatomy.svg)
+
+When you pick a Space color, Arc derives a 4-tone palette from it (`tintedLight`, `midTone`, `shaded`, `shadedDark`) plus a 12-role light/dark palette for text, focus, hover and backgrounds. You can mix it as a single color or a gradient (`complimentary` / `analogous`), and adjust noise and intensity. The full model is in [design-system.md §2](docs/design-system.md#2-space-theming).
+
+![Space color picker](docs/brand/space-picker.svg)
+
+### Color
+
+![Core palette](docs/brand/palette-core.svg)
+
+![Brand colors](docs/brand/palette-brand.svg)
+
+![Gray and indigo scales](docs/brand/scales.svg)
+
+![Easel palettes](docs/brand/easel-palettes.svg)
+
+All 519 named colors (light and dark) are in [docs/design-tokens.json](docs/design-tokens.json).
+
+### Type
+
+The browser UI uses the system font, so Arc's typographic personality comes through in Easels, onboarding and the membership card. Easels offer four text styles, each with its own font and line height:
+
+![Easel mono: Space Mono](docs/brand/type-mono.png)
+![Easel fancy: EB Garamond](docs/brand/type-fancy.png)
+![Easel hip: Inter](docs/brand/type-hip.png)
+![Nunito](docs/brand/type-display.png)
+![Inconsolata](docs/brand/type-code.png)
+
+| Style | Font | Ultra / H0 / H1 / H2 / Body (pt) | Line height |
+|---|---|---|---:|
+| `mono` | Space Mono | 80 · 60 · 44 · 24 · 15 | 1.48 |
+| `fancy` | EB Garamond | 80 · 60 · 48 · 28 · 16 | 1.32 |
+| `hip` | Inter (900) | 80 · 60 · 44 · 21 · 18 | 1.28 |
+| `clean` | SF Pro (800) | 80 · 60 · 44 · 24 · 15 | 1.2 |
+
+Arc also bundles commercial display families, listed here by name only: **ABC Favorit** (+ Lining, Mono) and **ABC Oracle** by Dinamo, **GT Ultra** by Grilli Type, **Marlin Soft / Soft SQ** by Fontmesa, and **Pitch**, **Pitch Sans**, **Söhne Breit**, **National 2** and **Söhne** by Klim. There are two icon fonts: Feather (286 glyphs) and Ionicons (1,181). The specimens above use only the open-source (SIL OFL) fonts.
+
+### Iconography
+
+- **414 images** across 46 asset catalogs, 118 of them template icons that are tinted at runtime.
+- **Alternate app icons:** Original, Canary, Candy, Colorful, Neon, Hologram, Fluted Glass, Schoolbook, Early Birds, Dev. Five Dia app icons ship too.
+- **Integration marks** for the Command Bar and Live Folders: Google Workspace, Notion, Linear, Jira, GitHub, Slack, Figma, ChatGPT, Claude and others.
+- **4,491 SF Symbols mapped to emoji** for Space and folder icons, plus 61 Ionicons glyphs in the sidebar icon picker.
+
+The icons are The Browser Company's artwork, so they aren't reproduced here. `scripts/extract-app.sh` followed by `scripts/tools/brand_book.py vault` builds a local page with all of them (see below).
+
+### Motion & sound
+
+| Animation | Where | Canvas | Length |
+|---|---|---|---:|
+| `logo-wave` | Animated Arc logo stroke | 225² | 3.0 s |
+| `archive` · `boosts` · `downloads` · `easels` · `screenshots` · `spaces` | Home / Library icons; layers named `primaryColor`/`secondaryColor` so they recolor per Space | 128² | 1–2 s |
+| `sun` · `moon` · `automatic` | Space style editor light/dark toggle | 500² | 1–1.5 s |
+| `update-heart-animation` | "Arc updated" sidebar banner | 350² | 2.0 s |
+| `smiley` | Settings | 100² | 5.0 s |
+
+Springs: `firm`, `firmSlow`, `firmExtraSlow`, `firmFast`, `springy`, `springyFast`, `springyExtraFast`, all driven by Arc's own display-link spring, decay and bezier engine. There are only three sounds: the Capture shutter, an `event` chime, and 21 seconds of onboarding music.
+
+### See everything locally
+
+```bash
+scripts/extract-app.sh                    # unpack Arc.app into vault/
+python3 scripts/tools/brand_book.py vault # -> vault/brand-book.html
+open vault/brand-book.html
+```
+
+The local brand book shows every color chip (light/dark), all 85 font files as live editable specimens, all 414 icons and images, the 12 Lottie animations playing, and the sounds and onboarding videos, with a light/dark toggle. It stays in `vault/` because it shows Arc's copyrighted artwork. The boards on this page are redrawn from token values by `scripts/tools/brand_board.py`.
+
 ## What's here
 
 | Doc | What it covers |
