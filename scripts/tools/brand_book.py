@@ -1,179 +1,215 @@
 #!/usr/bin/env python3
-"""Build a local, browsable Arc brand book from vault/extracted.
+"""Build a local Arc brand book from vault/extracted.
 
-Shows every named color (light/dark), every bundled font, every icon/image,
-the Lottie animations (playing), sounds and videos, all in one HTML page.
-The page references the extracted files by relative path, so it only works
-next to vault/extracted and is never published: it shows Arc's copyrighted
-artwork.
+The page is laid out like an Arc window: a Space-colored frame with grain, a
+sidebar of "pinned" sections, and one white content card. Pick a Space color
+and the whole page re-themes, just like switching Spaces.
+
+It references the extracted files by relative path and shows Arc's
+copyrighted artwork, so it lives in vault/ and is never published.
 
 usage: brand_book.py <vault-dir>      ->  <vault-dir>/brand-book.html
 """
 import glob
 import json
 import os
+import re
 import sys
-from html import escape
+
+from PIL import Image, ImageFont
 
 VAULT = os.path.abspath(sys.argv[1])
 EX = os.path.join(VAULT, "extracted", "bundles")
+TEMPLATE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "brand_book.html")
 rel = lambda p: os.path.relpath(p, VAULT)
 
 
-def bundle_label(path):
+def label(path):
     b = os.path.relpath(path, EX).split(os.sep)[0]
     return b.split("_", 1)[1] if "_" in b and not b.startswith("_") else b.lstrip("_")
 
 
-# --- colors --------------------------------------------------------------------
-colors_html = []
-n_colors = 0
+def pixels(path):
+    """-> (blank, mono): blank = nothing visible, mono = single-ink glyph to tint."""
+    try:
+        im = Image.open(path).convert("RGBA")
+    except Exception:
+        return True, False
+    im.thumbnail((64, 64))
+    raw = im.tobytes()
+    px = [tuple(raw[i:i + 4]) for i in range(0, len(raw), 4) if raw[i + 3] > 40]
+    if len(px) < 4:
+        return True, False
+    spread = sum(max(p[:3]) - min(p[:3]) for p in px) / len(px)
+    return False, spread < 14
+
+
+def humanize(name):
+    name = re.sub(r"(Template|Icon|Favicon)$", "", name)
+    return re.sub(r"(?<=[a-z0-9])(?=[A-Z])", " ", name).strip() or name
+
+
+# --- colors ---------------------------------------------------------------------
+colors = []
 for f in sorted(glob.glob(f"{EX}/*/assets/colors.json")):
     data = json.load(open(f))
-    cells = []
+    group = []
     for name, v in sorted(data.items()):
-        l, d = v.get("light", {}), v.get("dark", {})
-        def css(x):
-            return f"color-mix(in srgb, {x['hex']} {float(x['alpha']) * 100:.0f}%, transparent)" if x else "transparent"
-        def lab(x):
-            return f"{x['hex']}" + ("" if not x or float(x["alpha"]) >= 1 else f" · {float(x['alpha']) * 100:.0f}%")
-        cells.append(f'<div class="sw"><div class="chip"><span style="background:{css(l)}"></span><span class="dk" style="background:{css(d)}"></span></div>'
-                     f'<b>{escape(name)}</b><code>{escape(lab(l))}</code><code class="mut">{escape(lab(d))}</code></div>')
-        n_colors += 1
-    colors_html.append(f'<h3>{escape(bundle_label(f))} <small>{len(data)}</small></h3><div class="grid sw-grid">{"".join(cells)}</div>')
+        def c(x):
+            return [x["hex"], round(float(x["alpha"]), 3)] if x else None
+        group.append({"n": name, "l": c(v.get("light")), "d": c(v.get("dark"))})
+    def hue_key(c):
+        import colorsys
+        h = (c["l"] or c["d"] or ["#000000", 1])[0]
+        r, g, b = (int(h[i:i + 2], 16) / 255 for i in (1, 3, 5))
+        hh, ll, ss = colorsys.rgb_to_hls(r, g, b)
+        return (0, ll, 0) if ss < .12 or ll < .04 or ll > .97 else (1, round(hh * 12), ll)
+    group.sort(key=hue_key)
+    colors.append({"bundle": label(f), "colors": group})
 
-# --- icons / images --------------------------------------------------------------
-icons_html = []
-n_icons = 0
+# --- images ---------------------------------------------------------------------------
+meta = {}
+for f in glob.glob(f"{EX}/*/assets-info.json"):
+    for a in json.load(open(f))[1:]:
+        n = a.get("Name")
+        if not n:
+            continue
+        m = meta.setdefault((label(f), n), {"w": 0, "tpl": False})
+        m["w"] = max(m["w"], int(a.get("PixelWidth", 0) or 0))
+        m["tpl"] |= a.get("Template Mode") == "template" or n.endswith("Template")
+
+app_icons, dia_icons, art, glyphs, marks = [], [], [], [], []
+seen_names = set()
+APP_ORDER = ["AppIconOriginal", "AppIconCanary", "AppIconCandy", "AppIconColorful", "AppIconNeon", "AppIconHologram",
+             "AppIconFlutedGlass", "AppIconSchoolbook", "AppIconEarlyBirds", "AppIconDev"]
 for d in sorted(glob.glob(f"{EX}/*/assets/images")):
-    files = sorted(p for p in glob.glob(f"{d}/*@2x.png") if not p.endswith("-dark@2x.png"))
-    if not files:
-        continue
-    cells = []
-    for p in files:
+    b = label(d)
+    for p in sorted(glob.glob(f"{d}/*@2x.png")):
+        if p.endswith("-dark@2x.png"):
+            continue
         name = os.path.basename(p)[:-7]
         dark = p.replace("@2x.png", "-dark@2x.png")
-        tpl = "Template" in name or name.endswith("Template")
-        img = f'<img loading="lazy" src="{escape(rel(p))}" alt="">'
+        item = {"n": name, "h": humanize(name), "src": rel(p), "b": b}
         if os.path.exists(dark):
-            img += f'<img loading="lazy" class="dark-only" src="{escape(rel(dark))}" alt="">'
-        cells.append(f'<figure class="ic{" tpl" if tpl else ""}"><div class="well">{img}</div><figcaption>{escape(name)}</figcaption></figure>')
-        n_icons += 1
-    icons_html.append(f'<h3>{escape(bundle_label(d))} <small>{len(files)}</small></h3><div class="grid ic-grid">{"".join(cells)}</div>')
-
-# app icon
+            item["dark"] = rel(dark)
+        m = meta.get((b, name), {"w": 0, "tpl": name.endswith("Template")})
+        if name in seen_names and (name in APP_ORDER or name.startswith("DiaAppIcon")):
+            continue
+        seen_names.add(name)
+        if name in APP_ORDER:
+            item["h"] = humanize(name.replace("AppIcon", "")).replace("Fluted Glass", "Fluted Glass")
+            app_icons.append(item)
+        elif re.fullmatch(r"DiaAppIcon\w*", name):
+            item["h"] = "Dia " + humanize(name.replace("DiaAppIcon", "")) if name != "DiaAppIcon" else "Dia"
+            dia_icons.append(item)
+        elif name.startswith(("AppIcon", "ZZZZ")):
+            continue
+        else:
+            blank, mono = pixels(p)
+            if blank or re.search(r"^Shape\d*$|Mask|Cutout|Backdrop|Placeholder|Scrim|Shadow", name):
+                continue
+            if "Preview" in name or "Thumbnail" in name or m["w"] >= 400:
+                art.append(item)
+            elif mono:
+                item["mono"] = True
+                glyphs.append(item)
+            else:
+                marks.append(item)
+app_icons.sort(key=lambda x: APP_ORDER.index(x["n"]))
+art.sort(key=lambda x: ("Preview" not in x["n"], x["h"]))
 iconset = sorted(glob.glob(f"{EX}/_App/AppIcon.iconset/*.png"), key=os.path.getsize)
-app_icon = rel(iconset[-1]) if iconset else ""
 
-# --- fonts --------------------------------------------------------------------------
-faces, fonts_html = [], []
-font_files = sorted(glob.glob(f"{EX}/*/raw/**/*.[ot]tf", recursive=True))
-for i, p in enumerate(font_files):
-    fam = f"f{i}"
-    fmt = "opentype" if p.endswith(".otf") else "truetype"
-    faces.append(f'@font-face{{font-family:"{fam}";src:url("{rel(p)}") format("{fmt}");}}')
-    name = os.path.basename(p).rsplit(".", 1)[0]
-    if name in ("icomoon", "ionicons"):
-        sample = "".join(chr(c) for c in range(0xE000, 0xE030)) if name == "icomoon" else "".join(chr(c) for c in range(0xF100, 0xF130))
-    else:
-        sample = None
-    fonts_html.append(
-        f'<div class="font"><div class="fmeta"><b>{escape(name)}</b><code>{escape(bundle_label(p))}</code></div>'
-        f'<div class="fs" style="font-family:{fam}" contenteditable spellcheck="false">'
-        f'{escape(sample) if sample else "Tabs that tidy themselves. Aa Gg 0123"}</div></div>')
+# --- fonts ---------------------------------------------------------------------------------
+FOUNDRY = [("ABC", "Dinamo"), ("GT", "Grilli Type"), ("Marlin", "Fontmesa"), ("National", "Klim · trial"),
+           ("Söhne Breit", "Klim"), ("Sohne Breit", "Klim"), ("Söhne", "Klim · trial"), ("Soehne", "Klim · trial"),
+           ("Pitch", "Klim"), ("Inter", "Open source"), ("EB Garamond", "Open source"), ("Space Mono", "Open source"),
+           ("Nunito", "Open source"), ("Inconsolata", "Open source")]
+WEIGHTS = [("thin", 100), ("hairline", 100), ("extralight", 200), ("ultralight", 200), ("leicht", 300), ("light", 300),
+           ("book", 400), ("buch", 400), ("regular", 400), ("medium", 500), ("semibold", 600), ("halbfett", 600),
+           ("dreiviertelfett", 700), ("extrabold", 800), ("extrafett", 800), ("bold", 700), ("black", 900), ("ultra", 900)]
+families, font_faces = {}, []
+for i, p in enumerate(sorted(glob.glob(f"{EX}/*/raw/**/*.[ot]tf", recursive=True))):
+    base = os.path.basename(p).rsplit(".", 1)[0]
+    if base in ("icomoon", "ionicons"):
+        continue
+    try:
+        fam, style = ImageFont.truetype(p, 12).getname()
+    except Exception:
+        fam, style = base, "Regular"
+    fam = fam.replace(" Test", "")
+    fam = re.sub(r"^S\W?o?e?hne|^S.hne", "Söhne", fam)   # legacy-encoded "ö" in the name table
+    s = style.lower().replace(" ", "").replace("-", "")
+    w = next((v for k, v in WEIGHTS if k in s), 400)
+    alias = f"bb{i}"
+    font_faces.append({"alias": alias, "src": rel(p), "fmt": "opentype" if p.endswith(".otf") else "truetype"})
+    families.setdefault(fam, []).append({"alias": alias, "style": style, "w": w, "it": "italic" in s or "kursiv" in s})
+type_families = []
+for fam, styles in sorted(families.items()):
+    styles.sort(key=lambda x: (x["it"], x["w"]))
+    regular = min((s for s in styles if not s["it"]), key=lambda s: abs(s["w"] - 500), default=styles[0])
+    foundry = next((f for k, f in FOUNDRY if fam.startswith(k)), "")
+    type_families.append({"family": fam, "foundry": foundry, "styles": styles, "main": regular["alias"]})
+EASEL = {"Space Mono": "Easel · mono", "EB Garamond": "Easel · fancy", "Inter": "Easel · hip"}
+for t in type_families:
+    t["role"] = EASEL.get(t["family"], "")
 
-# --- lottie ------------------------------------------------------------------------------
+
+def ui_font(prefix, want):
+    """alias of a bundled file to style the page itself."""
+    for t in type_families:
+        if t["family"].startswith(prefix):
+            for s in t["styles"]:
+                if s["w"] == want and not s["it"]:
+                    return s["alias"]
+    return None
+
+
+# --- motion & media ------------------------------------------------------------------------------
 lotties = []
+PURPOSE = {"logo-wave": "The Arc logo, drawn", "archive": "Library · Archive", "boosts": "Library · Boosts",
+           "downloads": "Library · Downloads", "easels": "Library · Easels", "screenshots": "Library · Screenshots",
+           "spaces": "Library · Spaces", "sun": "Light theme", "moon": "Dark theme", "automatic": "Automatic theme",
+           "update-heart-animation": "“Arc updated” banner", "smiley": "Settings"}
 for p in sorted(glob.glob(f"{EX}/*/raw/*.json")):
     try:
         d = json.load(open(p))
     except Exception:
         continue
     if isinstance(d, dict) and "layers" in d:
-        dur = (d.get("op", 0) - d.get("ip", 0)) / (d.get("fr") or 30)
-        lotties.append({"id": f"l{len(lotties)}", "name": os.path.basename(p)[:-5], "bundle": bundle_label(p),
-                        "size": f'{d.get("w")}×{d.get("h")}', "dur": f"{dur:.1f}s", "data": d})
-lottie_html = "".join(
-    f'<figure class="lot"><div class="well" id="{l["id"]}"></div><figcaption><b>{escape(l["name"])}</b>'
-    f'<code>{escape(l["bundle"])} · {l["size"]} · {l["dur"]}</code></figcaption></figure>' for l in lotties)
-lottie_data = json.dumps({l["id"]: l["data"] for l in lotties})
+        n = os.path.basename(p)[:-5]
+        lotties.append({"n": n, "h": PURPOSE.get(n, n), "dur": round((d["op"] - d["ip"]) / d["fr"], 1), "data": d})
+order = ["logo-wave", "spaces", "archive", "easels", "boosts", "downloads", "screenshots", "sun", "moon", "automatic",
+         "update-heart-animation", "smiley"]
+lotties.sort(key=lambda l: order.index(l["n"]) if l["n"] in order else 99)
 
-# --- media -----------------------------------------------------------------------------------
+SOUND = {"capture": "Capture shutter", "event": "Event chime", "intro-music": "Onboarding music"}
+VIDEO = {"pinning": "Pinning tabs", "space_swiping": "Swiping between Spaces", "new_tab": "New tab",
+         "split_view": "Split View", "demo": "Sign-in demo", "orb": "Orb", "background": "Background loop"}
 sounds, videos = [], []
 for p in sorted(glob.glob(f"{EX}/*/raw/*")):
-    ext = p.rsplit(".", 1)[-1].lower()
-    cap = f'<figcaption><b>{escape(os.path.basename(p))}</b><code>{escape(bundle_label(p))} · {os.path.getsize(p) / 1e6:.1f} MB</code></figcaption>'
-    if ext in ("wav", "mp3", "m4a"):
-        sounds.append(f'<figure class="snd"><audio controls preload="none" src="{escape(rel(p))}"></audio>{cap}</figure>')
-    elif ext in ("mp4", "mov"):
-        videos.append(f'<figure class="vid"><video controls muted loop playsinline preload="metadata" src="{escape(rel(p))}"></video>{cap}</figure>')
+    stem, ext = os.path.splitext(os.path.basename(p))
+    if ext.lower() in (".wav", ".mp3", ".m4a"):
+        sounds.append({"h": SOUND.get(stem, stem), "src": rel(p)})
+    elif ext.lower() in (".mp4", ".mov"):
+        videos.append({"h": VIDEO.get(stem, stem), "src": rel(p), "big": os.path.getsize(p) > 1e6})
+videos.sort(key=lambda v: not v["big"])
 
-html = f"""<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Arc Brand Book</title>
-<style>
-{''.join(faces)}
-:root{{--bg:#FAFBFF;--card:#FFFFFF;--ink:#0E0F10;--mut:#6B6F80;--line:rgba(14,15,16,.08);--well:#F1F2F7;--blue:#3139FB}}
-:root[data-theme=dark]{{--bg:#0F1117;--card:#171A22;--ink:#EDEEF2;--mut:#9A9EB0;--line:rgba(250,251,255,.08);--well:#232734}}
-*{{box-sizing:border-box}}
-body{{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 Inter,-apple-system,system-ui,sans-serif}}
-header{{background:linear-gradient(135deg,#FF9396,#0048FF);color:#fff;padding:56px 48px 40px;display:flex;gap:28px;align-items:center}}
-header img{{width:112px;height:112px;filter:drop-shadow(0 10px 24px rgba(0,0,0,.25))}}
-header h1{{margin:0;font-size:44px;letter-spacing:-.02em}} header p{{margin:6px 0 0;opacity:.9}}
-nav{{position:sticky;top:0;z-index:5;display:flex;gap:6px;flex-wrap:wrap;padding:12px 48px;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}}
-nav a{{color:var(--ink);text-decoration:none;padding:6px 12px;border-radius:999px;background:var(--well);font-weight:600;font-size:13px}}
-nav button{{margin-left:auto;border:0;border-radius:999px;padding:6px 14px;background:var(--blue);color:#fff;font-weight:600;cursor:pointer}}
-main{{padding:8px 48px 80px;max-width:1500px}}
-h2{{font-size:28px;margin:48px 0 4px;letter-spacing:-.01em}} h2+p{{color:var(--mut);margin:0 0 12px}}
-h3{{margin:28px 0 10px;font-size:15px}} small{{color:var(--mut);font-weight:500}}
-code{{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--mut)}}
-.grid{{display:grid;gap:10px}}
-.sw-grid{{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}}
-.sw{{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;display:flex;flex-direction:column;gap:2px;min-width:0}}
-.sw b{{font-size:12px;overflow-wrap:anywhere}}
-.chip{{display:flex;height:56px;border-radius:10px;overflow:hidden;margin-bottom:6px;background:repeating-conic-gradient(#ddd 0 25%,#fff 0 50%) 0 0/12px 12px}}
-.chip span{{flex:1}} .chip .dk{{border-left:1px solid rgba(0,0,0,.06)}}
-.ic-grid{{grid-template-columns:repeat(auto-fill,minmax(112px,1fr))}}
-figure{{margin:0}} .ic{{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px}}
-.ic .well{{height:84px;border-radius:10px;background:var(--well);display:grid;place-items:center;overflow:hidden}}
-.ic img{{max-width:72px;max-height:64px}}
-:root[data-theme=dark] .ic.tpl img{{filter:invert(1)}}
-.dark-only{{display:none}} :root[data-theme=dark] .ic .dark-only{{display:block}} :root[data-theme=dark] .ic .dark-only~img, :root[data-theme=dark] .ic img:has(+.dark-only){{display:none}}
-figcaption{{font-size:11px;margin-top:6px;overflow-wrap:anywhere;display:flex;flex-direction:column;gap:2px}}
-.font{{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:8px;display:grid;grid-template-columns:260px 1fr;gap:16px;align-items:center}}
-.fmeta{{display:flex;flex-direction:column}} .fs{{font-size:30px;line-height:1.2;outline:none;overflow-wrap:anywhere}}
-.lot-grid{{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}}
-.lot{{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px}}
-.lot .well{{aspect-ratio:1;border-radius:10px;background:var(--well)}}
-.vid-grid{{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}}
-.vid,.snd{{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px}}
-video{{width:100%;border-radius:10px;background:#000}} audio{{width:100%}}
-@media (max-width:700px){{header,nav,main{{padding-left:16px;padding-right:16px}} .font{{grid-template-columns:1fr}}}}
-</style></head><body>
-<header>{f'<img src="{escape(app_icon)}" alt="">' if app_icon else ''}<div><h1>Arc Brand Book</h1>
-<p>Everything visual inside Arc for macOS 1.174.0: {n_colors} colors, {len(font_files)} fonts, {n_icons} images, {len(lotties)} animations, {len(sounds)} sounds, {len(videos)} videos.</p>
-<p style="opacity:.75;font-size:12px">Local and private: The Browser Company's artwork, extracted from your own installed copy. Don't publish.</p></div></header>
-<nav><a href="#colors">Colors</a><a href="#type">Type</a><a href="#icons">Icons</a><a href="#motion">Motion</a><a href="#sound">Sound</a><a href="#video">Video</a>
-<button onclick="toggle()">Light / Dark</button></nav>
-<main>
-<h2 id="colors">Colors</h2><p>Every named color in every asset catalog. Left half of each chip is light appearance, right half dark.</p>{''.join(colors_html)}
-<h2 id="type">Type</h2><p>Every bundled font file. Click a sample to type your own text.</p>{''.join(fonts_html)}
-<h2 id="icons">Icons &amp; images</h2><p>Rendered from the asset catalogs. Template icons are tinted at runtime; they invert in dark mode here.</p>{''.join(icons_html)}
-<h2 id="motion">Motion</h2><p>Lottie animations, looping.</p><div class="grid lot-grid">{lottie_html}</div>
-<h2 id="sound">Sound</h2><p>Everything Arc can play.</p><div class="grid vid-grid">{''.join(sounds)}</div>
-<h2 id="video">Video</h2><p>Onboarding and UI loops.</p><div class="grid vid-grid">{''.join(videos)}</div>
-</main>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-<script>
-const LOTTIE = {lottie_data};
-function toggle(){{const r=document.documentElement;r.dataset.theme=r.dataset.theme==='dark'?'light':'dark';try{{localStorage.setItem('theme',r.dataset.theme)}}catch(e){{}}}}
-try{{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}}catch(e){{}}
-window.addEventListener('load',()=>{{ if(!window.lottie) return;
-  for(const [id,data] of Object.entries(LOTTIE)) lottie.loadAnimation({{container:document.getElementById(id),renderer:'svg',loop:true,autoplay:true,animationData:data}});
-}});
-</script>
-</body></html>
-"""
+DATA = {
+    "version": "1.174.0", "build": "91305",
+    "appIcon": rel(iconset[-1]) if iconset else None,
+    "colors": colors, "appIcons": app_icons, "diaIcons": dia_icons, "art": art, "glyphs": glyphs, "marks": marks,
+    "fonts": font_faces, "type": type_families, "lottie": lotties, "sounds": sounds, "videos": videos,
+    "ui": {"display": ui_font("Marlin Soft SQ", 700) or ui_font("Marlin", 700),
+           "displayBlack": ui_font("Marlin Soft SQ", 900) or ui_font("Marlin Soft SQ", 800),
+           "mono": ui_font("ABC Favorit Mono", 400), "body": ui_font("Inter", 400),
+           "bodyMedium": ui_font("Inter", 500), "bodySemi": ui_font("Inter", 600)},
+    "counts": {"colors": sum(len(g["colors"]) for g in colors),
+               "fonts": len(font_faces), "families": len(type_families),
+               "images": len(app_icons) + len(dia_icons) + len(art) + len(glyphs) + len(marks),
+               "lottie": len(lotties), "sounds": len(sounds), "videos": len(videos)},
+}
+
+html = open(TEMPLATE).read().replace("/*__DATA__*/null", json.dumps(DATA, ensure_ascii=False))
 out = os.path.join(VAULT, "brand-book.html")
 open(out, "w").write(html)
-print(f"wrote {out}: colors={n_colors} fonts={len(font_files)} images={n_icons} lottie={len(lotties)} sounds={len(sounds)} videos={len(videos)}")
+print(f"wrote {out}", DATA["counts"], f"app={len(app_icons)} dia={len(dia_icons)} art={len(art)} glyphs={len(glyphs)} marks={len(marks)}")

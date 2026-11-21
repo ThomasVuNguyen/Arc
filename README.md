@@ -89,7 +89,7 @@ python3 scripts/tools/brand_book.py vault # -> vault/brand-book.html
 open vault/brand-book.html
 ```
 
-The local brand book shows every color chip (light/dark), all 85 font files as live editable specimens, all 414 icons and images, the 12 Lottie animations playing, and the sounds and onboarding videos, with a light/dark toggle. It stays in `vault/` because it shows Arc's copyrighted artwork. The boards on this page are redrawn from token values by `scripts/tools/brand_board.py`.
+The local brand book is laid out like an Arc window: a Space-colored frame with grain, a sidebar of pinned sections, and one white card. Pick a Space color and the whole page re-themes, including the animations, which recolor the way Arc's do. Inside: the core palette, the Space picker, all ten app icons (plus Dia's), feature illustrations, 18 type families as live specimens set in Arc's own fonts, a searchable icon library, Lottie motion, sounds, onboarding videos, and all 519 colors sorted by hue, with light/dark modes throughout. It stays in `vault/` because it shows Arc's copyrighted artwork. The boards on this page are redrawn from token values by `scripts/tools/brand_board.py`.
 
 ## What's here
 
