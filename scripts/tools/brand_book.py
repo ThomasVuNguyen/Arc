@@ -34,14 +34,19 @@ def pixels(path):
     try:
         im = Image.open(path).convert("RGBA")
     except Exception:
-        return True, False
+        return True, False, False
     im.thumbnail((64, 64))
     raw = im.tobytes()
     px = [tuple(raw[i:i + 4]) for i in range(0, len(raw), 4) if raw[i + 3] > 40]
     if len(px) < 4:
-        return True, False
+        return True, False, False
     spread = sum(max(p[:3]) - min(p[:3]) for p in px) / len(px)
-    return False, spread < 14
+    mono = spread < 14
+    bbox = im.getbbox() or (0, 0, 1, 1)
+    coverage = len(px) / max(1, (bbox[2] - bbox[0]) * (bbox[3] - bbox[1]))
+    tones = len({(p[0] // 16, p[1] // 16, p[2] // 16) for p in px})
+    skip = (mono and coverage > .92) or (not mono and tones > 260 and coverage > .9)   # solid fill shapes, photos
+    return False, mono, skip
 
 
 def humanize(name):
@@ -105,8 +110,9 @@ for d in sorted(glob.glob(f"{EX}/*/assets/images")):
         elif name.startswith(("AppIcon", "ZZZZ")):
             continue
         else:
-            blank, mono = pixels(p)
-            if blank or re.search(r"^Shape\d*$|Mask|Cutout|Backdrop|Placeholder|Scrim|Shadow", name):
+            blank, mono, skip = pixels(p)
+            person = b in ("AuthFeature", "EaselUI") and re.fullmatch(r"[A-Z][a-z]+", name) and not mono   # sample-avatar photos of real people
+            if blank or skip or person or re.search(r"^Shape\d*$|Mask|Cutout|Backdrop|Placeholder|Scrim|Shadow", name):
                 continue
             if "Preview" in name or "Thumbnail" in name or m["w"] >= 400:
                 art.append(item)
@@ -141,7 +147,8 @@ for i, p in enumerate(sorted(glob.glob(f"{EX}/*/raw/**/*.[ot]tf", recursive=True
     s = style.lower().replace(" ", "").replace("-", "")
     w = next((v for k, v in WEIGHTS if k in s), 400)
     alias = f"bb{i}"
-    font_faces.append({"alias": alias, "src": rel(p), "fmt": "opentype" if p.endswith(".otf") else "truetype"})
+    font_faces.append({"alias": alias, "src": rel(p), "fmt": "opentype" if p.endswith(".otf") else "truetype",
+                       "var": "Variable" in base or base.endswith("VF")})
     families.setdefault(fam, []).append({"alias": alias, "style": style, "w": w, "it": "italic" in s or "kursiv" in s})
 type_families = []
 for fam, styles in sorted(families.items()):
@@ -199,7 +206,9 @@ DATA = {
     "appIcon": rel(iconset[-1]) if iconset else None,
     "colors": colors, "appIcons": app_icons, "diaIcons": dia_icons, "art": art, "glyphs": glyphs, "marks": marks,
     "fonts": font_faces, "type": type_families, "lottie": lotties, "sounds": sounds, "videos": videos,
-    "ui": {"display": ui_font("Marlin Soft SQ", 700) or ui_font("Marlin", 700),
+    "ui": {"serif": next((s["alias"] for t in type_families if t["family"] == "EB Garamond" for s in t["styles"] if not s["it"]), None),
+           "serifItalic": next((s["alias"] for t in type_families if t["family"] == "EB Garamond" for s in t["styles"] if s["it"]), None),
+           "display": ui_font("Marlin Soft SQ", 700) or ui_font("Marlin", 700),
            "displayBlack": ui_font("Marlin Soft SQ", 900) or ui_font("Marlin Soft SQ", 800),
            "mono": ui_font("ABC Favorit Mono", 400), "body": ui_font("Inter", 400),
            "bodyMedium": ui_font("Inter", 500), "bodySemi": ui_font("Inter", 600)},

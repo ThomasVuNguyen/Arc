@@ -4,233 +4,171 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Arc Brand Book</title>
-<script>try{var m=localStorage.getItem('mode');document.documentElement.dataset.theme=m||'light'}catch(e){document.documentElement.dataset.theme='light'}</script>
 <style id="faces"></style>
 <style>
 :root{
-  --s1:#FF9396; --s2:#0048FF; --side-ink:#0E0F10;
-  --card:#FFFFFF; --ink:#0E0F10; --muted:#6B6F80; --faint:#A3A7B7;
-  --hair:rgba(14,15,16,.07); --well:#F4F5F9; --well2:#EDEEF4;
-  --blue:#3139FB;
-  --display:system-ui; --display-black:system-ui; --body:-apple-system,system-ui,sans-serif; --body-med:var(--body); --body-semi:var(--body);
+  --paper:#F2EFE8; --card:#FAF8F3; --ink:#151412; --muted:#6F6A60; --line:#D9D4C8;
+  --blue:#3139FB; --peach:#FF9396; --deep:#0048FF;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --serif-it:var(--serif);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
   --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
-  --ease:cubic-bezier(.2,.8,.2,1);
-}
-:root[data-theme=dark]{
-  --card:#14161C; --ink:#EDEEF2; --muted:#8F94A6; --faint:#5C6172;
-  --hair:rgba(250,251,255,.07); --well:#1C1F27; --well2:#232733;
+  --display:var(--sans);
+  --ease:cubic-bezier(.2,.8,.2,1); --spring:cubic-bezier(.34,1.56,.64,1);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:24px}
-body{margin:0;min-height:100vh;color:var(--ink);font:15px/1.55 var(--body);-webkit-font-smoothing:antialiased;
-  background:linear-gradient(160deg,var(--s1),var(--s2)) fixed;
-  display:grid;grid-template-columns:248px 1fr}
-.grain{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.16;mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E")}
+html{background:var(--paper)}
+body{margin:0;color:var(--ink);font:15px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding:72px 32px 96px}
 
-/* ---------- sidebar ---------- */
-aside{position:sticky;top:0;height:100vh;padding:14px 10px 14px 14px;display:flex;flex-direction:column;gap:10px;z-index:2;color:var(--side-ink)}
-.lights{display:flex;gap:8px;padding:6px 6px 4px}
-.lights i{width:12px;height:12px;border-radius:50%;background:currentColor;opacity:.22}
-.url{height:36px;border-radius:10px;background:rgba(255,255,255,.28);display:flex;align-items:center;padding:0 12px;font:500 13px var(--body-med);opacity:.9;gap:8px}
-.url b{font-weight:inherit;opacity:.55}
-.favs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
-.favs a{aspect-ratio:1.15;border-radius:12px;background:rgba(255,255,255,.28);display:grid;place-items:center;transition:background .2s,transform .2s var(--ease)}
-.favs a:hover{background:rgba(255,255,255,.45);transform:translateY(-1px)}
-.favs img{width:26px;height:26px}
-.label{font:600 11px var(--body-semi);letter-spacing:.02em;opacity:.5;padding:8px 10px 0}
-nav{display:flex;flex-direction:column;gap:2px}
-nav a{display:flex;align-items:center;gap:10px;height:34px;padding:0 10px;border-radius:9px;color:inherit;text-decoration:none;
-  font:14px var(--body);opacity:.78;transition:background .15s,opacity .15s}
-nav a:hover{background:rgba(14,15,16,.06);opacity:1}
-nav a.on{background:rgba(255,255,255,.85);opacity:1;color:#0E0F10;box-shadow:0 1px 2px rgba(0,0,0,.06),0 4px 14px rgba(0,0,0,.06);font-family:var(--body-med)}
-nav a i{width:14px;height:14px;border-radius:4px;background:currentColor;opacity:.42;flex:none}
-nav a.on i{background:var(--s2);opacity:1}
-.side-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding:6px 6px 2px}
-.spaces{display:flex;gap:9px}
-.spaces button{width:9px;height:9px;padding:0;border:0;border-radius:50%;background:currentColor;opacity:.28;cursor:pointer;transition:transform .2s var(--ease),opacity .2s}
-.spaces button:hover{transform:scale(1.4)}
-.spaces button.on{opacity:.85;transform:scale(1.25)}
-.mode{width:30px;height:30px;border:0;border-radius:9px;background:transparent;color:inherit;cursor:pointer;display:grid;place-items:center;opacity:.7}
-.mode:hover{background:rgba(14,15,16,.06);opacity:1}
+/* header */
+h1{font:400 clamp(64px,10vw,112px)/.95 var(--serif);letter-spacing:-.03em;margin:0 0 22px}
+h1 em,h2 em{font-family:var(--serif-it);font-style:italic;background:linear-gradient(100deg,var(--peach) 0%,#8E6CF5 48%,var(--deep) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.06em}
+.intro{max-width:500px;color:var(--muted);font-size:17px;line-height:1.6;margin:0 0 28px}
 
-/* ---------- card ---------- */
-main{position:relative;z-index:1;margin:10px 10px 10px 0;background:var(--card);border-radius:14px;min-width:0;
-  box-shadow:0 0 0 .5px rgba(0,0,0,.08),0 10px 40px rgba(0,0,0,.12)}
-.ready main{transition:background .4s}
-section{padding:112px 72px;max-width:1040px;margin:0 auto}
-section+section{border-top:1px solid var(--hair)}
-.eyebrow{font:12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin:0 0 18px}
-h2{font:44px/1.05 var(--display);letter-spacing:-.025em;margin:0 0 14px;max-width:16ch}
-.lede{color:var(--muted);font-size:17px;max-width:52ch;margin:0 0 48px}
-h3{font:600 12px var(--body-semi);color:var(--muted);letter-spacing:.02em;margin:48px 0 16px}
+/* tabs */
+.tabs{position:sticky;top:14px;z-index:20;display:inline-flex;flex-wrap:wrap;gap:2px;padding:4px;border-radius:999px;
+  background:rgba(250,248,243,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 0 0 1px var(--line),0 8px 24px rgba(21,20,18,.06)}
+.tabs a{display:flex;gap:7px;align-items:baseline;padding:7px 15px;border-radius:999px;color:var(--ink);text-decoration:none;font-size:14px;transition:background .2s}
+.tabs a:hover{background:rgba(21,20,18,.05)}
+.tabs a small{font-size:11px;color:var(--muted)}
+.tabs a.on{background:var(--ink);color:var(--paper)}
+.tabs a.on small{color:rgba(242,239,232,.6)}
 
-/* cover */
-.cover{min-height:clamp(560px,calc(100vh - 20px),960px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding-top:72px;padding-bottom:72px}
-.cover .logo{width:150px;height:150px;margin:0 0 8px -22px}
-.cover .logo img{width:100%;border-radius:28px}
-.cover h1{font:clamp(96px,15vw,188px)/.86 var(--display-black);letter-spacing:-.05em;margin:0 0 26px;
-  background:linear-gradient(120deg,#FF9396 0%,#7C6BFF 45%,#0048FF 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.cover p{font-size:22px;line-height:1.4;color:var(--muted);max-width:30ch;margin:0}
-.cover p b{color:var(--ink);font-weight:inherit}
-.stats{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px}
-.stats span{font:12px var(--mono);padding:7px 12px;border-radius:999px;background:var(--well);color:var(--muted)}
-.stats b{color:var(--ink);font-weight:400}
+h2{font:400 48px/1 var(--serif);letter-spacing:-.02em;margin:64px 0 10px}
+.sub{color:var(--muted);margin:0 0 28px;max-width:560px}
 
-/* color */
-.core{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:200px 200px;gap:12px}
-.tile{border-radius:20px;padding:22px;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;position:relative;overflow:hidden;
-  transition:transform .35s var(--ease)}
-.tile:hover{transform:scale(.985)}
-.tile b{font:26px/1.1 var(--display);letter-spacing:-.01em}
-.tile code{font:13px var(--mono);opacity:.75;margin-top:4px}
-.tile.blue{grid-row:span 2;background:#3139FB;color:#fff}
-.tile.grad{grid-column:span 2;background:linear-gradient(110deg,#FF9396,#0048FF);color:#fff}
-.tile.paper{background:#FAFBFF;color:#0E0F10;box-shadow:inset 0 0 0 1px rgba(14,15,16,.08)}
-.tile.ink{background:#0E0F10;color:#FAFBFF}
-.dots{display:flex;flex-wrap:wrap;gap:18px 14px}
-.dot{display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;width:68px}
-.dot span{width:52px;height:52px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(14,15,16,.08);transition:transform .3s var(--ease)}
-.dot:hover span{transform:scale(1.1)}
-.dot small{font:11px var(--body);color:var(--muted);text-align:center;line-height:1.25}
-.dot code{font:10px var(--mono);color:var(--faint)}
+/* wall */
+.wall{columns:3 330px;column-gap:16px}
+.tile{break-inside:avoid;margin:0 0 16px;position:relative;border-radius:6px;overflow:hidden;background:var(--bg,var(--card));color:var(--fg,var(--ink));
+  cursor:zoom-in;transition:transform .5s var(--ease),box-shadow .5s var(--ease);isolation:isolate}
+.tile:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(21,20,18,.12)}
+.tile .art{position:relative;width:100%}
+.tag{position:absolute;z-index:3;font:500 10px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:5px 6px;border-radius:2px;white-space:nowrap;pointer-events:none}
+.tag.tl{top:12px;left:12px}.tag.tr{top:12px;right:12px}.tag.bl{bottom:12px;left:12px}.tag.br{bottom:12px;right:12px}
+.tag.box{background:var(--tagbg,#E8352A);color:var(--tagfg,#fff)}
+.tag.plain{padding:0;opacity:.72}
+.ratio{display:block;width:100%}
+canvas.fill,svg.fill{position:absolute;inset:0;width:100%;height:100%;display:block}
+.grain::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.22;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* color posters */
+.swatch .art{aspect-ratio:3/4;display:flex;flex-direction:column;justify-content:flex-end;padding:22px}
+.swatch b{font:400 44px/1 var(--serif);letter-spacing:-.02em}
+.swatch code{font:12px var(--mono);opacity:.75;margin-top:8px}
+.bands .art{display:flex;flex-direction:column}
+.band{display:flex;justify-content:space-between;align-items:flex-end;padding:10px 14px;font:11px var(--mono);letter-spacing:.03em;min-height:46px}
+.scale .art{padding:46px 18px 18px;display:grid;gap:6px}
+.scale .row{display:grid;grid-template-columns:repeat(12,1fr);gap:3px}
+.scale .row i{aspect-ratio:1;border-radius:3px}
+.scale small{font:10px var(--mono);letter-spacing:.06em;text-transform:uppercase;opacity:.6;margin-top:6px}
+.chipwall .art{padding:46px 16px 16px;display:flex;flex-wrap:wrap;gap:3px}
+.chipwall i{width:14px;height:14px;border-radius:3px}
 
 /* spaces */
-.picker{display:grid;gap:14px}
-.prow{display:grid;grid-template-columns:96px 1fr;align-items:center}
-.prow>small{font:600 12px var(--body-semi);color:var(--muted)}
-.prow div{display:flex;gap:12px;flex-wrap:wrap}
-.swatch{width:40px;height:40px;border-radius:50%;border:0;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(14,15,16,.1);transition:transform .25s var(--ease),box-shadow .25s}
-.swatch:hover{transform:scale(1.12)}
-.swatch.on{box-shadow:0 0 0 3px var(--card),0 0 0 5px var(--ink)}
-.now{display:inline-flex;gap:10px;align-items:center;margin-top:36px;padding:10px 16px 10px 10px;border-radius:999px;background:var(--well);font:13px var(--mono);color:var(--muted)}
-.now i{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--s1),var(--s2))}
+.space .art{aspect-ratio:4/5}
+.space .name{position:absolute;left:22px;bottom:18px;z-index:3;font:400 48px/1 var(--serif);letter-spacing:-.02em}
+.space .name em{font-family:var(--serif-it);font-style:italic}
+.picker .art{aspect-ratio:4/5;transition:background .8s var(--ease)}
+.picker .dots{position:absolute;left:18px;right:18px;bottom:18px;z-index:3;display:grid;grid-template-columns:repeat(9,1fr);gap:7px;
+  padding:12px;border-radius:12px;background:rgba(250,248,243,.82);backdrop-filter:blur(10px)}
+.picker .dots button{aspect-ratio:1;border:0;border-radius:50%;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(21,20,18,.12);transition:transform .3s var(--spring)}
+.picker .dots button:hover{transform:scale(1.2)}
+.picker .label{position:absolute;top:44px;left:22px;z-index:3;font:400 40px/1.02 var(--serif);letter-spacing:-.02em;color:#fff;max-width:80%}
 
-/* app icons */
-.icons{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:28px 12px}
-.app{display:flex;flex-direction:column;align-items:center;gap:12px}
-.app img{width:104px;height:104px;transition:transform .45s var(--ease);filter:drop-shadow(0 10px 18px rgba(0,0,0,.14))}
-.app:hover img{transform:translateY(-6px) rotate(-3deg) scale(1.04)}
-.app small{font:13px var(--body);color:var(--muted)}
-.icons.dia .app img{width:84px;height:84px}
-
-/* illustrations */
-.art{columns:3 220px;column-gap:14px}
-.art figure{break-inside:avoid;margin:0 0 14px;background:var(--well);border-radius:16px;padding:18px;text-align:center}
-.art img{max-width:100%;max-height:220px}
-.art figcaption{font:12px var(--body);color:var(--muted);margin-top:10px}
+/* icons */
+.app .art{aspect-ratio:1;display:grid;place-items:center}
+.app img{width:46%;filter:drop-shadow(0 18px 30px rgba(0,0,0,.22));transition:transform .7s var(--spring)}
+.tile.app:hover img{transform:rotate(-6deg) scale(1.06)}
+.artpiece .art{padding:32px;display:grid;place-items:center;background:var(--card)}
+.artpiece img{max-width:100%;max-height:340px;border-radius:4px}
 
 /* type */
-.try{width:100%;font:20px var(--body);padding:16px 20px;border-radius:14px;border:0;background:var(--well);color:var(--ink);outline:none;margin-bottom:28px}
-.try:focus{box-shadow:0 0 0 2px var(--blue)}
-.fam{display:grid;grid-template-columns:190px 1fr;gap:24px;padding:26px 0;border-top:1px solid var(--hair);align-items:start}
-.fam .meta b{display:block;font:600 14px var(--body-semi)}
-.fam .meta small{display:block;font:12px var(--body);color:var(--muted)}
-.fam .meta em{display:inline-block;margin-top:8px;font:11px var(--mono);font-style:normal;color:var(--blue);background:color-mix(in srgb,var(--blue) 10%,transparent);padding:3px 8px;border-radius:999px}
-.spec{font-size:44px;line-height:1.12;letter-spacing:-.01em;overflow-wrap:anywhere;transition:font-family 0s}
-.styles{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
-.styles button{font:11px var(--body);border:0;background:var(--well);color:var(--muted);padding:5px 10px;border-radius:999px;cursor:pointer}
-.styles button:hover,.styles button.on{background:var(--ink);color:var(--card)}
+.type .art{padding:52px 22px 22px;display:flex;flex-direction:column;gap:14px;min-height:300px}
+.type .aa{font-size:120px;line-height:.9;letter-spacing:-.02em}
+.type .line{font-size:26px;line-height:1.15}
+.type .styles{font:10px/1.6 var(--mono);letter-spacing:.04em;text-transform:uppercase;opacity:.6}
 
-/* icon library */
-.search{display:flex;align-items:center;gap:12px;margin-bottom:8px}
-.search input{flex:1;font:16px var(--body);padding:13px 18px;border-radius:12px;border:0;background:var(--well);color:var(--ink);outline:none}
-.search input:focus{box-shadow:0 0 0 2px var(--blue)}
-.search small{font:12px var(--mono);color:var(--faint);white-space:nowrap}
-.glyphs{display:grid;grid-template-columns:repeat(auto-fill,minmax(56px,1fr));gap:4px}
-.g{aspect-ratio:1;border-radius:12px;display:grid;place-items:center;position:relative;cursor:default;transition:background .15s}
-.g:hover{background:var(--well)}
-.g img{max-width:26px;max-height:26px;opacity:.86}
-.marks .g img{max-width:34px;max-height:34px;opacity:1}
-.g img.mono{filter:brightness(0);opacity:.78}
-:root[data-theme=dark] .g img.mono{filter:brightness(0) invert(1)}
-.g::after{content:attr(data-h);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translate(-50%,4px);white-space:nowrap;
-  font:12px var(--body);background:#0E0F10;color:#fff;padding:5px 9px;border-radius:8px;opacity:0;pointer-events:none;transition:.15s;z-index:3}
-.g:hover::after{opacity:1;transform:translate(-50%,0)}
-.dark-v{display:none} :root[data-theme=dark] .has-dark .light-v{display:none} :root[data-theme=dark] .has-dark .dark-v{display:inline}
+/* motion helpers */
+.mo .art{aspect-ratio:1}
+.mo.tall .art{aspect-ratio:4/5}
+.mo.wide .art{aspect-ratio:5/4}
+.rings text{font:500 15px var(--display);letter-spacing:.02em}
+.spin{transform-box:fill-box;transform-origin:center;animation:spin var(--d,40s) linear infinite}
+.spin.rev{animation-direction:reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cells{position:absolute;inset:6%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr);gap:4%}
+.cells canvas{width:100%;height:100%;background:#000;display:block}
+.lgrid{position:absolute;inset:7%;display:grid;grid-template-columns:repeat(3,1fr);gap:4%}
+.lgrid div{border-radius:10px;display:grid;place-items:center;overflow:hidden}
+.lgrid div>div{width:70%;height:70%}
+.lgrid [fill="rgb(0,0,0)"]{fill:#fff}.lgrid [stroke="rgb(0,0,0)"]{stroke:#fff}
+.lsolo [fill="rgb(0,0,0)"]{fill:var(--fg)}.lsolo [stroke="rgb(0,0,0)"]{stroke:var(--fg)}
+.side{position:absolute;inset:9% 18% 9% 9%;display:flex;flex-direction:column;gap:8px}
+.side .pill{height:26px;border-radius:8px;background:rgba(255,255,255,.3)}
+.side .favs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.side .favs i{aspect-ratio:1.2;border-radius:9px;background:rgba(255,255,255,.3)}
+.side .list{position:relative;flex:1;margin-top:6px}
+.side .row{position:absolute;left:0;right:0;height:30px;border-radius:8px;display:flex;align-items:center;gap:9px;padding:0 10px;
+  font:13px var(--sans);color:#151412;transition:transform .9s var(--spring),background .4s}
+.side .row i{width:12px;height:12px;border-radius:3px;background:currentColor;opacity:.55}
+.side .row.cur{background:rgba(255,255,255,.85);box-shadow:0 4px 14px rgba(0,0,0,.08)}
+.cmd{position:absolute;left:9%;right:9%;top:50%;transform:translateY(-50%);background:#fff;border-radius:14px;box-shadow:0 30px 60px rgba(0,0,0,.25);overflow:hidden;font:15px var(--sans);color:#151412}
+.cmd .q{padding:16px 18px;border-bottom:1px solid #eee;min-height:52px}
+.cmd .q::after{content:"";display:inline-block;width:2px;height:18px;background:var(--blue);vertical-align:-3px;margin-left:1px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.cmd .r{padding:10px 18px;display:flex;gap:10px;align-items:center;font-size:13px;transition:background .25s,color .25s}
+.cmd .r.sel{background:var(--blue);color:#fff}
+.cmd .r i{width:14px;height:14px;border-radius:4px;background:currentColor;opacity:.4}
+.vid .art video{display:block;width:100%}
+.snd .art{aspect-ratio:5/4;display:flex;flex-direction:column;justify-content:space-between;padding:22px}
+.snd b{font:400 34px/1.05 var(--serif);letter-spacing:-.01em}
+.snd .bars{display:flex;gap:4px;align-items:flex-end;height:80px}
+.snd .bars i{flex:1;background:currentColor;opacity:.85;border-radius:2px;height:12%;transition:height .12s}
+.snd .play{width:52px;height:52px;border-radius:50%;border:0;background:var(--fg);color:var(--bg);font-size:15px;cursor:pointer}
 
-/* motion */
-.motion{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:28px 16px}
-.mo{display:flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer}
-.mo .stage{width:132px;height:132px;border-radius:50%;background:var(--well);display:grid;place-items:center;overflow:hidden;transition:transform .4s var(--ease)}
-.mo:hover .stage{transform:scale(1.05)}
-.mo .stage>div{width:84%;height:84%}
-.mo b{font:500 13px var(--body-med)}
-.mo small{font:11px var(--mono);color:var(--faint);margin-top:-8px}
-.mo [fill="rgb(0,0,0)"],#cover-logo [fill="rgb(0,0,0)"]{fill:var(--s2);transition:fill .6s}
-.mo [stroke="rgb(0,0,0)"],#cover-logo [stroke="rgb(0,0,0)"]{stroke:var(--s2);transition:stroke .6s}
-.mo .stage{background:color-mix(in srgb,var(--s1) 14%,var(--well))}
+/* index (searchable glyph list) */
+.index{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:4px;margin-top:8px}
+.index div{aspect-ratio:1;border-radius:8px;display:grid;place-items:center;position:relative}
+.index div:hover{background:var(--card)}
+.index img{max-width:28px;max-height:28px}
+.index img.mono{filter:brightness(0);opacity:.8}
+.index div::after{content:attr(data-h);position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);white-space:nowrap;font:11px var(--sans);
+  background:var(--ink);color:var(--paper);padding:4px 8px;border-radius:6px;opacity:0;pointer-events:none;transition:.15s;z-index:5}
+.index div:hover::after{opacity:1}
+.search{width:100%;max-width:420px;font:15px var(--sans);padding:11px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);outline:none;margin:6px 0 10px}
+.search:focus{border-color:var(--ink)}
+.tester{width:100%;font:400 22px var(--serif);padding:12px 0;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);outline:none;margin:0 0 24px}
 
-/* sound & video */
-.sounds{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px}
-.play{display:inline-flex;align-items:center;gap:12px;border:0;background:var(--well);color:var(--ink);padding:8px 20px 8px 8px;border-radius:999px;cursor:pointer;font:500 14px var(--body-med);transition:background .2s}
-.play:hover{background:var(--well2)}
-.play i{width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--card);display:grid;place-items:center;font-style:normal;font-size:12px}
-.play.on i{background:var(--blue);color:#fff}
-.videos{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.videos figure{margin:0}
-.videos video{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:16px;background:var(--well);display:block}
-.videos figcaption{font:13px var(--body);color:var(--muted);margin-top:8px}
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:rgba(242,239,232,.92);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:4vh 4vw;cursor:zoom-out}
+.lb.on{display:flex}
+.lb .tile{width:min(86vh,92vw);cursor:default;box-shadow:0 40px 80px rgba(21,20,18,.2);margin:0}
+.lb .tile:hover{transform:none}
+.lb .tile.vid,.lb .tile.artpiece{width:min(1100px,92vw)}
 
-/* every color */
-.bundle{margin-top:34px}
-.bundle h4{font:12px var(--mono);color:var(--faint);margin:0 0 10px;font-weight:400}
-.bundle h4 b{color:var(--ink);font-weight:400}
-.chips{display:flex;flex-wrap:wrap;gap:5px}
-.chip{width:30px;height:30px;border-radius:8px;cursor:pointer;position:relative;
-  background:repeating-conic-gradient(#E3E4EA 0 25%,#fff 0 50%) 0 0/8px 8px}
-.chip span{position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(14,15,16,.08)}
-.chip::after{content:attr(data-h);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translate(-50%,4px);white-space:nowrap;
-  font:12px var(--body);background:#0E0F10;color:#fff;padding:5px 9px;border-radius:8px;opacity:0;pointer-events:none;transition:.15s;z-index:3}
-.chip:hover::after{opacity:1;transform:translate(-50%,0)}
-
-footer{padding:72px;text-align:center;color:var(--faint);font:13px var(--body)}
-footer b{font:20px var(--display);color:var(--ink);display:block;margin-bottom:6px;letter-spacing:-.01em}
-
-.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:#0E0F10;color:#fff;font:500 14px var(--body-med);
-  padding:11px 18px;border-radius:12px;opacity:0;pointer-events:none;transition:.3s var(--ease);z-index:10;display:flex;gap:10px;align-items:center;
-  box-shadow:0 10px 30px rgba(0,0,0,.25)}
-.toast i{width:14px;height:14px;border-radius:4px}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-
-@media (max-width:860px){
-  body{grid-template-columns:1fr}
-  aside{position:sticky;height:auto;flex-direction:row;align-items:center;overflow-x:auto;padding:10px 12px;gap:8px}
-  .lights,.url,.favs,.label{display:none}
-  nav{flex-direction:row}
-  nav a{white-space:nowrap}
-  .side-foot{margin:0;gap:10px}
-  main{margin:0 8px 8px}
-  section{padding:72px 22px}
-  h2{font-size:34px}
-  .core{grid-template-columns:1fr 1fr;grid-template-rows:150px 150px 150px}
-  .tile.blue{grid-row:span 1}
-  .fam{grid-template-columns:1fr;gap:8px}
-  .spec{font-size:32px}
-  .videos{grid-template-columns:1fr}
-  .prow{grid-template-columns:1fr;gap:8px}
-  
-}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+footer{margin-top:96px;padding-top:28px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+footer b{font:400 22px var(--serif);color:var(--ink);font-weight:400}
+.toast{position:fixed;left:50%;bottom:24px;z-index:60;transform:translate(-50%,16px);opacity:0;background:var(--ink);color:var(--paper);font:13px var(--mono);
+  padding:10px 16px;border-radius:999px;transition:.3s var(--ease);pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (max-width:720px){.wrap{padding:40px 16px 64px}.tabs{position:static}h2{font-size:38px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<div class="grain"></div>
-<aside>
-  <div class="lights"><i></i><i></i><i></i></div>
-  <div class="url"><b>arc://</b>brand-book</div>
-  <div class="favs" id="favs"></div>
-  <div class="label">Pinned</div>
-  <nav id="nav"></nav>
-  <div class="side-foot">
-    <div class="spaces" id="spaces"></div>
-    <button class="mode" id="mode" title="Light / dark">
-      <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg>
-    </button>
-  </div>
-</aside>
-<main id="main"></main>
-<div class="toast" id="toast"><i></i><span></span></div>
+<div class="wrap">
+  <h1>Arc <em>Brand Book</em></h1>
+  <p class="intro" id="intro"></p>
+  <nav class="tabs" id="tabs"></nav>
+  <main id="main"></main>
+  <footer><b>Arc, 2022–2026</b><span>Made by The Browser Company. Recovered from build <span id="build"></span>, kept with love.</span></footer>
+</div>
+<div class="lb" id="lb"></div>
+<div class="toast" id="toast"></div>
 
 <script>const D = /*__DATA__*/null;</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
@@ -238,203 +176,349 @@ footer b{font:20px var(--display);color:var(--ink);display:block;margin-bottom:6
 (() => {
 const $ = (s, r = document) => r.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const store = { get(k){ try { return localStorage.getItem(k) } catch(e){ return null } }, set(k,v){ try { localStorage.setItem(k,v) } catch(e){} } };
+const h = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; };
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* fonts: every bundled file gets its own alias; the page itself wears Arc's fonts */
-$('#faces').textContent = D.fonts.map(f => `@font-face{font-family:"${f.alias}";src:url("${f.src}") format("${f.fmt}");font-display:swap}`).join('\n');
+/* ---------- fonts: Arc's own files ---------- */
+$('#faces').textContent = D.fonts.map(f => `@font-face{font-family:"${f.alias}";src:url("${f.src}") format("${f.fmt}");${f.var ? 'font-weight:400 800;' : ''}font-display:swap}`).join('\n');
 const R = document.documentElement.style, U = D.ui;
-if (U.display) R.setProperty('--display', `"${U.display}",system-ui`);
-if (U.displayBlack) R.setProperty('--display-black', `"${U.displayBlack}",system-ui`);
-if (U.body) R.setProperty('--body', `"${U.body}",-apple-system,system-ui,sans-serif`);
-if (U.bodyMedium) R.setProperty('--body-med', `"${U.bodyMedium}",-apple-system,system-ui,sans-serif`);
-if (U.bodySemi) R.setProperty('--body-semi', `"${U.bodySemi}",-apple-system,system-ui,sans-serif`);
+if (U.serif) R.setProperty('--serif', `"${U.serif}","Iowan Old Style",Georgia,serif`);
+if (U.serifItalic) R.setProperty('--serif-it', `"${U.serifItalic}","Iowan Old Style",Georgia,serif`);
+if (U.body) R.setProperty('--sans', `"${U.body}",-apple-system,system-ui,sans-serif`);
 if (U.mono) R.setProperty('--mono', `"${U.mono}",ui-monospace,Menlo,monospace`);
+if (U.display) R.setProperty('--display', `"${U.display}",-apple-system,system-ui,sans-serif`);
+const DISPLAY_BLACK = U.displayBlack ? `"${U.displayBlack}"` : 'system-ui';
+let fontGen = 0; document.fonts.load(`900 40px ${DISPLAY_BLACK}`).then(() => fontGen++).catch(() => {});
 
-/* helpers */
+/* ---------- data helpers ---------- */
 const base = D.colors.find(g => g.bundle === 'BaseAssets')?.colors || [];
-const hex = n => (base.find(c => c.n === n)?.l || [])[0];
-const toast = (msg, color) => {
-  const t = $('#toast'); t.querySelector('span').textContent = msg;
-  t.querySelector('i').style.background = color || 'transparent'; t.querySelector('i').style.display = color ? '' : 'none';
-  t.classList.add('show'); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove('show'), 1600);
-};
-const copy = (text, color) => {
-  const done = () => toast(`Copied ${text}`, color);
-  if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, fallback); else fallback();
-  function fallback(){ const a = document.createElement('textarea'); a.value = text; document.body.append(a); a.select(); try { document.execCommand('copy') } catch(e){} a.remove(); done(); }
-};
-const rgb = h => [1,3,5].map(i => parseInt(h.slice(i, i+2), 16));
-const lum = h => { const [r,g,b] = rgb(h).map(v => { v/=255; return v <= .03928 ? v/12.92 : ((v+.055)/1.055)**2.4 }); return .2126*r + .7152*g + .0722*b };
-const toHsl = h => { let [r,g,b] = rgb(h).map(v => v/255); const mx = Math.max(r,g,b), mn = Math.min(r,g,b); let H = 0, S = 0, L = (mx+mn)/2;
-  if (mx !== mn){ const d = mx-mn; S = L > .5 ? d/(2-mx-mn) : d/(mx+mn); H = mx===r ? (g-b)/d + (g<b?6:0) : mx===g ? (b-r)/d + 2 : (r-g)/d + 4; H *= 60 } return [H, S*100, L*100] };
-const partner = h => { const [H,S,L] = toHsl(h); return `hsl(${(H+28)%360} ${Math.min(100,S+6)}% ${Math.max(8, L-22)}%)` };
-const img = (it, cls='') => (cls = (cls + (it.mono ? ' mono' : '')).trim(), it.dark)
-  ? `<span class="has-dark ${cls}"><img class="light-v" src="${esc(it.src)}" alt="" loading="lazy"><img class="dark-v" src="${esc(it.dark)}" alt="" loading="lazy"></span>`
-  : `<img class="${cls}" src="${esc(it.src)}" alt="" loading="lazy">`;
+const arcui = D.colors.find(g => g.bundle === 'ARCUI')?.colors || [];
+const col = (n, list = base, mode = 'l') => (list.find(c => c.n === n)?.[mode] || [])[0];
+const rgb = x => [1,3,5].map(i => parseInt(x.slice(i, i+2), 16));
+const lum = x => { const [r,g,b] = rgb(x).map(v => { v/=255; return v <= .03928 ? v/12.92 : ((v+.055)/1.055)**2.4 }); return .2126*r+.7152*g+.0722*b };
+const on = x => lum(x) > .4 ? '#151412' : '#FAF8F3';
+const hsl = x => { let [r,g,b] = rgb(x).map(v => v/255); const mx = Math.max(r,g,b), mn = Math.min(r,g,b); let H = 0, S = 0, L = (mx+mn)/2;
+  if (mx !== mn){ const d = mx-mn; S = L > .5 ? d/(2-mx-mn) : d/(mx+mn); H = mx===r ? (g-b)/d+(g<b?6:0) : mx===g ? (b-r)/d+2 : (r-g)/d+4; H *= 60 } return [H,S,L] };
+const toast = m => { const t = $('#toast'); t.textContent = m; t.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove('on'), 1500) };
+const copy = v => { (navigator.clipboard?.writeText(v) || Promise.reject()).catch(() => { const a = document.createElement('textarea'); a.value = v; document.body.append(a); a.select(); try { document.execCommand('copy') } catch(e){} a.remove() }); toast(`Copied ${v}`) };
+const pad = n => String(n).padStart(2, '0');
 
-/* spaces: picking one recolors the window, like switching Spaces in Arc */
-function setSpace(s1, s2, name){
-  R.setProperty('--s1', s1); R.setProperty('--s2', s2);
-  const probe = s1.startsWith('#') ? s1 : '#888888';
-  R.setProperty('--side-ink', lum(probe) > .35 ? '#0E0F10' : '#FAFBFF');
-  const now = $('#now'); if (now) now.innerHTML = `<i></i>${esc(name || s1)}`;
-  store.set('space', JSON.stringify([s1, s2, name]));
+/* ---------- animation scheduler: only visible canvases run ---------- */
+const loops = new Set();
+const io = new IntersectionObserver(es => es.forEach(e => { const l = e.target._loop; if (l) l.visible = e.isIntersecting }), { rootMargin: '200px' });
+function animate(el, draw){
+  const loop = { el, draw, visible: true, t0: performance.now() };
+  el._loop = loop; loops.add(loop); io.observe(el);
+  requestAnimationFrame(() => { if (el.isConnected && el.getBoundingClientRect().width > 4) draw(0) });   // first frame even when motion is reduced
+  return loop;
 }
-const SPACES = [
-  ['Arc', '#FF9396', '#0048FF'], ['Rose', '#F29BBB', '#A6729D'], ['Sea', '#6CBAD9', '#26456B'],
-  ['Moss', '#7AA982', '#226149'], ['Sand', '#F2EAE4', '#D7B35D'], ['Night', '#4E3A5A', '#120F2E'],
-];
-$('#spaces').innerHTML = SPACES.map(([n], i) => `<button title="${n}" data-i="${i}"></button>`).join('');
-$('#spaces').onclick = e => { const b = e.target.closest('button'); if (!b) return;
-  const [n, a, c] = SPACES[b.dataset.i]; setSpace(a, c, n);
-  [...$('#spaces').children].forEach(x => x.classList.toggle('on', x === b)); };
+(function tick(now){ if (!reduce) loops.forEach(l => { if (l.visible && l.el.isConnected && l.el.getBoundingClientRect().width > 4) l.draw((now - l.t0) / 1000) }); requestAnimationFrame(tick) })(performance.now());
+function fitCanvas(c){ const r = c.getBoundingClientRect(), dpr = Math.min(2, devicePixelRatio || 1);
+  const w = Math.max(1, Math.round(r.width * dpr)), hh = Math.max(1, Math.round(r.height * dpr));
+  if (c.width !== w || c.height !== hh){ c.width = w; c.height = hh } return [w, hh, dpr]; }
 
-/* sections */
-const C = D.counts;
-const S = [];
-const sec = (id, title, html) => S.push({ id, title, html });
+/* ---------- tile factory ---------- */
+function tile({ cls = '', bg, fg, tags = [], art, copyVal, grain }){
+  const el = h(`<figure class="tile ${cls}${grain ? ' grain' : ''}" style="${bg ? `--bg:${bg};` : ''}${fg ? `--fg:${fg};` : bg ? `--fg:${on(bg.startsWith('#') ? bg : '#888888')};` : ''}"></figure>`);
+  const a = h(`<div class="art"></div>`); if (typeof art === 'string') a.innerHTML = art; else if (art) a.append(art);
+  el.append(a);
+  tags.forEach(([pos, text, style = 'plain', tb, tf]) => el.append(h(`<span class="tag ${pos} ${style}" style="${tb ? `--tagbg:${tb};` : ''}${tf ? `--tagfg:${tf}` : ''}">${esc(text)}</span>`)));
+  if (copyVal) el.dataset.copy = copyVal;
+  return el;
+}
 
-sec('cover', 'Cover', `
-  <div class="logo" id="cover-logo"></div>
-  <h1>Arc</h1>
-  <p>The brand book, <b>recovered from the last build</b> before the lights went out.</p>
-  <div class="stats">
-    <span><b>${C.colors}</b> colors</span><span><b>${C.families}</b> type families</span><span><b>${C.images}</b> images</span>
-    <span><b>${C.lottie}</b> animations</span><span><b>${C.sounds}</b> sounds</span><span>macOS <b>${D.version}</b> (${D.build})</span>
-  </div>`);
-
-const brand = ['Blue','Red','Yellow','Green','LightGreen','LightBlue','Magenta','Gray'].map(n => ['Brand'+n, n]);
-const ext = ['Cream','LightPink','Purple','Orange','Teal','BlueGray','Navy','Brown','BrownPink','VibrantRed'].map(n => ['BrandExtended'+n, n.replace(/([a-z])([A-Z])/g,'$1 $2')]);
-const dots = list => `<div class="dots">${list.map(([k, n]) => { const h = hex(k); return h ? `<div class="dot" data-copy="${h}"><span style="background:${h}"></span><small>${esc(n.replace(/([a-z])([A-Z])/g,'$1 $2'))}</small><code>${h}</code></div>` : '' }).join('')}</div>`;
-sec('color', 'Color', `
-  <p class="eyebrow">01 · Color</p>
-  <h2>Four colors do most of the work.</h2>
-  <p class="lede">An electric blue for action, a peach-to-blue gradient for moments, and quiet paper and ink for everything in between. Click any color to copy it.</p>
-  <div class="core">
-    <div class="tile blue" data-copy="#3139FB"><b>Arc Blue</b><code>#3139FB</code></div>
-    <div class="tile grad" data-copy="#FF9396 → #0048FF"><b>The gradient</b><code>#FF9396 → #0048FF</code></div>
-    <div class="tile paper" data-copy="#FAFBFF"><b>Paper</b><code>#FAFBFF</code></div>
-    <div class="tile ink" data-copy="#0E0F10"><b>Ink</b><code>#0E0F10</code></div>
-  </div>
-  <h3>Brand</h3>${dots(brand)}
-  <h3>Extended</h3>${dots(ext)}`);
-
-const groups = [['Brand','Brand'],['Pastel','Pastel'],['Drab','Drab'],['Greyscale','Greyscale']];
-sec('spaces', 'Spaces', `
-  <p class="eyebrow">02 · Spaces</p>
-  <h2>Every Space gets its own color.</h2>
-  <p class="lede">Arc’s chrome is see-through, so the Space color becomes the whole window. This page is an Arc window too. Pick a color.</p>
-  <div class="picker">${groups.map(([g, label]) => `<div class="prow"><small>${label}</small><div>${
-    Array.from({length: 9}, (_, i) => hex(`ColorPicker${g}${i+1}`)).filter(Boolean)
-      .map(h => `<button class="swatch" style="background:${h}" data-space="${h}" title="${h}"></button>`).join('')}</div></div>`).join('')}</div>
-  <div class="now" id="now"><i></i>Arc</div>`);
-
-sec('icons', 'App icons', `
-  <p class="eyebrow">03 · App icons</p>
-  <h2>Ten ways to wear the icon.</h2>
-  <p class="lede">The original, plus the alternates you could pick in Settings.</p>
-  <div class="icons">${D.appIcons.map(a => `<div class="app">${img(a)}<small>${esc(a.h)}</small></div>`).join('')}</div>
-  ${D.diaIcons.length ? `<h3>And its younger sibling, Dia</h3><div class="icons dia">${D.diaIcons.map(a => `<div class="app">${img(a)}<small>${esc(a.h)}</small></div>`).join('')}</div>` : ''}`);
-
-if (D.art.length) sec('art', 'Illustrations', `
-  <p class="eyebrow">04 · Illustrations</p>
-  <h2>Little pictures that explain things.</h2>
-  <p class="lede">Feature previews, onboarding art and the odd blob.</p>
-  <div class="art">${D.art.map(a => `<figure>${img(a)}<figcaption>${esc(a.h)}</figcaption></figure>`).join('')}</div>`);
-
-sec('type', 'Type', `
-  <p class="eyebrow">05 · Type</p>
-  <h2>Type with a voice.</h2>
-  <p class="lede">The browser UI is set in the system font, so the personality lives in Easels, onboarding and moments like this. ${C.families} families ship inside the app.</p>
-  <input class="try" id="try" placeholder="Type something to try every family…" spellcheck="false">
-  ${D.type.map((t, i) => `<div class="fam">
-    <div class="meta"><b>${esc(t.family)}</b><small>${esc(t.foundry)}</small><small>${t.styles.length} style${t.styles.length > 1 ? 's' : ''}</small>${t.role ? `<em>${esc(t.role)}</em>` : ''}</div>
-    <div><div class="spec" id="spec${i}" style="font-family:'${t.main}'">Tabs that tidy themselves.</div>
-    <div class="styles" data-spec="spec${i}">${t.styles.map(s => `<button data-alias="${s.alias}" class="${s.alias === t.main ? 'on' : ''}">${esc(s.style)}</button>`).join('')}</div></div>
-  </div>`).join('')}`);
-
-sec('library', 'Icon library', `
-  <p class="eyebrow">06 · Icon library</p>
-  <h2>${D.glyphs.length + D.marks.length} small things.</h2>
-  <p class="lede">Glyphs are templates that take on the Space color at runtime. Marks are the full-color logos of the sites and apps Arc knows about.</p>
-  <div class="search"><input id="q" placeholder="Search icons…" spellcheck="false"><small id="qn"></small></div>
-  <h3>Glyphs</h3><div class="glyphs" id="glyphs">${D.glyphs.map(g => `<div class="g" data-h="${esc(g.h)}" data-q="${esc((g.n+' '+g.b).toLowerCase())}">${img(g)}</div>`).join('')}</div>
-  <h3>Marks</h3><div class="glyphs marks" id="marks">${D.marks.map(g => `<div class="g" data-h="${esc(g.h)}" data-q="${esc((g.n+' '+g.b).toLowerCase())}">${img(g)}</div>`).join('')}</div>`);
-
-sec('motion', 'Motion', `
-  <p class="eyebrow">07 · Motion</p>
-  <h2>Things that move.</h2>
-  <p class="lede">Springy, quick and never in the way. Hover to replay.</p>
-  <div class="motion">${D.lottie.map((l, i) => `<div class="mo" data-l="${i}"><div class="stage"><div id="lot${i}"></div></div><b>${esc(l.h)}</b><small>${l.dur}s</small></div>`).join('')}</div>`);
-
-sec('sound', 'Sound & video', `
-  <p class="eyebrow">08 · Sound &amp; video</p>
-  <h2>A few sounds, a few loops.</h2>
-  <p class="lede">Arc was mostly quiet. These are all the sounds it had, and the clips that taught you how to use it.</p>
-  <div class="sounds">${D.sounds.map((s, i) => `<button class="play" data-snd="${i}"><i>▶</i>${esc(s.h)}</button>`).join('')}</div>
-  <div class="videos">${D.videos.map(v => `<figure><video src="${esc(v.src)}" muted loop playsinline preload="metadata"></video><figcaption>${esc(v.h)}</figcaption></figure>`).join('')}</div>`);
-
-const css = c => c ? (c[1] >= 1 ? c[0] : `color-mix(in srgb, ${c[0]} ${Math.round(c[1]*100)}%, transparent)`) : 'transparent';
-const lab = c => c ? (c[1] >= 1 ? c[0] : `${c[0]} · ${Math.round(c[1]*100)}%`) : '';
-sec('all', 'Every color', `
-  <p class="eyebrow">09 · Every color</p>
-  <h2>All ${C.colors} of them.</h2>
-  <p class="lede">Every named color in every asset catalog. Top-left is light appearance, bottom-right is dark. Hover for the name, click to copy.</p>
-  ${D.colors.map(g => `<div class="bundle"><h4><b>${esc(g.bundle)}</b> · ${g.colors.length}</h4><div class="chips">${g.colors.map(c =>
-    `<div class="chip" data-copy="${c.l ? c.l[0] : ''}" data-h="${esc(c.n)} · ${esc(lab(c.l))}${c.d && lab(c.d) !== lab(c.l) ? ' / ' + esc(lab(c.d)) : ''}"><span style="background:linear-gradient(135deg, ${css(c.l)} 50%, ${css(c.d)} 50%)"></span></div>`).join('')}</div></div>`).join('')}`);
-
-$('#main').innerHTML = S.map(s => `<section id="${s.id}" class="${s.id === 'cover' ? 'cover' : ''}">${s.html}</section>`).join('')
-  + `<footer><b>Arc, 2022 – 2026</b>Made by The Browser Company. Kept, with love, from your own copy.</footer>`;
-$('#nav').innerHTML = S.map(s => `<a href="#${s.id}" data-id="${s.id}"><i></i>${esc(s.title)}</a>`).join('');
-$('#favs').innerHTML = D.appIcons.slice(0, 4).map(a => `<a href="#icons" title="${esc(a.h)}"><img src="${esc(a.src)}" alt=""></a>`).join('');
-
-/* interactions */
-document.addEventListener('click', e => {
-  const c = e.target.closest('[data-copy]'); if (c && c.dataset.copy) copy(c.dataset.copy, c.dataset.copy.startsWith('#') ? c.dataset.copy : null);
-  const sw = e.target.closest('[data-space]');
-  if (sw){ const h = sw.dataset.space; setSpace(h, partner(h), h);
-    document.querySelectorAll('.swatch').forEach(x => x.classList.toggle('on', x === sw));
-    [...$('#spaces').children].forEach(x => x.classList.remove('on')); }
-  const st = e.target.closest('.styles button');
-  if (st){ const p = st.parentElement; $('#' + p.dataset.spec).style.fontFamily = `'${st.dataset.alias}'`;
-    p.querySelectorAll('button').forEach(b => b.classList.toggle('on', b === st)); }
-  const pl = e.target.closest('[data-snd]');
-  if (pl){ const s = D.sounds[pl.dataset.snd]; pl._a = pl._a || new Audio(s.src);
-    if (pl._a.paused){ pl._a.currentTime = 0; pl._a.play(); pl.classList.add('on'); pl.querySelector('i').textContent = '❚❚';
-      pl._a.onended = () => { pl.classList.remove('on'); pl.querySelector('i').textContent = '▶' }; }
-    else { pl._a.pause(); pl.classList.remove('on'); pl.querySelector('i').textContent = '▶' } }
-});
-$('#try').addEventListener('input', e => document.querySelectorAll('.spec').forEach(s => s.textContent = e.target.value || 'Tabs that tidy themselves.'));
-const q = $('#q'), qn = $('#qn');
-const filter = () => { const v = q.value.trim().toLowerCase(); let n = 0;
-  document.querySelectorAll('#glyphs .g, #marks .g').forEach(g => { const ok = !v || g.dataset.q.includes(v); g.style.display = ok ? '' : 'none'; n += ok });
-  qn.textContent = `${n} shown`; };
-q.addEventListener('input', filter); filter();
-document.querySelectorAll('.videos video').forEach(v => { v.parentElement.addEventListener('mouseenter', () => v.play().catch(()=>{})); v.parentElement.addEventListener('mouseleave', () => v.pause()); });
-
-/* theme */
-const setMode = m => { document.documentElement.dataset.theme = m; store.set('mode', m) };
-setMode(store.get('mode') || 'light');
-requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.add('ready')));
-$('#mode').onclick = () => setMode(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
-try { const s = JSON.parse(store.get('space')); if (s) setSpace(...s); else throw 0 } catch(e){ setSpace('#FF9396', '#0048FF', 'Arc'); $('#spaces').firstElementChild.classList.add('on') }
-
-/* scroll spy */
-const links = Object.fromEntries([...document.querySelectorAll('#nav a')].map(a => [a.dataset.id, a]));
-const spy = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ Object.values(links).forEach(a => a.classList.remove('on')); links[e.target.id]?.classList.add('on') } }),
-  { rootMargin: '-45% 0px -50% 0px' });
-document.querySelectorAll('main section').forEach(s => spy.observe(s));
-
-/* lottie */
-window.addEventListener('load', () => {
-  if (!window.lottie){ const o = D.appIcons[0]; if (o) $('#cover-logo').innerHTML = `<img src="${esc(o.src)}" alt="">`; return; }
-  const logo = D.lottie.findIndex(l => l.n === 'logo-wave');
-  D.lottie.forEach((l, i) => {
-    const a = lottie.loadAnimation({ container: $('#lot' + i), renderer: 'svg', loop: true, autoplay: true, animationData: l.data });
-    $(`[data-l="${i}"]`).addEventListener('mouseenter', () => a.goToAndPlay(0, true));
+/* ===================== COLOR ===================== */
+function colorTiles(){
+  const t = [];
+  const core = [['Arc Blue', '#3139FB', 'Primary action'], ['Paper', '#FAFBFF', 'Popovers & menus'], ['Ink', '#0E0F10', 'Text & tints'], ['Navy', '#120F2E', 'Dark surfaces']];
+  t.push(tile({ cls: 'swatch', bg: 'linear-gradient(160deg,#FF9396,#0048FF)', fg: '#fff', grain: true, copyVal: '#FF9396 → #0048FF',
+    art: `<b><i style="font-family:var(--serif-it)">The gradient</i></b><code>#FF9396 → #0048FF</code>`, tags: [['tl', 'Signature'], ['tr', 'Welcome · Capture']] }));
+  core.forEach(([n, x, role], i) => t.push(tile({ cls: 'swatch', bg: x, copyVal: x, art: `<b>${n}</b><code>${x}</code>`, tags: [['tl', pad(i+1)], ['tr', role]] })));
+  const brand = ['Blue','Red','Yellow','Green','LightGreen','LightBlue','Magenta','Gray'].map(n => [n.replace(/([a-z])([A-Z])/g,'$1 $2'), col('Brand'+n)]).filter(x => x[1]);
+  t.push(tile({ cls: 'bands', bg: '#FAF8F3', tags: [['tr', 'Brand · 8', 'box', '#151412']],
+    art: `<div style="height:44px"></div>` + brand.map(([n, x]) => `<div class="band" style="background:${x};color:${on(x)}" data-copy="${x}"><span>${n}</span><span>${x}</span></div>`).join('') }));
+  const ext = ['Cream','LightPink','Purple','Orange','Teal','BlueGray','Navy','Brown','BrownPink','VibrantRed'].map(n => [n.replace(/([a-z])([A-Z])/g,'$1 $2'), col('BrandExtended'+n)]).filter(x => x[1]);
+  t.push(tile({ cls: 'bands', bg: '#151412', tags: [['tr', 'Extended · 10', 'box', '#FAF8F3', '#151412']],
+    art: `<div style="height:44px"></div>` + ext.map(([n, x]) => `<div class="band" style="background:${x};color:${on(x)}" data-copy="${x}"><span>${n}</span><span>${x}</span></div>`).join('') }));
+  const scaleRow = (name, mode) => Array.from({length: 12}, (_, i) => col(`${name}${i+1}`, arcui, mode)).filter(Boolean);
+  t.push(tile({ cls: 'scale', bg: '#FAF8F3', tags: [['tl', 'ARCUI scales', 'box', '#3139FB']], art: ['Gray','Indigo'].map(s => ['l','d'].map(m =>
+    `<div class="row">${scaleRow(s, m).map(x => `<i style="background:${x}" data-copy="${x}"></i>`).join('')}</div><small>${s} · ${m === 'l' ? 'light' : 'dark'}</small>`).join('')).join('') }));
+  ['Vibrant','Chill'].forEach((p, k) => {
+    const ks = ['Yellow','Pink','Red','Purple','LightBlue','DarkBlue','LightGreen','DarkGreen','Grey','Black'];
+    t.push(tile({ cls: 'mo', bg: k ? '#EDE7DC' : '#151412', tags: [['tl', `Easel · ${p}`, 'box', k ? '#151412' : '#FAF8F3', k ? '#FAF8F3' : '#151412']],
+      art: easelDots(ks.map(n => col(`${p}.Easel${n}`)).filter(Boolean)) }));
   });
-  if (logo >= 0) lottie.loadAnimation({ container: $('#cover-logo'), renderer: 'svg', loop: true, autoplay: true, animationData: D.lottie[logo].data });
+  const all = D.colors.flatMap(g => g.colors).map(c => c.l && c.l[1] >= .99 ? c.l[0] : null).filter(Boolean);
+  const uniq = [...new Set(all)].sort((a, b) => { const [h1,s1,l1] = hsl(a), [h2,s2,l2] = hsl(b); const g1 = s1 < .12, g2 = s2 < .12;
+    return g1 !== g2 ? (g1 ? -1 : 1) : g1 ? l1 - l2 : (Math.round(h1/15) - Math.round(h2/15)) || l1 - l2 });
+  t.push(tile({ cls: 'chipwall', bg: '#FAF8F3', tags: [['tl', `Every opaque color · ${uniq.length} unique of ${D.counts.colors}`, 'box', '#151412']],
+    art: uniq.map(x => `<i style="background:${x}" title="${x}" data-copy="${x}"></i>`).join('') }));
+  return t;
+}
+function easelDots(list){
+  const c = document.createElement('canvas'); c.className = 'fill';
+  const wrap = h('<div class="ratio" style="aspect-ratio:1;position:relative"></div>'); wrap.append(c);
+  animate(c, t => { const [w, hh] = fitCanvas(c); const x = c.getContext('2d'); x.clearRect(0,0,w,hh);
+    const n = list.length, cx = w/2, cy = hh/2, R = Math.min(w, hh) * .32;
+    list.forEach((k, i) => { const a = i / n * Math.PI * 2 + t * .25, wob = Math.sin(t * 1.4 + i) * .06;
+      x.beginPath(); x.fillStyle = k; x.arc(cx + Math.cos(a) * R * (1 + wob), cy + Math.sin(a) * R * (1 + wob), Math.min(w, hh) * .085, 0, 7); x.fill(); });
+  });
+  return wrap;
+}
+
+/* ===================== SPACES ===================== */
+const PRESETS = [['Arc', '#FF9396', '#0048FF'], ['Rose', '#F29BBB', '#A6729D'], ['Sea', '#6CBAD9', '#26456B'], ['Moss', '#7AA982', '#226149'], ['Sand', '#F2EAE4', '#D7B35D'], ['Night', '#4E3A5A', '#120F2E']];
+const partner = x => { const [H,S,L] = hsl(x); return `hsl(${(H+28)%360} ${Math.min(100, S*100+6)}% ${Math.max(8, L*100-22)}%)` };
+function spaceTiles(){
+  const t = [];
+  const picks = ['Brand','Pastel','Drab','Greyscale'].flatMap(g => Array.from({length: 9}, (_, i) => col(`ColorPicker${g}${i+1}`))).filter(Boolean);
+  const p = tile({ cls: 'picker grain', bg: 'linear-gradient(160deg,#FF9396,#0048FF)', fg: '#fff', tags: [['tl', 'Try it', 'box', '#FAF8F3', '#151412'], ['tr', 'Space style editor']],
+    art: `<div class="label">Every Space gets its own color.</div><div class="dots">${picks.map(x => `<button style="background:${x}" data-pick="${x}" title="${x}"></button>`).join('')}</div>` });
+  t.push(p);
+  PRESETS.forEach(([n, a, b], i) => t.push(spaceDrift(n, a, b, i)));
+  return t;
+}
+function spaceDrift(name, a, b, i){
+  const c = document.createElement('canvas'); c.className = 'fill';
+  const el = tile({ cls: 'space mo tall', bg: b, fg: lum(a) > .45 ? '#151412' : '#FAF8F3', grain: true, tags: [['tl', `Space ${pad(i+1)}`], ['tr', `${a} → ${b}`]],
+    art: c });
+  el.append(h(`<div class="name"><em>${esc(name)}</em></div>`));
+  const blobs = [[a, .3, .25], [b, .75, .8], [a, .8, .2], [b, .2, .85]];
+  animate(c, t => { const [w, hh] = fitCanvas(c); const x = c.getContext('2d');
+    x.fillStyle = b; x.fillRect(0, 0, w, hh);
+    blobs.forEach(([k, bx, by], j) => { const px = (bx + Math.sin(t * .35 + j * 1.7) * .18) * w, py = (by + Math.cos(t * .3 + j) * .16) * hh, r = Math.max(w, hh) * .62;
+      const g = x.createRadialGradient(px, py, 0, px, py, r); g.addColorStop(0, k); g.addColorStop(1, k + '00'); x.fillStyle = g; x.fillRect(0, 0, w, hh); });
+  });
+  return el;
+}
+
+/* ===================== ICONS ===================== */
+const ICON_BG = { Original: '#FAF8F3', Canary: '#FFE3E3', Candy: '#F8D6E8', Colorful: '#151412', Neon: '#0B0820', Hologram: '#DCDDE3',
+  'Fluted Glass': '#EFE8DD', Schoolbook: '#FFF1C9', 'Early Birds': '#E9F1E4', Dev: '#1D3B2A' };
+function iconTiles(){
+  const t = D.appIcons.map((a, i) => tile({ cls: 'app', bg: ICON_BG[a.h] || '#FAF8F3', tags: [['tl', pad(i+1)], ['tr', a.h]], art: `<img src="${esc(a.src)}" alt="">` }));
+  D.diaIcons.forEach((a, i) => t.push(tile({ cls: 'app', bg: '#E9E4F7', tags: [['tl', `Dia ${pad(i+1)}`, 'box', '#151412'], ['tr', a.h]], art: `<img src="${esc(a.src)}" alt="">` })));
+  return t;
+}
+function artTiles(){ return D.art.map((a, i) => tile({ cls: 'artpiece', tags: [['bl', a.h]], art: `<img src="${esc(a.src)}" alt="" loading="lazy">` })) }
+
+/* ===================== TYPE ===================== */
+const TYPE_BG = ['#FAF8F3', '#151412', '#3139FB', '#EDE7DC', '#FF9396', '#FAF8F3', '#1D3B2A', '#F2EAE4', '#120F2E'];
+function typeTiles(){
+  return D.type.map((f, i) => {
+    const bg = TYPE_BG[i % TYPE_BG.length];
+    return tile({ cls: 'type', bg, tags: [['tl', f.family], ['tr', f.role || f.foundry]],
+      art: `<div class="aa" style="font-family:'${f.main}'">Aa</div><div class="line sample" style="font-family:'${f.main}'">Tabs that tidy themselves.</div>
+            <div class="styles">${f.styles.map(s => esc(s.style)).join(' · ')}</div>` });
+  });
+}
+
+/* ===================== GLYPHS ===================== */
+function glyphPoster(list, bg, square, palette, label){
+  const c = document.createElement('canvas'); c.className = 'fill';
+  const wrap = h('<div class="ratio" style="aspect-ratio:1;position:relative"></div>'); wrap.append(c);
+  const imgs = list.map(g => { const i = new Image(); i.src = g.src; return i });
+  const off = document.createElement('canvas');
+  animate(c, t => { const [w, hh] = fitCanvas(c); const x = c.getContext('2d'); x.fillStyle = bg; x.fillRect(0, 0, w, hh);
+    const n = 4, gap = w * .03, m = w * .07, s = (w - m * 2 - gap * (n - 1)) / n;
+    for (let r = 0; r < n; r++) for (let q = 0; q < n; q++){
+      const k = r * n + q, img = imgs[(k + Math.floor(t / 2.2) * 5) % imgs.length]; if (!img) continue;
+      const X = m + q * (s + gap), Y = m + r * (s + gap); x.fillStyle = square; x.beginPath(); x.roundRect(X, Y, s, s, s * .14); x.fill();
+      if (!img.complete || !img.naturalWidth) continue;
+      const phase = (t * .9 + (r + q) * .25) % 2.2, pop = 1 + Math.max(0, .12 - Math.abs(phase - .2) * .4);
+      const iw = s * .5 * pop, ih = iw * img.naturalHeight / img.naturalWidth;
+      off.width = Math.max(1, iw|0); off.height = Math.max(1, ih|0); const o = off.getContext('2d');
+      o.clearRect(0, 0, off.width, off.height); o.drawImage(img, 0, 0, off.width, off.height);
+      o.globalCompositeOperation = 'source-in'; o.fillStyle = palette[(k + Math.floor(t / 2.2)) % palette.length]; o.fillRect(0, 0, off.width, off.height); o.globalCompositeOperation = 'source-over';
+      x.drawImage(off, X + (s - iw) / 2, Y + (s - ih) / 2);
+    }
+  });
+  return tile({ cls: 'mo', bg, tags: label, art: wrap });
+}
+function glyphTiles(){
+  const pal = ['#FF9396', '#3139FB', '#FFD335', '#00EC8D', '#00CBF8', '#D200A4', '#E93800', '#FAF8F3'];
+  const g = D.glyphs;
+  return [
+    glyphPoster(g.slice(0, 40), '#FAF8F3', '#151412', pal, [['tl', 'Glyphs', 'box', '#3139FB']]),
+    glyphPoster(g.slice(40, 90), '#3139FB', '#0B0820', pal, [['tl', 'Tinted at runtime', 'box', '#FAF8F3', '#151412']]),
+    glyphPoster(g.slice(90), '#151412', '#26232A', ['#FAF8F3', '#FF9396', '#FFD335'], [['tl', 'Sidebar · menus · Easels', 'box', '#FF9396', '#151412']]),
+  ];
+}
+
+/* ===================== MOTION (original studies built from Arc's brand) ===================== */
+function rings(){
+  const phrases = ['A browser that felt like a place · ', 'Tabs that tidy themselves · ', 'Spaces for every part of your life · ', 'Your Space’s color is the window · '];
+  const radii = [150, 118, 86, 54];
+  const svg = `<svg class="fill" viewBox="0 0 400 400"><defs>${radii.map((r, i) => `<path id="rp${i}" d="M200,${200 - r} a${r},${r} 0 1,1 0,${2*r} a${r},${r} 0 1,1 0,-${2*r}"/>`).join('')}</defs>
+    ${radii.map((r, i) => `<g class="spin${i % 2 ? ' rev' : ''}" style="--d:${30 + i * 9}s"><circle cx="200" cy="200" r="${r}" fill="none"/><text fill="#151412"><textPath href="#rp${i}" textLength="${Math.floor(2 * Math.PI * r - 6)}" lengthAdjust="spacing">${esc(phrases[i].repeat(r > 100 ? 2 : 1))}</textPath></text></g>`).join('')}
+    <circle cx="200" cy="200" r="22" fill="none" stroke="#151412" stroke-dasharray="2 5" class="spin" style="--d:12s"/></svg>`;
+  return tile({ cls: 'mo rings', bg: '#FFFFFF', tags: [['tl', 'ARC', 'box', '#3139FB'], ['tr', 'Spaces, not tabs.', 'box', '#3139FB']], art: svg });
+}
+function dotArc(){
+  const c = document.createElement('canvas'); c.className = 'fill';
+  const wrap = h('<div class="ratio" style="aspect-ratio:4/5;position:relative"></div>'); wrap.append(c);
+  let mask = null;
+  const build = (w, hh) => { const o = document.createElement('canvas'); o.width = w; o.height = hh; const x = o.getContext('2d');
+    x.fillStyle = '#000'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.font = `900 ${Math.round(w * .5)}px ${DISPLAY_BLACK}, system-ui`;
+    x.fillText('Arc', w / 2, hh * .5); return x.getImageData(0, 0, w, hh).data; };
+  const lerp = (a, b, k) => a.map((v, i) => Math.round(v + (b[i] - v) * k));
+  const P = rgb('#FF9396'), B = rgb('#3139FB');
+  animate(c, t => { const [w, hh] = fitCanvas(c); const x = c.getContext('2d');
+    if (!mask || mask.w !== w || mask.g !== fontGen) mask = { w, g: fontGen, d: build(w, hh) };
+    x.fillStyle = '#ECEAE4'; x.fillRect(0, 0, w, hh);
+    const step = Math.max(4, Math.round(w / 64));
+    for (let y = step / 2; y < hh; y += step) for (let X = step / 2; X < w; X += step){
+      const inside = mask.d[((y|0) * w + (X|0)) * 4 + 3] > 128;
+      const wave = Math.sin(X / w * 6 + y / hh * 4 - t * 2.2) * .5 + .5;
+      if (inside){ const k = X / w; const [r, g, b] = lerp(P, B, k); x.fillStyle = `rgb(${r},${g},${b})`; x.beginPath(); x.arc(X, y, step * (.28 + wave * .2), 0, 7); x.fill() }
+      else if ((X / step + y / step) % 2 < 1){ x.fillStyle = 'rgba(21,20,18,.16)'; x.beginPath(); x.arc(X, y, step * (.08 + wave * .1), 0, 7); x.fill() }
+    }
+  });
+  return tile({ cls: 'mo', bg: '#ECEAE4', tags: [['tl', '01'], ['tr', 'Halftone study'], ['bl', 'Peach → Arc Blue'], ['br', 'Arc 1.174.0']], art: wrap });
+}
+function particleCells(){
+  const grid = h('<div class="cells"></div>');
+  const fns = [
+    (i, n, t) => { const a = i / n * Math.PI * 12, z = i / n; return [Math.sin(a + t) * .35 * Math.sin(z * Math.PI), z * 2 - 1, Math.cos(a + t)] },             // helix
+    (i, n, t) => { const a = i / n * Math.PI * 2 * 7, r = Math.sin(a * 4 / 7 + t * .6) * .9; return [Math.cos(a) * r, Math.sin(a) * r, 0] },                    // rose
+    (i, n, t) => { const u = (i % 40) / 40, v = Math.floor(i / 40) / (n / 40); return [u * 2 - 1, Math.sin(u * 9 + t * 1.5 + v * 3) * .35 + (v - .5) * .9, v] },// waves
+    (i, n, t) => { const a = i * .18 + t * .5, r = Math.sqrt(i / n) * .95; return [Math.cos(a) * r, Math.sin(a) * r, r] },                                      // spiral
+    (i, n, t) => { const a = i / n * Math.PI * 2; return [Math.sin(3 * a + t * .7) * .85, Math.sin(2 * a) * .85, 0] },                                           // lissajous
+    (i, n, t) => { const y = 1 - (i / (n - 1)) * 2, r = Math.sqrt(1 - y * y), a = i * 2.4 + t * .4; return [Math.cos(a) * r * .85, y * .85, Math.sin(a) * r] }, // sphere
+  ];
+  fns.forEach(fn => { const c = document.createElement('canvas'); grid.append(c);
+    animate(c, t => { const [w, hh] = fitCanvas(c); const x = c.getContext('2d'); x.fillStyle = '#000'; x.fillRect(0, 0, w, hh);
+      const n = 480; for (let i = 0; i < n; i++){ const [px, py, pz] = fn(i, n, t); const s = (1.1 + (pz + 1) * .9) * w / 220;
+        x.fillStyle = `rgba(${60 + (pz + 1) * 40},${80 + (pz + 1) * 50},255,${.35 + (pz + 1) * .3})`; x.fillRect(w / 2 + px * w * .42 - s / 2, hh / 2 + py * hh * .42 - s / 2, s, s); } });
+  });
+  const wrap = h('<div class="ratio" style="aspect-ratio:4/5;position:relative"></div>'); wrap.append(grid);
+  return tile({ cls: 'mo', bg: '#3139FB', tags: [], art: wrap });
+}
+function lottieGrid(){
+  const pick = D.lottie.filter(l => l.n !== 'logo-wave').slice(0, 9);
+  const bgs = ['#3139FB', '#FF9396', '#151412', '#00CBF8', '#D200A4', '#FFD335', '#107A00', '#E93800', '#666789'];
+  const grid = h(`<div class="lgrid">${pick.map((l, i) => `<div style="background:${bgs[i]}"><div data-lottie="${D.lottie.indexOf(l)}"></div></div>`).join('')}</div>`);
+  const wrap = h('<div class="ratio" style="aspect-ratio:1;position:relative"></div>'); wrap.append(grid);
+  return tile({ cls: 'mo', bg: '#FAF8F3', tags: [['tl', 'Lottie · 60fps', 'box', '#151412']], art: wrap });
+}
+function lottieSolo(name, bg, label){
+  const i = D.lottie.findIndex(l => l.n === name); if (i < 0) return null;
+  const wrap = h(`<div class="ratio" style="aspect-ratio:1;position:relative;display:grid;place-items:center"><div data-lottie="${i}" style="width:62%;height:62%"></div></div>`);
+  return tile({ cls: 'mo lsolo', bg, tags: [['tl', label], ['tr', `${D.lottie[i].dur}s loop`]], art: wrap });
+}
+function tidyTabs(){
+  const names = ['Inbox', 'Design review', 'Release notes', 'Recipes', 'Figma — Brand', 'Docs', 'Calendar'];
+  const side = h(`<div class="side"><div class="pill"></div><div class="favs"><i></i><i></i><i></i><i></i></div><div class="list">${names.map((n, i) => `<div class="row${i === 1 ? ' cur' : ''}"><i></i>${n}</div>`).join('')}</div></div>`);
+  const rows = [...side.querySelectorAll('.row')]; let order = rows.map((_, i) => i);
+  const place = () => order.forEach((r, slot) => rows[r].style.transform = `translateY(${slot * 36}px)`);
+  place();
+  setInterval(() => { if (reduce || !side.isConnected) return; order = order.slice().sort(() => Math.random() - .5); place(); }, 2400);
+  const wrap = h('<div class="ratio" style="aspect-ratio:4/5;position:relative"></div>'); wrap.append(side);
+  return tile({ cls: 'mo', bg: 'linear-gradient(160deg,#F29BBB,#6CBAD9)', fg: '#151412', grain: true, tags: [['tr', 'Tidy Tabs', 'box', '#151412'], ['bl', 'Spring · firm']], art: wrap });
+}
+function commandBar(){
+  const box = h(`<div class="cmd"><div class="q"></div>${['Arc — Home', 'arc.net/boosts', 'Search Google for “arc browser”', 'Ask ChatGPT'].map((r, i) => `<div class="r${i === 0 ? ' sel' : ''}"><i></i>${r}</div>`).join('')}</div>`);
+  const q = box.querySelector('.q'), rs = [...box.querySelectorAll('.r')]; const words = ['arc', 'arc.net', 'arc browser'];
+  let w = 0, k = 0, dir = 1;
+  setInterval(() => { if (reduce || !box.isConnected) return; const target = words[w];
+    k += dir; if (k > target.length + 8){ dir = -1 } if (k <= 0){ dir = 1; w = (w + 1) % words.length; k = 0 }
+    q.textContent = target.slice(0, Math.max(0, Math.min(k, target.length))); const sel = (w + Math.floor(q.textContent.length / 4)) % rs.length; rs.forEach((r, i) => r.classList.toggle('sel', i === sel)); }, 110);
+  const wrap = h('<div class="ratio" style="aspect-ratio:5/4;position:relative"></div>'); wrap.append(box);
+  return tile({ cls: 'mo', bg: 'linear-gradient(160deg,#7AA982,#226149)', grain: true, fg: '#FAF8F3', tags: [['tl', 'Command Bar', 'box', '#FAF8F3', '#151412'], ['br', '⌘T']], art: wrap });
+}
+function motionTiles(){
+  return [rings(), dotArc(), particleCells(), lottieGrid(), tidyTabs(), lottieSolo('logo-wave', '#FF9396', 'The Arc logo, drawn'), commandBar(),
+    spaceDrift('Arc', '#FF9396', '#0048FF', 0), lottieSolo('update-heart-animation', '#151412', '“Arc updated” banner'), lottieSolo('sun', '#FFD335', 'Light'),
+    lottieSolo('moon', '#120F2E', 'Dark')].filter(Boolean);
+}
+
+/* ===================== SOUND & VIDEO ===================== */
+function soundTiles(){
+  const bgs = ['#151412', '#FF9396', '#3139FB'];
+  return D.sounds.map((s, i) => { const el = tile({ cls: 'snd', bg: bgs[i % 3], tags: [['tr', `Sound ${pad(i+1)}`]],
+      art: `<b>${esc(s.h)}</b><div class="bars">${'<i></i>'.repeat(28)}</div><button class="play" data-snd="${i}">▶</button>` });
+    return el; });
+}
+function videoTiles(){ return D.videos.map((v, i) => tile({ cls: 'vid', bg: '#151412', tags: [['tl', v.h, 'box', '#FAF8F3', '#151412']],
+  art: `<video src="${esc(v.src)}#t=0.1" muted loop playsinline preload="auto"></video>` })) }
+
+/* ===================== ROUTES ===================== */
+const C = D.counts;
+const ROUTES = [
+  { id: '', label: 'Highlights', title: ['Arc', 'Highlights'], sub: 'A first look. Open any tab for the full set, or click a piece to look closer.' },
+  { id: 'color', label: 'Color', n: C.colors, title: ['Arc', 'Color'], sub: 'An electric blue for action, a peach-to-blue gradient for moments, quiet paper and ink for everything else. Click a color to copy it.', make: colorTiles },
+  { id: 'spaces', label: 'Spaces', n: 36, title: ['Arc', 'Spaces'], sub: 'The chrome is see-through, so a Space’s color becomes the whole window. Pick one on the first poster.', make: spaceTiles },
+  { id: 'icons', label: 'Icons', n: D.appIcons.length + D.diaIcons.length, title: ['Arc', 'Icons'], sub: 'The original and every alternate you could pick in Settings, plus the younger sibling, Dia.', make: iconTiles },
+  { id: 'illustrations', label: 'Illustrations', n: D.art.length, title: ['Arc', 'Illustrations'], sub: 'Feature previews, onboarding art and gradients.', make: artTiles },
+  { id: 'type', label: 'Type', n: D.type.length, title: ['Arc', 'Type'], sub: 'The UI is set in the system font; the personality lives in Easels, onboarding and moments like this.', make: typeTiles, tester: true },
+  { id: 'glyphs', label: 'Glyphs', n: D.glyphs.length + D.marks.length, title: ['Arc', 'Glyphs'], sub: 'Template glyphs take on the color around them. Search the full set below.', make: glyphTiles, index: true },
+  { id: 'motion', label: 'Motion', n: D.lottie.length, title: ['Arc', 'Motion'], sub: 'Arc’s own Lottie animations, plus original motion studies built from its colors, type and ideas.', make: motionTiles },
+  { id: 'sound', label: 'Sound & Video', n: D.sounds.length + D.videos.length, title: ['Arc', 'Sound & Video'], sub: 'Arc was mostly quiet. These are all the sounds it had, and the clips that taught you how to use it.', make: () => [...soundTiles(), ...videoTiles()] },
+];
+const HIGHLIGHTS = () => {
+  const c = colorTiles(), m = motionTiles(), ic = iconTiles(), ty = typeTiles(), sp = spaceTiles(), gl = glyphTiles();
+  return [m[0], c[0], ic[0], m[1], c[1], ty.find(x => x.textContent.includes('EB Garamond')) || ty[0], m[2], sp[0], ic[4], m[3], c[5], m[4], ic[5], gl[0], m[6], sp[4]].filter(Boolean);
+};
+
+$('#intro').textContent = `Colors worth copying, icons worth keeping, type worth setting and motion worth watching, recovered from the last build of a browser that felt like a place. ${C.colors} colors, ${C.families} type families, ${C.images} images, ${C.lottie} animations.`;
+$('#build').textContent = `${D.version} (${D.build})`;
+$('#tabs').innerHTML = ROUTES.map(r => `<a href="#/${r.id}" data-id="${r.id}">${r.label}${r.n != null ? `<small>${r.n}</small>` : ''}</a>`).join('');
+
+function render(){
+  const id = (location.hash.replace(/^#\/?/, '') || '').split('/')[0];
+  const r = ROUTES.find(x => x.id === id) || ROUTES[0];
+  document.querySelectorAll('#tabs a').forEach(a => a.classList.toggle('on', a.dataset.id === r.id));
+  loops.clear();
+  const main = $('#main'); main.innerHTML = '';
+  main.append(h(`<h2>${r.title[0]} <em>${r.title[1]}</em></h2>`), h(`<p class="sub">${esc(r.sub)}</p>`));
+  if (r.tester) main.append(h(`<input class="tester" id="tester" placeholder="Type to set every family…" spellcheck="false">`));
+  const wall = h('<div class="wall"></div>'); (r.make ? r.make() : HIGHLIGHTS()).forEach(t => wall.append(t)); main.append(wall);
+  if (r.index){
+    main.append(h(`<input class="search" id="q" placeholder="Search ${D.glyphs.length + D.marks.length} glyphs and marks…" spellcheck="false">`));
+    const idx = h(`<div class="index">${[...D.glyphs, ...D.marks].map(g => `<div data-h="${esc(g.h)}" data-q="${esc(g.n.toLowerCase())}"><img class="${g.mono ? 'mono' : ''}" src="${esc(g.src)}" alt="" loading="lazy"></div>`).join('')}</div>`);
+    main.append(idx);
+    $('#q').addEventListener('input', e => { const v = e.target.value.trim().toLowerCase(); idx.querySelectorAll('div').forEach(d => d.style.display = !v || d.dataset.q.includes(v) ? '' : 'none') });
+  }
+  $('#tester')?.addEventListener('input', e => document.querySelectorAll('.sample').forEach(s => s.textContent = e.target.value || 'Tabs that tidy themselves.'));
+  startLotties(main);
+  if (window.scrollY > 400) window.scrollTo({ top: $('#tabs').offsetTop - 20 });
+}
+function startLotties(root){
+  if (!window.lottie) return;
+  root.querySelectorAll('[data-lottie]').forEach(el => { if (el._anim) return;
+    el._anim = lottie.loadAnimation({ container: el, renderer: 'svg', loop: true, autoplay: !reduce, animationData: D.lottie[+el.dataset.lottie].data }); });
+}
+
+/* ---------- interactions ---------- */
+const lb = $('#lb'); let lbHome = null;
+document.addEventListener('click', e => {
+  const cp = e.target.closest('[data-copy]'); if (cp && !e.target.closest('.lb') && cp.dataset.copy && !cp.classList.contains('tile')){ copy(cp.dataset.copy); return }
+  const pick = e.target.closest('[data-pick]');
+  if (pick){ const x = pick.dataset.pick, art = pick.closest('.tile'); art.style.setProperty('--bg', `linear-gradient(160deg, ${x}, ${partner(x)})`);
+    art.style.setProperty('--fg', on(x)); art.querySelector('.label').style.color = on(x); return; }
+  const snd = e.target.closest('[data-snd]'); if (snd){ playSound(snd); return }
+  if (e.target.closest('.lb') && !e.target.closest('.lb .tile')){ closeLb(); return }
+  const t = e.target.closest('.wall .tile');
+  if (t){ if (t.dataset.copy && t.classList.contains('swatch')){ copy(t.dataset.copy); return }
+    lbHome = document.createComment('lb'); t.replaceWith(lbHome); lb.append(t); lb.classList.add('on');
+    const v = t.querySelector('video'); if (v){ v.controls = true; v.muted = false; v.play().catch(()=>{}) } }
 });
+function closeLb(){ const t = lb.querySelector('.tile'); if (t && lbHome){ const v = t.querySelector('video'); if (v){ v.controls = false; v.muted = true; v.pause() } lbHome.replaceWith(t) } lb.classList.remove('on'); lbHome = null }
+addEventListener('keydown', e => { if (e.key === 'Escape') closeLb() });
+function playSound(btn){
+  const s = D.sounds[btn.dataset.snd]; btn._a = btn._a || new Audio(s.src); const bars = [...btn.closest('.tile').querySelectorAll('.bars i')];
+  if (!btn._a.paused){ btn._a.pause(); btn.textContent = '▶'; return }
+  btn._a.currentTime = 0; btn._a.play(); btn.textContent = '❚❚';
+  const step = () => { if (btn._a.paused){ bars.forEach(b => b.style.height = '12%'); btn.textContent = '▶'; return }
+    const tt = btn._a.currentTime; bars.forEach((b, i) => b.style.height = `${14 + Math.abs(Math.sin(tt * 7 + i * .55) * Math.cos(tt * 3.1 + i * .9)) * 86}%`); requestAnimationFrame(step) };
+  step();
+}
+document.addEventListener('mouseover', e => { const v = e.target.closest('.wall .vid')?.querySelector('video'); if (v) v.play().catch(()=>{}) });
+document.addEventListener('mouseout', e => { const v = e.target.closest('.wall .vid')?.querySelector('video'); if (v && !v.closest('.tile').contains(e.relatedTarget)) v.pause() });
+
+addEventListener('hashchange', render);
+render();
+addEventListener('load', () => startLotties(document));
 })();
 </script>
 </body>
